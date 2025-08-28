@@ -1,8 +1,8 @@
 # System Patterns: Project LINGKOD
 
-## 1. System Architecture: A Multi-Layered Intelligence Model
+## 1. System Architecture: A Dual-Mode Intelligence Engine
 
-The core architecture of Project LINGKOD is a **data-fusion and dissemination platform**. It is designed to ingest data from multiple, disparate sources, process it into actionable intelligence, and distribute it through targeted channels.
+The core architecture of Project LINGKOD is a **dual-mode intelligence engine**. It is designed to function both as a complete, standalone situational awareness platform and as a complementary "intelligence engine" that feeds critical, predictive alerts into existing command center systems.
 
 The system is composed of three primary layers:
 
@@ -12,19 +12,22 @@ The system is composed of three primary layers:
     *   **IoT Network:** A network of DMA-BD sensors that push real-time, hyper-local environmental data (rain, water levels) to a central data lake.
 
 *   **Layer 2: Data Fusion & Analysis (The Brain)**
-    *   **Central Dashboard:** Coram.ai's Emergency Management System (EMS) will serve as the primary user interface for the PDRRMO.
-    *   **Threat Analysis Engine:** This is the core of the system, where data from all sources is correlated. For example, a satellite flag for ground saturation, combined with a real-time IoT rainfall spike and a CCTV alert of a rising river, would automatically generate a high-priority flood warning.
+    *   **Threat Analysis Engine:** This is the core of the system, where data from all sources is correlated to generate predictive alerts (e.g., identifying a specific barangay at high risk of flooding within the next hour).
+    *   **Dual-Mode Output:** The engine's output is twofold:
+        1.  **Standalone Interface:** A rich visualization of all data streams and alerts is provided through the **Coram.ai Emergency Management System (EMS)**, allowing for direct analysis and command.
+        2.  **Complementary Feed:** High-priority, actionable alerts are sent via a secure **API** to be ingested by existing city-level or third-party command center software.
 
-*   **Layer 3: Communication & Dissemination (The Voice)**
-    *   **Emergency Command Platform:** This is the "last-mile" communication hub. It receives finalized alerts from the EMS.
-    *   **Multi-Channel Gateway:** The platform is integrated with SMS gateways and has a system for generating pre-formatted scripts for radio broadcast. It maintains a database of contacts for targeted alerting (e.g., barangay captains in specific municipalities).
+*   **Layer 3: Communication & Dissemination (The Voice - Standalone Mode)**
+    *   **Emergency Command Platform:** For standalone operation, this "last-mile" communication hub receives finalized alerts from the EMS.
+    *   **Multi-Channel Gateway:** The platform is integrated with SMS gateways and has a system for generating pre-formatted scripts for radio broadcast, targeting specific communities at risk.
 
 ## 2. Key Technical Decisions
 
+*   **Dual-Mode Architecture:** The system is explicitly designed to operate both as a self-contained platform and as an integrated intelligence provider for existing systems, ensuring maximum adaptability.
 *   **Cloud-Native:** The entire platform will be hosted on a cloud infrastructure (e.g., AWS, Azure) to ensure scalability, reliability, and security.
-*   **API-Driven:** All components will communicate via well-defined APIs, allowing for modularity and the future integration of new data sources.
+*   **API-Driven:** All components communicate via well-defined APIs. A dedicated, secure API endpoint will be provided for third-party systems to receive alerts.
 *   **Data-Agnostic Design:** The threat analysis engine will be designed to be flexible, allowing for the addition of new data providers without a complete system overhaul.
-*   **Ecological Connectivity:** To mitigate the impact of flood control infrastructure on the natural river ecosystem, the design will incorporate **"Fish Passes and Regulators"** where appropriate. This ensures that the connection between the main river and the floodplain is maintained, supporting local fisheries and biodiversity, based on the best practices from the Bangladesh Environmental Management Framework.
+*   **Ecological Connectivity:** To mitigate the impact of flood control infrastructure on the natural river ecosystem, the design will incorporate **"Fish Passes and Regulators"** where appropriate.
 
 ## 3. Component Relationships
 
@@ -38,9 +41,10 @@ graph TD
 
     subgraph "Layer 2: Data Fusion & Analysis"
         D[Threat Analysis Engine] --> E[Coram.ai EMS Dashboard];
+        D --> J[API to Existing Command Centers];
     end
 
-    subgraph "Layer 3: Communication & Dissemination"
+    subgraph "Layer 3: Communication & Dissemination (Standalone)"
         E --> F[Emergency Command Platform];
         F --> G[SMS Gateway];
         F --> H[Radio Broadcast Scripts];
@@ -50,6 +54,7 @@ graph TD
     style A fill:#f9f,stroke:#333,stroke-width:2px
     style B fill:#f9f,stroke:#333,stroke-width:2px
     style C fill:#f9f,stroke:#333,stroke-width:2px
+    style J fill:#9cf,stroke:#333,stroke-width:2px
     style G fill:#ccf,stroke:#333,stroke-width:2px
     style H fill:#ccf,stroke:#333,stroke-width:2px
     style I fill:#ccf,stroke:#333,stroke-width:2px
