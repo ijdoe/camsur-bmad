@@ -5,17 +5,18 @@
 *   **Core Concept:** The "Project LINGKOD" concept is solid. It is well-aligned with stakeholder feedback, leverages partner strengths, and addresses a critical, high-impact problem.
 *   **Proposal Document:** A comprehensive and persuasive proposal document has been drafted, incorporating a strong narrative element.
 *   **Partnership Synergy:** The integrated model, combining satellite, AI CCTV, and IoT data, is a technically sound and powerful vision.
+*   **Initial Technical Scope:** A foundational technical scope document (`docs/Pilot_Technical_Scope.md`) has been created, defining the data schemas, API structures, and initial rules for the pilot program.
 
 ## 2. What's Left to Build
 
-*   **The Platform Itself:** The project currently exists only as a proposal. The next phase is to secure approval and begin the pilot program.
-*   **Formal Partnerships:** While partners have been identified, formal agreements for the pilot program need to be established.
-*   **Detailed Technical Scoping:** A detailed technical roadmap for the pilot, including specific API integration points and sensor deployment locations, needs to be created.
+*   **The Pilot Platform:** The core `ThreatAnalysisEngine` and data integration components need to be developed.
+*   **Formal Partnerships:** Formal agreements with technology partners need to be finalized and signed.
+*   **Finalized Technical Scope:** The initial technical scope needs to be reviewed and finalized with partner input.
 
 ## 3. Current Status
 
-*   **Phase:** Proposal Finalization.
-*   **Next Milestone:** Present the "Project LINGKOD" proposal to Governor Villafuerte.
+*   **Phase:** Pilot Program Scoping.
+*   **Next Milestone:** Finalize the technical scope and secure formal partnership agreements.
 
 ## 4. Evolution of Project Decisions
 

@@ -2,7 +2,7 @@
 
 ## 1. Current Work Focus
 
-The primary focus is refining the strategic positioning of **Project LINGKOD**. Based on feedback regarding existing city-level command centers, the project is being updated to explicitly function as a **dual-mode system**: both a standalone platform and a complementary "intelligence engine." The current task is to update all project documentation (memory bank, proposal) to reflect this enhanced, more flexible architecture and messaging.
+The primary focus is on the **detailed technical scoping of the pilot program**. Now that the high-level strategy and dual-mode architecture are defined, the immediate task is to create the specific technical plans required to move the project from proposal to implementation. This involves defining data schemas, API endpoints, and initial analytical rules.
 
 ## 2. Recent Changes & Decisions
 
@@ -14,8 +14,10 @@ The primary focus is refining the strategic positioning of **Project LINGKOD**. 
 
 ## 3. Next Steps
 
-1.  **Align All Documentation:** Update all memory bank files and the main proposal document to consistently reflect the dual-mode architecture and "intelligence engine" messaging.
-2.  **Commit to Version Control:** Once the documentation is aligned, add all changes to a Git repository, commit, and push to the remote.
+1.  **Finalize Pilot Technical Scope:** Complete the `docs/Pilot_Technical_Scope.md` document with input from technology partners.
+2.  **Formalize Partnerships:** Use the technical scope document as a basis for drafting formal agreements with Coram.ai, DMA-BD, and a satellite provider.
+3.  **Begin Pilot Development:** Commence the initial development sprints focused on data ingestion and the core `ThreatAnalysisEngine`.
+4.  **Commit to Version Control:** Ensure all new documentation and code are committed and pushed to the remote repository.
 
 ## 4. Important Patterns & Preferences
 
