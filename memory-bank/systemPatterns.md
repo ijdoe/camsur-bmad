@@ -24,6 +24,7 @@ The system is composed of three primary layers:
 *   **Cloud-Native:** The entire platform will be hosted on a cloud infrastructure (e.g., AWS, Azure) to ensure scalability, reliability, and security.
 *   **API-Driven:** All components will communicate via well-defined APIs, allowing for modularity and the future integration of new data sources.
 *   **Data-Agnostic Design:** The threat analysis engine will be designed to be flexible, allowing for the addition of new data providers without a complete system overhaul.
+*   **Ecological Connectivity:** To mitigate the impact of flood control infrastructure on the natural river ecosystem, the design will incorporate **"Fish Passes and Regulators"** where appropriate. This ensures that the connection between the main river and the floodplain is maintained, supporting local fisheries and biodiversity, based on the best practices from the Bangladesh Environmental Management Framework.
 
 ## 3. Component Relationships
 

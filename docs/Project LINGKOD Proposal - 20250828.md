@@ -76,7 +76,10 @@ We will partner with a leading provider like **Planet Labs** to conduct daily sa
 We will leverage our partnership with **Coram.ai** to deploy their AI-powered video analytics on existing CCTV cameras at critical infrastructure points (bridges, rivers, coastal roads, evacuation routes). Their system provides real-time, automated alerts for immediate threats like rapid water level rise or landslides, turning passive cameras into active sentinels.
 
 **C. Ground Truth (Real-Time Sensors)**
-We will deploy a network of low-cost IoT sensors from our partner **DMA-BD** to provide precise, real-time data on rainfall, water levels, and soil moisture, validating and enhancing the data from our other intelligence layers.
+We will deploy a network of low-cost, solar-powered IoT sensors from our partner **DMA-BD**, the same company that successfully implemented the national-scale river monitoring system in Bangladesh. This network will consist of **Automatic Water Level Gauges (AWLG)**, **Automatic Rainfall Gauges (ARG)**, and **Automatic Weather Stations (AWS)**, providing precise, real-time data with a demonstrated accuracy of over 99%.
+
+**D. Environmental Safeguards (Ecological Connectivity)**
+Recognizing that robust infrastructure must also be environmentally responsible, our design will incorporate best practices from the Bangladesh Environmental Management Framework. Where new or upgraded flood control infrastructure is part of the long-term plan, we will integrate **"Fish Passes and Regulators."** This ensures that vital ecological connections between the river and floodplain are maintained, protecting local fisheries and biodiversity—a critical component for sustainable resilience.
 
 ---
 

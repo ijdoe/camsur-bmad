@@ -4,7 +4,8 @@
 
 *   **AI Video Analytics:** Coram.ai's platform for real-time monitoring of CCTV feeds.
 *   **Emergency Management System (EMS):** Coram.ai's platform will serve as the central command dashboard.
-*   **Internet of Things (IoT):** DMA-BD's network of environmental sensors (rain gauges, water level monitors, etc.).
+*   **Internet of Things (IoT):** DMA-BD's turnkey hydrology solution. This includes a network of solar-powered sensor stations featuring **Automatic Water Level Gauges (AWLG)**, **Automatic Rainfall Gauges (ARG)**, and **Automatic Weather Stations (AWS)**. Data is transmitted every 15 minutes via a GSM-based telemetry network.
+*   **Proven Precedent:** The proposed IoT technology stack is based on the successful, large-scale (800+ sites) National IoT River Monitoring System deployed by our partner DMA for the Bangladesh Water Development Board. This system has a demonstrated accuracy of less than 1% deviation from manual readings.
 *   **Geospatial Intelligence:** A commercial satellite imagery provider (e.g., Planet Labs, Maxar) for large-scale environmental analysis.
 *   **Cloud Computing:** A major cloud provider (e.g., AWS, Azure, Google Cloud) for hosting the data fusion platform and ensuring scalability.
 
