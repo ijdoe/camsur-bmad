@@ -15,7 +15,7 @@ The system is composed of three primary layers:
     *   **Threat Analysis Engine:** This is the core of the system, where data from all sources is correlated to generate predictive alerts (e.g., identifying a specific barangay at high risk of flooding within the next hour).
     *   **Dual-Mode Output:** The engine's output is twofold:
         1.  **Standalone Interface:** A rich visualization of all data streams and alerts is provided through the **Coram.ai Emergency Management System (EMS)**, allowing for direct analysis and command.
-        2.  **Complementary Feed:** High-priority, actionable alerts are sent via a secure **API** to be ingested by existing city-level or third-party command center software.
+        2.  **Complementary Feed:** High-priority, actionable alerts are sent via a secure **API** to be ingested by existing city-level or third-party command center software, such as **ArcGIS**, for advanced geospatial visualization and response coordination.
 
 *   **Layer 3: Communication & Dissemination (The Voice - Standalone Mode)**
     *   **Emergency Command Platform:** For standalone operation, this "last-mile" communication hub receives finalized alerts from the EMS.
