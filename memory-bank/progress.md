@@ -13,20 +13,21 @@
 *   **Template Metadata:** `docs/Communication_Templates.md` enriched with operator metadata, CAP/GeoJSON references, and approval headers/footers.
 *   **Sales Enablement:** Created `docs/Why_Trust_Us.md` one-pager for executive trust framing.
 
-## 2. What's Left to Build
+## 2. What's Left to Build (MVP for Sales Demo)
 
-*   **The Pilot Platform:** The core `ThreatAnalysisEngine` and data integration components need to be developed.
-*   **Formal Partnerships:** Formal agreements with technology partners need to be finalized and signed.
-*   **Advisory Board:** Confirm PAGASA liaison, local hydrology/DRRM expert, and PDRRMO ops lead; establish cadence and change control.
-*   **Validation Execution:** Historical backtesting (Phase 0) and Shadow Mode (Phase 1) with KPI tracking and acceptance gates.
-*   **Interoperability Readiness:** Public endpoints for GeoJSON `/api/v1/alerts` and CAP `/api/v1/cap/{alertId}` with auth and rate limiting; ArcGIS consumption test.
-*   **Capacity Building:** Training curriculum, tabletop and live drills, operator/governance runbooks.
-*   **Monitoring & KPIs:** Dashboards for data freshness, ingestion lag, and pilot KPIs (lead time, precision/recall, delivery, operator latency).
+*   **Core ThreatAnalysisEngine:** Implement the rule-based logic and data correlation mechanisms.
+*   **Multi-Region Data Simulation Layer:** Develop a robust data generator for various regions and hazard scenarios.
+*   **Interactive Dashboard Interface:** Build the Admin/Operator Dashboard with maps, real-time data, and operator workflow.
+*   **API Endpoints for External Integration:** Develop GeoJSON and CAP 1.2 alert endpoints with authentication.
+*   **Multi-Region Demo Scenarios:** Create specific demo scripts and data configurations for CamSur, Metro Manila, and other provinces.
+*   **Enterprise-Grade Authentication and Multi-Tenancy:** Implement JWT-based authentication, RBAC, and data isolation.
+*   **Testing and Polishing:** Conduct thorough testing, performance tuning, and UI/UX refinement for sales demonstrations.
+*   **RFP/Development Team Selection Criteria:** Prepare documentation to aid in selecting a development partner.
 
 ## 3. Current Status
 
-*   **Phase:** Pilot Program Scoping.
-*   **Next Milestone:** Establish Advisory Board, ratify KPIs & acceptance gates, and secure formal partnership agreements.
+*   **Phase:** MVP Technical Specification Complete, Development Planning.
+*   **Next Milestone:** Begin MVP development, focusing on the core ThreatAnalysisEngine and data simulation.
 
 ## 4. Evolution of Project Decisions
 
@@ -41,3 +42,5 @@
 
 4.  **Enhancement (Multi-Layered Intelligence):** The decision to re-integrate satellite imagery from a new, dedicated provider.
     *   *Decision:* Incorporated into the "LINGKOD" proposal to create a more comprehensive and powerful solution, combining macro and micro views.
+
+5.  **Strategic Shift to Sales MVP:** The project focus has shifted from immediate pilot implementation to developing a robust MVP for sales demonstrations, recognizing the need to secure contracts before further development. This led to the creation of a detailed technical specification for the MVP.

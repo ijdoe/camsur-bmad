@@ -67,6 +67,8 @@ Effective disaster management requires seeing the full picture. Currently, respo
 
 ## **4. Our Solution: A Flexible, Dual-Mode Intelligence Platform**
 
+It is important to clarify that Project LINGKOD is a **proactive intelligence engine**, not a reactive 911 dispatch system. A traditional 911 center manages emergency calls and dispatches resources *after* an incident is reported. In contrast, Project LINGKOD is designed to analyze data to *predict* where a crisis is likely to occur, providing the critical early warnings needed to mitigate impact *before* it happens. We are not replacing the dispatch function; we are making it smarter and more effective.
+
 Project LINGKOD is architected for maximum flexibility. It integrates three layers of technology into a unified engine that can be deployed in two ways:
 
 1.  **As a Standalone Platform:** A complete, end-to-end system for the Provincial DRRMO, with its own dashboard and communication tools.

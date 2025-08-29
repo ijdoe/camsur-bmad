@@ -4,6 +4,16 @@
 
 The core architecture of Project LINGKOD is a **dual-mode intelligence engine**. It is designed to function both as a complete, standalone situational awareness platform and as a complementary "intelligence engine" that feeds critical, predictive alerts into existing command center systems.
 
+### 1.1. Strategic Distinction: Intelligence vs. Dispatch
+
+It is critical to distinguish Project LINGKOD's role from that of a traditional 911 or emergency dispatch center.
+
+*   **A 911 Dispatch Center is *Reactive*.** It is a system of record for receiving emergency calls from the public and dispatching the appropriate resources (police, fire, medical). Its primary function is incident management and resource logistics *after* an event has been reported.
+
+*   **Project LINGKOD is *Proactive*.** It is an intelligence and early-warning system. Its primary function is to analyze vast amounts of environmental and situational data to *predict* where and when a crisis is likely to occur. It does not manage dispatch; it provides the critical, data-driven foresight that allows disaster managers to pre-position resources, warn communities, and mitigate the impact of an event *before* it happens.
+
+In Complementary Mode, we feed our intelligence *to* a dispatch center. In Standalone Mode, we provide the intelligence *for* provincial managers who then use their own established protocols for response. We are not replacing the dispatch function; we are making it smarter and more effective.
+
 The system is composed of three primary layers:
 
 *   **Layer 1: Data Ingestion (The Sensors)**
