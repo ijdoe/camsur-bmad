@@ -1,82 +1,96 @@
 # System Patterns: Project LINGKOD
 
-## 1. System Architecture: A Dual-Mode Intelligence Engine
+## 1. Core Architectural Pattern: Microservices
 
-The core architecture of Project LINGKOD is a **dual-mode intelligence engine**. It is designed to function both as a complete, standalone situational awareness platform and as a complementary "intelligence engine" that feeds critical, predictive alerts into existing command center systems.
+Project LINGKOD is built on a **microservices-oriented architecture**. This pattern is chosen for its scalability, resilience, and maintainability. Each service is a self-contained unit with a specific business capability, communicating with other services via well-defined APIs.
 
-### 1.1. Strategic Distinction: Intelligence vs. Dispatch
+**For a detailed breakdown of the architecture, see:**
+- `docs/03-architecture/system-architecture/technical-specification.md`
 
-It is critical to distinguish Project LINGKOD's role from that of a traditional 911 or emergency dispatch center.
+## 2. Key Architectural Decisions (ADRs)
 
-*   **A 911 Dispatch Center is *Reactive*.** It is a system of record for receiving emergency calls from the public and dispatching the appropriate resources (police, fire, medical). Its primary function is incident management and resource logistics *after* an event has been reported.
+Our architecture is guided by a series of formal Architecture Decision Records (ADRs). The key decisions are:
 
-*   **Project LINGKOD is *Proactive*.** It is an intelligence and early-warning system. Its primary function is to analyze vast amounts of environmental and situational data to *predict* where and when a crisis is likely to occur. It does not manage dispatch; it provides the critical, data-driven foresight that allows disaster managers to pre-position resources, warn communities, and mitigate the impact of an event *before* it happens.
+- **ADR-001: Technology Stack Selection:** The project uses a modern, TypeScript-based stack including NestJS (backend), Next.js (frontend), and PostgreSQL.
+- **ADR-002: Database Selection:** We use PostgreSQL with PostGIS and TimescaleDB extensions to handle relational, geospatial, and time-series data in a unified system.
+- **ADR-003: Frontend Framework Selection:** We use Next.js with React for its powerful features and developer experience.
 
-In Complementary Mode, we feed our intelligence *to* a dispatch center. In Standalone Mode, we provide the intelligence *for* provincial managers who then use their own established protocols for response. We are not replacing the dispatch function; we are making it smarter and more effective.
+**For full details, see:**
+- `docs/03-architecture/decisions/`
 
-The system is composed of three primary layers:
+## 3. System Design Patterns
 
-*   **Layer 1: Data Ingestion (The Sensors)**
-    *   **Satellite Intelligence:** An API-based integration with a commercial satellite provider (e.g., Planet Labs) to pull daily, province-wide imagery for macro-level analysis.
-    *   **On-the-Ground AI:** Integration with Coram.ai's platform to receive real-time alerts from AI-powered CCTV cameras at critical infrastructure points.
-    *   **IoT Network:** A network of DMA-BD sensors that push real-time, hyper-local environmental data (rain, water levels) to a central data lake.
+### 3.1. Dual-Mode Intelligence Engine
 
-*   **Layer 2: Data Fusion & Analysis (The Brain)**
-    *   **Threat Analysis Engine:** This is the core of the system, where data from all sources is correlated to generate predictive alerts (e.g., identifying a specific barangay at high risk of flooding within the next hour).
-    *   **Dual-Mode Output:** The engine's output is twofold:
-        1.  **Standalone Interface:** A rich visualization of all data streams and alerts is provided through the **Coram.ai Emergency Management System (EMS)**, allowing for direct analysis and command.
-        2.  **Complementary Feed:** High-priority, actionable alerts are sent via a secure **API** to be ingested by existing city-level or third-party command center software, such as **ArcGIS**, for advanced geospatial visualization and response coordination.
+The system is designed to operate in two modes:
+1.  **Standalone Platform:** A complete, end-to-end solution with its own dashboard.
+2.  **Complementary Engine:** An intelligence provider that feeds alerts to existing third-party systems via API.
 
-*   **Layer 3: Communication & Dissemination (The Voice - Standalone Mode)**
-    *   **Emergency Command Platform:** For standalone operation, this "last-mile" communication hub receives finalized alerts from the EMS.
-    *   **Multi-Channel Gateway:** The platform is integrated with SMS gateways and has a system for generating pre-formatted scripts for radio broadcast, targeting specific communities at risk.
+### 3.2. Proactive Intelligence vs. Reactive Dispatch
 
-## 2. Key Technical Decisions
+LINGKOD is a **proactive early-warning system**, not a reactive dispatch system. It is designed to predict and analyze threats *before* they require an emergency response.
 
-*   **Dual-Mode Architecture:** The system is explicitly designed to operate both as a self-contained platform and as an integrated intelligence provider for existing systems, ensuring maximum adaptability.
-*   **Cloud-Native:** The entire platform will be hosted on a cloud infrastructure (e.g., AWS, Azure) to ensure scalability, reliability, and security.
-*   **API-Driven:** All components communicate via well-defined APIs. A dedicated, secure API endpoint will be provided for third-party systems to receive alerts.
-*   **Data-Agnostic Design:** The threat analysis engine will be designed to be flexible, allowing for the addition of new data providers without a complete system overhaul.
-*   **Ecological Connectivity:** To mitigate the impact of flood control infrastructure on the natural river ecosystem, the design will incorporate **"Fish Passes and Regulators"** where appropriate.
-*   **JWT Authentication:** Implemented for secure user login, ensuring that only authenticated users can access protected resources. This is a foundational step for Role-Based Access Control and Multi-Tenancy.
+### 3.3. Human-in-the-Loop
 
-## 3. Component Relationships
+All alerts generated by the system require **manual operator approval** before any public dissemination, ensuring accuracy and accountability. This is a critical safety and trust feature.
+
+## 4. Component Diagram
+
+This diagram reflects the microservices architecture outlined in the technical specification.
 
 ```mermaid
 graph TD
-    subgraph "Layer 1: Data Ingestion"
-        A[Satellite Provider API] --> D;
-        B[Coram.ai CCTV Alerts] --> D;
-        C[DMA-BD IoT Sensors] --> D;
+    subgraph "Data Sources (Simulated)"
+        A[Satellite Imagery]
+        B[CCTV Alerts]
+        C[IoT Sensors]
     end
 
-    subgraph "Layer 2: Data Fusion & Analysis"
-        D[Threat Analysis Engine] --> E[Coram.ai EMS Dashboard];
-        D --> J[API to Existing Command Centers];
+    subgraph "Backend Services (NestJS)"
+        D[Data Ingestion]
+        E[Threat Analysis]
+        F[Alert Management]
+        G[User & Auth]
+        H[Communication]
     end
 
-    subgraph "Layer 3: Communication & Dissemination (Standalone)"
-        E --> F[Emergency Command Platform];
-        F --> G[SMS Gateway];
-        F --> H[Radio Broadcast Scripts];
-        F --> I[Barangay Official Alerts];
+    subgraph "Data Stores"
+        J[PostgreSQL/PostGIS]
+        K[TimescaleDB]
+        L[Redis]
+        M[Elasticsearch]
     end
 
-    subgraph "Authentication & Authorization"
-        K[User Login (Frontend)] --> L[Auth Controller (Backend)];
-        L --> M[Auth Service (Backend)];
-        M --> N[User Entity (Database)];
-        L -- JWT --> K;
+    subgraph "Frontend (Next.js)"
+        N[Operator Dashboard]
     end
 
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#f9f,stroke:#333,stroke-width:2px
-    style C fill:#f9f,stroke:#333,stroke-width:2px
-    style J fill:#9cf,stroke:#333,stroke-width:2px
-    style G fill:#ccf,stroke:#333,stroke-width:2px
-    style H fill:#ccf,stroke:#333,stroke-width:2px
-    style I fill:#ccf,stroke:#333,stroke-width:2px
-    style K fill:#fcc,stroke:#333,stroke-width:2px
-    style L fill:#fcc,stroke:#333,stroke-width:2px
-    style M fill:#fcc,stroke:#333,stroke-width:2px
-    style N fill:#fcc,stroke:#333,stroke-width:2px
+    subgraph "API Gateway"
+        P[API Gateway]
+    end
+
+    A & B & C --> D
+    D --> E
+    E --> F
+    F --> J & K & M
+    
+    G --> J
+    H --> J
+
+    P --> D & F & G & H
+    N --> P
+
+    F -- Real-time Updates --> L --> N
+```
+
+## 5. Security Patterns
+
+The system follows a **Defense in Depth** and **Zero Trust** security model. Key patterns include:
+
+- **JWT-based Authentication** for users.
+- **Role-Based Access Control (RBAC)** for authorization.
+- **Data Encryption** in transit (TLS) and at rest.
+- **Strict Network Segmentation** using a VPC and security groups.
+
+**For full details, see:**
+- `docs/03-architecture/security/security-architecture.md`
