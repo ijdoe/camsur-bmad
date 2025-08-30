@@ -8,7 +8,11 @@
 
 ## 1. Introduction
 
-This document provides a detailed technical specification for the Minimum Viable Product (MVP) of Project LINGKOD. The MVP aims to serve as a compelling demonstration platform for potential clients (LGUs, cities, provinces like Metro Manila), showcasing the system's capabilities in multi-hazard prediction, real-time situational awareness, and targeted communication. This specification outlines the architecture, technology stack, data models, and implementation guidelines required for development.
+This document provides a detailed technical specification for the Minimum Viable Product (MVP) of Project LINGKOD. The MVP aims to serve as a compelling demonstration platform for potential clients (LGUs, cities, provinces like Metro Manila), showcasing the system's capabilities in multi-hazard prediction, real-time situational awareness, and targeted communication. This specification outlines the architecture, technology stack, data models, and implementation guidelines required for development. It is developed in conjunction with the Product Requirements Document (PRD) and the UX/Frontend Specification.
+
+## 1.1. Alignment with UX/Frontend Specification
+
+This technical specification is designed to be fully aligned with the `docs/ux-specification.md`. The frontend components and their interactions, as described in Section 6, directly implement the user journeys, workflows, and visual design principles outlined in the UX specification. This ensures a cohesive and user-centric development process for the MVP.
 
 ## 2. System Architecture Overview
 
@@ -302,7 +306,7 @@ graph TD
 ## 6. Frontend Specifications
 
 ### 6.1. Admin/Operator Dashboard (Next.js/React/Tailwind CSS)
-- **Layout:** Responsive, multi-column layout with a primary map view.
+- **Layout:** Responsive, multi-column layout with a primary map view, as detailed in `docs/ux-specification.md` Section 4.1.
 - **Components:**
     - **Interactive Map:** Mapbox GL JS displaying:
         - Base map (satellite/street view)
@@ -310,17 +314,16 @@ graph TD
         - Sensor locations (IoT, CCTV) with real-time status indicators
         - Active alert polygons (GeoJSON from `system_alerts`)
         - Simulated hazard overlays (e.g., flood extent, storm surge)
-    - **Real-time Data Feeds:** Display latest sensor readings, CCTV events.
-    - **Alert List/Table:** Filterable, sortable list of `system_alerts`.
+        - *Refer to `docs/ux-specification.md` Section 4.2 for detailed map overlay and interactivity requirements.*
+    - **Real-time Data Panels:** Display latest sensor readings, CCTV events, and alert summaries, as specified in `docs/ux-specification.md` Section 4.3.
+    - **Alert List/Table:** Filterable, sortable list of `system_alerts`, consistent with `docs/ux-specification.md` Section 4.4.
     - **Alert Detail Panel:**
-        - Comprehensive view of a selected alert.
-        - **Evidence Panel:** Displays contributing sensor readings, CCTV snapshots, rule traces, confidence scores.
-        - **Operator Actions:** Buttons for `Approve`, `Rescind`, `Edit` (with audit trail).
-        - **Communication Preview:** Shows generated SMS, radio, barangay messages.
+        - Comprehensive view of a selected alert, including header, overview, evidence panel, communication preview, and operator actions.
+        - *Refer to `docs/ux-specification.md` Section 4.5 for detailed layout and content of this panel.*
     - **User Management:** CRUD operations for users (Admin role).
     - **LGU Management:** CRUD operations for LGUs (Admin role), including configuration of rule packs and communication settings.
     - **Historical Data & Analytics:** Basic charts for sensor trends, alert frequency, operator response times.
-- **Styling:** Tailwind CSS for consistent, modern UI. Headless UI/Radix UI for accessible components. Framer Motion for smooth transitions.
+- **Styling:** Tailwind CSS for consistent, modern UI. Headless UI/Radix UI for accessible components. Framer Motion for smooth transitions. *Adheres to the Visual Design System outlined in `docs/ux-specification.md` Section 5.*
 
 ### 6.2. Public Information Portal (Next.js/React/Tailwind CSS)
 - **Purpose:** A simplified, read-only view for public consumption (optional for MVP, but good for demo).

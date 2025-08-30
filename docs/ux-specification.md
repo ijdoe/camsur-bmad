@@ -1,0 +1,131 @@
+# UX/Frontend Specification: Project LINGKOD MVP
+
+## 1. Introduction
+
+This document details the User Experience (UX) and Frontend (UI) specifications for the Project LINGKOD Minimum Viable Product (MVP). The goal is to create an intuitive, efficient, and visually compelling interface that effectively demonstrates the system's capabilities to potential clients. This specification builds upon the PRD and Technical Specification, focusing on user interaction, visual design, and accessibility.
+
+## 2. User Personas (from PRD)
+
+### 2.1. PDRRMO Operator (Primary User)
+- **Role:** Monitors real-time data, reviews and approves alerts, manages communication dissemination.
+- **Goals:** Quickly identify threats, make informed decisions, ensure timely and accurate communication.
+- **Key Interactions:** Dashboard monitoring, alert detail review, approval/rescind actions, communication preview.
+
+### 2.2. City Command Center Operator (Secondary User)
+- **Role:** Consumes LINGKOD alerts via API into their existing GIS/command software.
+- **Goals:** Seamless integration, specific and actionable alerts, enhance existing response.
+- **Key Interactions:** (Indirect) System provides data; direct interaction with LINGKOD UI is minimal.
+
+## 3. User Journeys & Workflows
+
+### 3.1. Operator Login & Dashboard View
+1.  **Login:** Operator navigates to LINGKOD URL, enters credentials.
+2.  **Dashboard Load:** Upon successful login, the operator is directed to the main Admin/Operator Dashboard.
+3.  **Real-time Monitoring:** The dashboard displays an interactive map with active alerts, sensor locations, and real-time data feeds.
+4.  **Alert Overview:** A summary panel shows the number of active, pending, and disseminated alerts.
+
+### 3.2. Alert Review & Approval Workflow
+1.  **New Alert Notification:** A visual and/or auditory notification indicates a new `system_alert`.
+2.  **Alert Selection:** Operator clicks on an alert (from map or list) to view details.
+3.  **Alert Detail View:** A dedicated panel/page displays:
+    -   Alert description, severity, affected area (GeoJSON polygon).
+    -   **Evidence Panel:** Contributing sensor data, CCTV snapshots (simulated), rule traces.
+    -   **Communication Preview:** Generated SMS, radio script, barangay official message.
+    -   **Operator Actions:** "Approve," "Rescind," "Edit Geometry," "Add Notes."
+4.  **Approval:** Operator clicks "Approve." System prompts for confirmation and records audit trail.
+5.  **Dissemination (Simulated):** Upon approval, the system *simulates* the dissemination of communications.
+
+### 3.3. LGU Configuration (Admin User)
+1.  **Navigate to LGU Management:** Admin user accesses LGU configuration section.
+2.  **Select LGU:** Admin selects an LGU to manage.
+3.  **Configure Settings:** Admin can adjust LGU-specific rule thresholds, communication templates, and user permissions.
+4.  **Save Changes:** Admin saves configurations.
+
+## 4. Admin/Operator Dashboard (Key Components)
+
+### 4.1. Layout & Navigation
+-   **Responsive Design:** Optimized for desktop and large monitors (PDRRMO command centers). Mobile view for basic monitoring.
+-   **Primary Layout:** Left sidebar for navigation, main content area for map and data panels.
+-   **Top Bar:** Logo, user profile, notifications, LGU selector (for multi-tenancy demo).
+-   **Sidebar Navigation:**
+    -   Dashboard (Home)
+    -   Alerts (List view)
+    -   Sensors (Status & Management)
+    -   CCTV (Status & Management)
+    -   Users (Admin)
+    -   LGUs (Admin)
+    -   Settings
+
+### 4.2. Interactive Map (Mapbox GL JS)
+-   **Base Layers:** Satellite imagery, street maps.
+-   **Data Overlays:**
+    -   **LGU Boundaries:** Provinces, cities, barangays (configurable visibility).
+    -   **Sensor Locations:** IoT (AWLG, ARG, AWS) and CCTV cameras with color-coded status (normal, warning, critical).
+    -   **Active Alert Polygons:** GeoJSON polygons from `system_alerts`, color-coded by severity.
+    -   **Simulated Hazard Overlays:** Visual representation of flood extent, storm surge (for demo).
+-   **Interactivity:** Zoom, pan, click on elements for detail panels.
+
+### 4.3. Real-time Data Panels
+-   **Sensor Readings:** Live stream of critical IoT sensor data (e.g., latest water levels, rainfall rates).
+-   **CCTV Events:** Feed of recent simulated CCTV alerts.
+-   **Alert Summary:** Count of alerts by status (Draft, Pending, Approved, Disseminated).
+
+### 4.4. Alert List/Table
+-   **Display:** Tabular view of `system_alerts` with key information (ID, timestamp, area, severity, status).
+-   **Filtering:** By LGU, status, severity, time range.
+-   **Sorting:** By timestamp, severity.
+-   **Search:** Full-text search (Elasticsearch integration).
+
+### 4.5. Alert Detail Panel
+-   **Header:** Alert ID, status, timestamp.
+-   **Overview:** Description, affected area, severity.
+-   **Evidence Panel:**
+    -   List of contributing sensor readings (timestamp, type, value).
+    -   Simulated CCTV snapshots/video links.
+    -   Rule trace (which rules triggered the alert).
+-   **Communication Preview:** Rendered SMS, radio, barangay messages.
+-   **Action Buttons:** "Approve," "Rescind," "Edit Geometry," "Add Notes."
+
+## 5. Visual Design System (High-Level)
+
+### 5.1. Color Palette
+-   **Primary:** Blue (for professionalism, trust)
+-   **Accent:** Green (success, normal status), Yellow (warning), Red (critical, danger)
+-   **Neutrals:** Grays for text, backgrounds, borders.
+
+### 5.2. Typography
+-   **Font Family:** Modern sans-serif (e.g., Inter, Roboto) for readability.
+-   **Hierarchy:** Clear heading styles (H1-H6) and body text.
+
+### 5.3. Iconography
+-   Consistent icon set for navigation, actions, and data points (e.g., sensor types, alert severities).
+
+### 5.4. Components
+-   **Buttons:** Primary, secondary, danger styles.
+-   **Forms:** Input fields, text areas, dropdowns, checkboxes.
+-   **Cards:** For displaying data summaries and alerts.
+-   **Modals/Drawers:** For alert details, configurations.
+
+## 6. Accessibility Considerations
+
+-   **Keyboard Navigation:** All interactive elements accessible via keyboard.
+-   **Color Contrast:** Ensure sufficient contrast for text and UI elements.
+-   **ARIA Attributes:** Use appropriate ARIA roles and labels for screen readers.
+-   **Focus Management:** Clear focus indicators for interactive elements.
+
+## 7. Demo Scenarios UX
+
+### 7.1. CamSur Flash Flood Scenario
+-   **Visuals:** Map centered on CamSur, showing simulated heavy rainfall, rising river levels, and a critical flood alert polygon.
+-   **Narrative:** Operator demonstrates how LINGKOD identifies a specific barangay at risk, reviews evidence, approves the alert, and previews localized SMS/radio messages.
+
+### 7.2. Metro Manila Urban Hazard Scenario
+-   **Visuals:** Map centered on Metro Manila, showing simulated urban flooding, CCTV alerts for traffic/debris, and a multi-hazard alert.
+-   **Narrative:** Highlights LINGKOD's adaptability to complex urban environments, showing how it integrates diverse data sources for a comprehensive view.
+
+## 8. Out of Scope for UX/Frontend MVP
+
+-   Full public-facing portal design.
+-   Extensive customization options for end-users (beyond admin LGU configuration).
+-   Complex data analytics dashboards (basic historical trends only).
+-   Mobile-specific application (responsive web design for mobile browser is sufficient).

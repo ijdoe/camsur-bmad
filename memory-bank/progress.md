@@ -12,22 +12,39 @@
 *   **Workflow Governance:** `docs/System_Workflow.md` updated with Operator Review & Approval, audit trail, feedback loop to rule packs, governance notes, and standards/CAP-GeoJSON traceability.
 *   **Template Metadata:** `docs/Communication_Templates.md` enriched with operator metadata, CAP/GeoJSON references, and approval headers/footers.
 *   **Sales Enablement:** Created `docs/Why_Trust_Us.md` one-pager for executive trust framing.
+*   **MVP Technical Specification:** A detailed technical specification (`docs/Project_LINGKOD_MVP_Technical_Specification.md`) has been created, aligning with UX and PRD.
+*   **PRD, UX Spec, Architecture Alignment:** Core planning documents are now aligned.
+*   **BMAD Planning Artifacts:** `docs/epics/` and `docs/stories/` directories created and populated with detailed epics and user stories.
+*   **QA Framework Established:** `docs/qa/assessments/` and `docs/qa/gates/` directories created, and initial risk profile and test design for a critical story completed.
+*   **Development Environment Setup:** Backend (NestJS) and Frontend (Next.js) projects initialized, and all core dependencies installed. Database schema (`database/schema.sql`) created.
+*   **Data Ingestion & Simulation Epic (7.1) Implemented:** Mock data generation, ingestion endpoints, and database storage for IoT, CCTV, and Satellite data are functional.
+*   **Threat Analysis Engine Epic (7.2) Implemented:** Core logic for data correlation, rule pack loading, rule evaluation, alert generation, and versioning/traceability is functional.
+*   **Alert Management & Workflow Epic (7.3) Implemented:** All backend services and controller endpoints for alert lifecycle management (list, view, approve, rescind, update) are functional, including TypeORM repository integration and DTOs.
+*   **Interactive Dashboard Interface Epic (7.4) - Core Map Component Implemented:** Basic dashboard layout and the interactive map component with placeholder data for LGU boundaries, sensor locations, and active alerts are functional.
+*   **Communication & Dissemination Epic (7.5) Implemented:** All backend services and controller endpoints for generating localized SMS, radio scripts, and official barangay alerts are functional, including TypeORM repository integration and DTOs.
+*   **Frontend Stability Achieved:** Resolved persistent frontend compilation errors by strategically downgrading Next.js to `14.2.3` and React to `18.2.0`. This addressed critical compatibility issues with `react-map-gl` and other dependencies, stabilizing the development environment.
+*   **End-to-End Login Flow Implemented (Epic 7.6):** Successfully implemented the complete user authentication flow. This includes a functional login page, backend integration, JWT handling, and protected routes for the dashboard.
 
 ## 2. What's Left to Build (MVP for Sales Demo)
 
-*   **Core ThreatAnalysisEngine:** Implement the rule-based logic and data correlation mechanisms.
-*   **Multi-Region Data Simulation Layer:** Develop a robust data generator for various regions and hazard scenarios.
-*   **Interactive Dashboard Interface:** Build the Admin/Operator Dashboard with maps, real-time data, and operator workflow.
+*   **Interactive Dashboard Interface (Remaining):** Real-time data feeds, user/LGU management, basic historical data and analytics.
 *   **API Endpoints for External Integration:** Develop GeoJSON and CAP 1.2 alert endpoints with authentication.
 *   **Multi-Region Demo Scenarios:** Create specific demo scripts and data configurations for CamSur, Metro Manila, and other provinces.
-*   **Enterprise-Grade Authentication and Multi-Tenancy:** Implement JWT-based authentication, RBAC, and data isolation.
+*   **Enterprise-Grade Authentication and Multi-Tenancy (Remaining):** Implement RBAC and data isolation.
+*   **Testing and Polishing:** Conduct thorough testing, performance tuning, and UI/UX refinement for sales demonstrations.
+*   **RFP/Development Team Selection Criteria:** Prepare documentation to aid in selecting a development partner.
+*   **Interactive Dashboard Interface (Remaining):** Real-time data feeds, user/LGU management, basic historical data and analytics.
+*   **API Endpoints for External Integration:** Develop GeoJSON and CAP 1.2 alert endpoints with authentication.
+*   **Multi-Region Demo Scenarios:** Create specific demo scripts and data configurations for CamSur, Metro Manila, and other provinces.
+*   **Enterprise-Grade Authentication and Multi-Tenancy (Remaining):** Implement RBAC and data isolation.
 *   **Testing and Polishing:** Conduct thorough testing, performance tuning, and UI/UX refinement for sales demonstrations.
 *   **RFP/Development Team Selection Criteria:** Prepare documentation to aid in selecting a development partner.
 
 ## 3. Current Status
 
-*   **Phase:** MVP Technical Specification Complete, Development Planning.
-*   **Next Milestone:** Begin MVP development, focusing on the core ThreatAnalysisEngine and data simulation.
+*   **Phase:** Core Development - Security & Multi-Tenancy.
+*   **Next Milestone:** Complete backend compilation testing, then address frontend TypeScript compilation errors and test the login flow.
+*   **Known Issues:** TimescaleDB is currently disabled due to incompatibility with PostgreSQL 14. The path forward is likely to upgrade PostgreSQL to version 17 to support the latest TimescaleDB extension. TypeScript compilation errors in the frontend `MapComponent.tsx` are the next implementation step. The backend compilation test was paused mid-execution and its result needs to be verified.
 
 ## 4. Evolution of Project Decisions
 

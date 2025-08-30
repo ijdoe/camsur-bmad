@@ -1,0 +1,2 @@
+2025-08-30 11:23:33.098 PST [33009] FATAL:  could not access file "timescaledb": No such file or directory
+2025-08-30 11:23:33.098 PST [33009] LOG:  database system is shut down

@@ -38,6 +38,7 @@ The system is composed of three primary layers:
 *   **API-Driven:** All components communicate via well-defined APIs. A dedicated, secure API endpoint will be provided for third-party systems to receive alerts.
 *   **Data-Agnostic Design:** The threat analysis engine will be designed to be flexible, allowing for the addition of new data providers without a complete system overhaul.
 *   **Ecological Connectivity:** To mitigate the impact of flood control infrastructure on the natural river ecosystem, the design will incorporate **"Fish Passes and Regulators"** where appropriate.
+*   **JWT Authentication:** Implemented for secure user login, ensuring that only authenticated users can access protected resources. This is a foundational step for Role-Based Access Control and Multi-Tenancy.
 
 ## 3. Component Relationships
 
@@ -61,6 +62,13 @@ graph TD
         F --> I[Barangay Official Alerts];
     end
 
+    subgraph "Authentication & Authorization"
+        K[User Login (Frontend)] --> L[Auth Controller (Backend)];
+        L --> M[Auth Service (Backend)];
+        M --> N[User Entity (Database)];
+        L -- JWT --> K;
+    end
+
     style A fill:#f9f,stroke:#333,stroke-width:2px
     style B fill:#f9f,stroke:#333,stroke-width:2px
     style C fill:#f9f,stroke:#333,stroke-width:2px
@@ -68,3 +76,7 @@ graph TD
     style G fill:#ccf,stroke:#333,stroke-width:2px
     style H fill:#ccf,stroke:#333,stroke-width:2px
     style I fill:#ccf,stroke:#333,stroke-width:2px
+    style K fill:#fcc,stroke:#333,stroke-width:2px
+    style L fill:#fcc,stroke:#333,stroke-width:2px
+    style M fill:#fcc,stroke:#333,stroke-width:2px
+    style N fill:#fcc,stroke:#333,stroke-width:2px
