@@ -47,15 +47,15 @@ This document defines the comprehensive design system for Project LINGKOD. It se
 
 ## 6. Components
 
-This section will link to detailed specifications for each UI component.
+This section links to detailed specifications for each UI component.
 
-- **Button:** See `components/button.md`
-- **Input:** See `components/input.md`
-- **Card:** See `components/card.md`
-- **Modal:** See `components/modal.md`
-- **Table:** See `components/table.md`
-- **Alert:** See `components/alert.md`
-- **Dropdown:** See `components/dropdown.md`
+- **Button:** `components/button.md`
+- **Input:** `components/input.md`
+- **Card:** `components/card.md`
+- **Modal:** `components/modal.md`
+- **Table:** `components/table.md`
+- **Alert:** `components/alert.md`
+- **Dropdown:** `components/dropdown.md`
 
 ## 7. Layout
 
