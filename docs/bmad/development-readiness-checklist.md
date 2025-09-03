@@ -8,8 +8,8 @@ This checklist ensures that all prerequisites for the Implementation phase have 
 
 | Gate | Status | Sign-off Document |
 |---|---|---|
-| **Requirements Gate** | **PASSED / NOT PASSED** | `docs/bmad/reviews/requirements-gate-review.md` |
-| **Design Gate** | **PASSED / NOT PASSED** | `docs/bmad/reviews/design-gate-review.md` |
+| **Requirements Gate** | **PASSED** | `docs/bmad/reviews/requirements-gate-review.md` |
+| **Design Gate** | **PASSED** | `docs/bmad/reviews/design-gate-review.md` |
 | **Architecture Gate** | **PASSED / NOT PASSED** | `docs/bmad/reviews/architecture-gate-review.md` |
 
 **Note:** All preceding gates must be in a "PASSED" state before development can begin.

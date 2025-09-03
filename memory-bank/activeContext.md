@@ -26,12 +26,14 @@ The primary focus is on achieving **full BMAD methodology compliance**. We have 
     *   **Development Pause:** Halted new feature development to focus on process alignment.
     *   **Requirements Gate Finalization:** Completed all deliverables for the Requirements Gate. This included restoring the `provincial-rollout-plan.md` and `provincial-rollout-proposal.md`, creating the missing `business-case.md`, and verifying that all financial figures are in full alignment with the `internal-costing-guide.md`.
     *   **Proposal Finalization:** The `provincial-rollout-proposal.md` was updated with a total estimated investment summary, providing a clear, high-level budget overview for the entire provincial rollout. The proposal is now considered final and ready for presentation.
+    *   **Requirements Gate Sign-Off:** Created formal sign-off document (`docs/bmad/reviews/requirements-gate-review.md`) and updated the development readiness checklist to officially mark the Requirements Gate as PASSED.
+    *   **Design Gate Sign-Off:** Created formal sign-off document (`docs/bmad/reviews/design-gate-review.md`) and updated the development readiness checklist to officially mark the Design Gate as PASSED. All design deliverables including UX specifications, design system, mockups, and prototypes have been reviewed and approved.
 
 ## 3. Next Steps
 
-1.  **Conduct Formal Gate Reviews:** Proceed with the formal stakeholder reviews for the Requirements, Design, and Architecture gates using the newly created checklists.
-2.  **Begin UI Component Library Implementation:** Once the Design Gate is passed, start the implementation of the design system in code using Storybook, as outlined in the implementation plan.
-3.  **Resume Feature Development:** Once all gates are passed and the component library is established, resume feature development in a BMAD-compliant manner.
+1.  **Conduct Architecture Gate Review:** Proceed with the formal stakeholder review for the Architecture Gate using the established process.
+2.  **Begin UI Component Library Implementation:** Start the implementation of the design system in code using Storybook, as outlined in the implementation plan.
+3.  **Resume Feature Development:** Once the Architecture Gate is passed and the component library is established, resume feature development in a BMAD-compliant manner.
 
 ## 4. Important Patterns & Preferences
 
