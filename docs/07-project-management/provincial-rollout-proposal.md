@@ -60,6 +60,22 @@ This covers the professional services required to build, configure, and deploy t
 | **LGU Onboarding Fee** | A one-time fee per municipality for system configuration, on-site training, and go-live support. Travel expenses to be billed separately. | **406,000** |
 | **Total Expansion Investment** | (LGU Onboarding Fee) x (Number of remaining LGUs) | *To be calculated* |
 
+---
+
+### **Total Estimated Provincial Investment Summary**
+
+To provide a clear, high-level budget estimate for the full provincial implementation, the total one-time investment is summarized below. This is based on the pilot program cost and the subsequent rollout to all **37 municipalities and cities** in Camarines Sur.
+
+| Phase | Description | Estimated Cost (PHP) |
+| :--- | :--- | :--- |
+| **Phase 1** | Pilot Program (4 LGUs) & Travel | **4,550,000** |
+| **Phase 2** | Province-Wide Expansion (remaining 33 LGUs) | **13,398,000** |
+| **Total One-Time Investment** | | **17,948,000** |
+
+***Note on Exclusions:*** *This total represents the one-time investment for professional services and setup. It does not include recurring Annual Platform & Operations costs, which will be re-evaluated after the pilot, or variable expenses such as Phase 2 travel and third-party CCTV analytics services, which are billed separately.*
+
+---
+
 ### **Part B: Annual Platform & Operations Investment**
 
 To provide the budget certainty required for government planning, we offer a fixed-price annual service package. This all-inclusive fee covers all cloud hosting, platform maintenance, SMS/mapping allowances, and technical support. Costs related to third-party CCTV analytics services are excluded.
