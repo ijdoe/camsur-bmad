@@ -1,0 +1,147 @@
+diff --git a/./.git/config b/./.git/config
+index 90a76f03b..4856f1902 100644
+--- a/./.git/config
++++ b/./.git/config
+@@ -17,3 +17,6 @@
+ [branch "main"]
+ 	remote = origin
+ 	merge = refs/heads/main
++[user]
++	name = Cline
++	email = cline@example.com
+diff --git a/./.git/index b/./.git/index
+index 5e46bbab6..bc4fcc111 100644
+Binary files a/./.git/index and b/./.git/index differ
+diff --git a/./.git/logs/HEAD b/./.git/logs/HEAD
+index 0d7a00573..2989eb0d1 100644
+--- a/./.git/logs/HEAD
++++ b/./.git/logs/HEAD
+@@ -22,3 +22,4 @@ dd4c8e471453e95259f01b6163d70dc19fc49e6e 6be4b636070f8a82ca11fc53b6abf1a13eb1071
+ 6be4b636070f8a82ca11fc53b6abf1a13eb10717 ddc56f0454052ca7f8563b7659960db5ac302cc6 jorge_dollisen <jorge_dollisen@MacBook-Pro-2.local> 1756564008 +0800	Update project files
+ ddc56f0454052ca7f8563b7659960db5ac302cc6 3d1283d4467873906b8f47216a2098fddf59dd8f jorge_dollisen <jorge_dollisen@MacBook-Pro-2.local> 1756707402 +0800	Add Flowbite component library to tech stack
+ 3d1283d4467873906b8f47216a2098fddf59dd8f fdcff58e4c747805871a78ec278670491c100d82 jorge_dollisen <jorge_dollisen@MacBook-Pro-2.local> 1756810618 +0800	Add .gitignore with docs paths and update documentation files
++fdcff58e4c747805871a78ec278670491c100d82 dba2f25fa3842ced7b8ab591f1c45477388d3f32 Cline <cline@example.com> 1756893412 +0800	commit: feat: Develop comprehensive provincial rollout proposal
+diff --git a/./.git/logs/refs/heads/main b/./.git/logs/refs/heads/main
+index 339e1aba1..08c0bcde5 100644
+--- a/./.git/logs/refs/heads/main
++++ b/./.git/logs/refs/heads/main
+@@ -9,3 +9,4 @@ dd4c8e471453e95259f01b6163d70dc19fc49e6e 6be4b636070f8a82ca11fc53b6abf1a13eb1071
+ 6be4b636070f8a82ca11fc53b6abf1a13eb10717 ddc56f0454052ca7f8563b7659960db5ac302cc6 jorge_dollisen <jorge_dollisen@MacBook-Pro-2.local> 1756564008 +0800	Update project files
+ ddc56f0454052ca7f8563b7659960db5ac302cc6 3d1283d4467873906b8f47216a2098fddf59dd8f jorge_dollisen <jorge_dollisen@MacBook-Pro-2.local> 1756707402 +0800	Add Flowbite component library to tech stack
+ 3d1283d4467873906b8f47216a2098fddf59dd8f fdcff58e4c747805871a78ec278670491c100d82 jorge_dollisen <jorge_dollisen@MacBook-Pro-2.local> 1756810618 +0800	Add .gitignore with docs paths and update documentation files
++fdcff58e4c747805871a78ec278670491c100d82 dba2f25fa3842ced7b8ab591f1c45477388d3f32 Cline <cline@example.com> 1756893412 +0800	commit: feat: Develop comprehensive provincial rollout proposal
+diff --git a/./docs/01-requirements/stakeholder-requirements.md b/./docs/01-requirements/stakeholder-requirements.md
+deleted file mode 100644
+index b35933306..000000000
+--- a/./docs/01-requirements/stakeholder-requirements.md
++++ /dev/null
+@@ -1,39 +0,0 @@
+-# Stakeholder Requirements
+-
+-## 1. Introduction
+-
+-This document identifies the key stakeholders for Project LINGKOD and outlines their respective requirements, expectations, and influence on the project. This serves as a foundational document for the Requirements phase of the BMAD methodology.
+-
+-## 2. Stakeholder Identification & Analysis
+-
+-| Stakeholder | Role / Title | Influence | Interest | Key Requirements |
+-|---|---|---|---|---|
+-| **Office of Gov. Villafuerte** | Primary Client | High | High | - A high-impact, demonstrable solution for disaster resilience. <br> - Practical application over theoretical AI. <br> - Low-tech, reliable "last-mile" communication. |
+-| **PDRRMO** | Primary User / Implementing Body | High | High | - Intuitive and efficient operator dashboard. <br> - Actionable, real-time alerts with clear evidence. <br> - Seamless integration with existing SOPs. |
+-| **Citizens of CamSur** | Primary Beneficiary | Low | High | - Timely, clear, and accurate warnings. <br> - Trust in the system's reliability. |
+-| **Synthesiq Technologies** | Lead Developer | High | High | - Development of proprietary IP (`ThreatAnalysisEngine`). <br> - Successful pilot for future commercialization. |
+-| **Coram.ai** | Technology Partner | Medium | Medium | - Successful integration of their EMS platform. <br> - Showcase of their AI CCTV capabilities. |
+-| **DMA-BD** | Technology Partner | Medium | Medium | - Integration of their IoT sensor network. |
+-| **Barangay Officials** | Secondary User | Medium | High | - Clear, pre-formatted alerts for local dissemination. |
+-
+-## 3. Stakeholder Requirements Matrix
+-
+-| Req. ID | Requirement Description | Stakeholder(s) | Priority | Status |
+-|---|---|---|---|---|
+-| SR-001 | System must provide a single, integrated situational awareness dashboard. | PDRRMO, Gov. Office | Must Have | In Progress |
+-| SR-002 | Alerts must be explainable, showing contributing data and rule traces. | PDRRMO | Must Have | In Progress |
+-| SR-003 | All public-facing alerts must require human (operator) approval. | PDRRMO, Gov. Office | Must Have | Implemented |
+-| SR-004 | System must disseminate alerts via SMS, radio, and to barangay officials. | Citizens, Barangay | Must Have | In Progress |
+-| SR-005 | The core intelligence engine must be designed for commercial scalability. | Synthesiq | Must Have | In Progress |
+-| SR-006 | The system must be adaptable for different geographical regions (e.g., Metro Manila). | Synthesiq, Gov. Office | Should Have | In Progress |
+-| SR-007 | The system must provide APIs (GeoJSON, CAP 1.2) for external integration. | PDRRMO | Should Have | In Progress |
+-
+-## 4. Stakeholder Sign-off Records
+-
+-This section will be used to formally record stakeholder approval of key project deliverables and phase gates.
+-
+-| Date | Deliverable / Gate | Stakeholder | Approval Status | Notes |
+-|---|---|---|---|---|
+-| TBD | Requirements Gate | Gov. Office | PENDING | |
+-| TBD | Requirements Gate | PDRRMO | PENDING | |
+-| TBD | Design Gate | PDRRMO | PENDING | |
+diff --git a/docs/01-requirements/stakeholder-requirements.md b/docs/01-requirements/stakeholder-requirements.md
+deleted file mode 100644
+index b35933306..000000000
+--- a/docs/01-requirements/stakeholder-requirements.md
++++ /dev/null
+@@ -1,39 +0,0 @@
+-# Stakeholder Requirements
+-
+-## 1. Introduction
+-
+-This document identifies the key stakeholders for Project LINGKOD and outlines their respective requirements, expectations, and influence on the project. This serves as a foundational document for the Requirements phase of the BMAD methodology.
+-
+-## 2. Stakeholder Identification & Analysis
+-
+-| Stakeholder | Role / Title | Influence | Interest | Key Requirements |
+-|---|---|---|---|---|
+-| **Office of Gov. Villafuerte** | Primary Client | High | High | - A high-impact, demonstrable solution for disaster resilience. <br> - Practical application over theoretical AI. <br> - Low-tech, reliable "last-mile" communication. |
+-| **PDRRMO** | Primary User / Implementing Body | High | High | - Intuitive and efficient operator dashboard. <br> - Actionable, real-time alerts with clear evidence. <br> - Seamless integration with existing SOPs. |
+-| **Citizens of CamSur** | Primary Beneficiary | Low | High | - Timely, clear, and accurate warnings. <br> - Trust in the system's reliability. |
+-| **Synthesiq Technologies** | Lead Developer | High | High | - Development of proprietary IP (`ThreatAnalysisEngine`). <br> - Successful pilot for future commercialization. |
+-| **Coram.ai** | Technology Partner | Medium | Medium | - Successful integration of their EMS platform. <br> - Showcase of their AI CCTV capabilities. |
+-| **DMA-BD** | Technology Partner | Medium | Medium | - Integration of their IoT sensor network. |
+-| **Barangay Officials** | Secondary User | Medium | High | - Clear, pre-formatted alerts for local dissemination. |
+-
+-## 3. Stakeholder Requirements Matrix
+-
+-| Req. ID | Requirement Description | Stakeholder(s) | Priority | Status |
+-|---|---|---|---|---|
+-| SR-001 | System must provide a single, integrated situational awareness dashboard. | PDRRMO, Gov. Office | Must Have | In Progress |
+-| SR-002 | Alerts must be explainable, showing contributing data and rule traces. | PDRRMO | Must Have | In Progress |
+-| SR-003 | All public-facing alerts must require human (operator) approval. | PDRRMO, Gov. Office | Must Have | Implemented |
+-| SR-004 | System must disseminate alerts via SMS, radio, and to barangay officials. | Citizens, Barangay | Must Have | In Progress |
+-| SR-005 | The core intelligence engine must be designed for commercial scalability. | Synthesiq | Must Have | In Progress |
+-| SR-006 | The system must be adaptable for different geographical regions (e.g., Metro Manila). | Synthesiq, Gov. Office | Should Have | In Progress |
+-| SR-007 | The system must provide APIs (GeoJSON, CAP 1.2) for external integration. | PDRRMO | Should Have | In Progress |
+-
+-## 4. Stakeholder Sign-off Records
+-
+-This section will be used to formally record stakeholder approval of key project deliverables and phase gates.
+-
+-| Date | Deliverable / Gate | Stakeholder | Approval Status | Notes |
+-|---|---|---|---|---|
+-| TBD | Requirements Gate | Gov. Office | PENDING | |
+-| TBD | Requirements Gate | PDRRMO | PENDING | |
+-| TBD | Design Gate | PDRRMO | PENDING | |
+diff --git a/docs/01-requirements/x_stakeholder-feedback.md b/docs/01-requirements/x_stakeholder-feedback.md
+deleted file mode 100644
+index 91ff73d48..000000000
+--- a/docs/01-requirements/x_stakeholder-feedback.md
++++ /dev/null
+@@ -1,19 +0,0 @@
+-10:01 PM
+-
+-Lray Villafuerte New: Pls send a proposal with scope of work etc so we can review and consider
+-
+-Lray Villafuerte New: I don't know what the objective and benefit of having a customized platform at this time. We don't need an ai that understands departments, projects and goals. We dint need an ai tool to achieve the above. We also don't need an ai platform to enable us to respond faster from budgets and disaster alerts.
+-
+-Lray Villafuerte New: We just need a system to notify when there's a disaster. We dint need ai to be honest for disaster alerts and notifications
+-
+-Lray Villafuerte New: Text messages, radio messages, social media notifications and alerting barangay officials through all of the above plus house to house notifications, alarms, bells and others is more effective
+-
+-10:04 PM
+-
+-Lray Villafuerte New: Majority don't have cell homes majority don't have computers and email. I don't know how ai can help in disaster alerts z
+-
+-Lray Villafuerte New: We also don't need ai to determine and act on our budget
+-
+-10:08 PM
+-
+-Lray Villafuerte New: We can use ai on so many ways but definitely not to help us on our data (what data?) we don't need ai to determine our programs and projects . How can ai help us decide faster through a customized platform. Even if you put all of this in an app. Pls understand ordinary people will not be able to access the app - first because they don't have a cellphone, secondly they need internet access (while we are providing free wifi), majority still dont have wifi
