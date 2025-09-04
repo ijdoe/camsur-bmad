@@ -188,7 +188,23 @@ Getaka Labs and RDG Digital Consulting are uniquely positioned to revolutionize 
 *   **IP of Customizations:** Any bespoke modules or significant enhancements developed specifically for an RDG client will be considered joint IP, with a clear path to full ownership by RDG, reflecting the value they add in tailoring the solution to specific client needs.
 *   **Revenue Model:** This partnership will be governed by a standard royalty and licensing agreement, ensuring both parties share in the success of future deployments and fostering a long-term, mutually beneficial relationship.
 
-## 8. Next Steps
+## 8. Supporting Documentation Package
+
+This proposal is accompanied by a comprehensive documentation package designed to provide RDG Digital Consulting with the complete technical and strategic context needed to confidently present the LINGKOD platform to the Provincial Government of Camarines Sur.
+
+**Document 2: The Implementation Plan** (`provincial-rollout-plan.md`)
+*   Detailed roadmap for the phased rollout, including team composition, work breakdown, and timeline.
+*   Essential for project managers and delivery teams to understand the execution strategy.
+
+**Document 3: The Technology Roadmap** (`feature-roadmap.md`)
+*   Strategic evolution of the LINGKOD platform, showing the path from MVP to advanced capabilities.
+*   Demonstrates the long-term value and future potential of the partnership.
+
+**Document 4: The System Workflow** (`system-workflow.md`)
+*   Technical deep-dive into the core logic of the Insight Generation Engine.
+*   Provides engineering teams with confidence in the platform's robustness and design.
+
+## 9. Next Steps
 
 We are excited by the prospect of this partnership and are ready to support RDG Digital Consulting in the next steps of the procurement process. We recommend:
 
