@@ -1,7 +1,7 @@
 # Project LINGKOD: Executive Brief
 
 **To:** The Honorable Luis Raymund Villafuerte, Governor of Camarines Sur  
-**From:** RDG Digital Consulting, in Strategic Partnership with Getaka Labs  
+**From:** RDG Digital Consulting  
 **Date:** September 4, 2025  
 **Subject:** A Strategic Partnership for a Disaster-Resilient Camarines Sur
 

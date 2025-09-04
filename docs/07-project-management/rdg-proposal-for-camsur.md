@@ -5,7 +5,7 @@
 ---
 
 **Prepared for:** The Honorable Luis Raymund Villafuerte, Governor of Camarines Sur  
-**Submitted by:** RDG Digital Consulting, in Strategic Partnership with Getaka Labs  
+**Submitted by:** RDG Digital Consulting  
 **Date:** September 5, 2025
 
 ---
@@ -213,7 +213,7 @@ These estimates are provided for planning purposes and will be finalized based o
 
 ## 7. A Partnership for a Resilient Camarines Sur
 
-RDG Digital Consulting, in strategic partnership with Getaka Labs, is more than a vendor; we are a dedicated partner in achieving the province's public safety goals. We are committed to providing a world-class solution and the long-term support required to ensure its success.
+RDG Digital Consulting is more than a vendor; we are a dedicated partner in achieving the province's public safety goals. We are committed to providing a world-class solution and the long-term support required to ensure its success.
 
 By investing in Project LINGKOD, the Provincial Government of Camarines Sur will not only protect its citizens but also establish itself as a national leader in innovative, effective disaster management.
 
