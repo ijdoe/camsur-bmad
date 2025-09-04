@@ -1,7 +1,7 @@
 # Project LINGKOD: Executive Brief
 
-**To:** The Honorable [Governor's Name], Governor of Camarines Sur  
-**From:** [Your Company Name]  
+**To:** The Honorable Luis Raymund Villafuerte, Governor of Camarines Sur  
+**From:** RDG Digital Consulting, in Strategic Partnership with Getaka Labs  
 **Date:** September 4, 2025  
 **Subject:** A Strategic Partnership for a Disaster-Resilient Camarines Sur
 
