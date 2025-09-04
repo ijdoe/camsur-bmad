@@ -92,7 +92,28 @@ graph TD
     F -- Real-time Updates --> L --> N
 ```
 
-## 5. Security Patterns
+## 5. Business Patterns
+
+### 5.1. B2B Partnership Model
+
+Project LINGKOD operates through a **B2B (Business-to-Business) Partnership Model** where Getaka Labs provides the core technology platform to strategic partners like RDG Digital Consulting. This model includes:
+
+*   **Exclusive Reseller & Implementation Partnership:** RDG Digital Consulting is designated as our exclusive partner for the LGU sector in the Philippines, giving them a unique competitive advantage.
+*   **Technology Licensing:** Getaka Labs licenses the core LINGKOD platform to RDG, who then leads the sales, implementation, and client management for provincial deployments.
+*   **Revenue Sharing:** A royalty-based revenue sharing agreement ensures both parties benefit from future deployments.
+*   **IP Ownership Framework:** Getaka Labs retains ownership of the core platform IP, while RDG can own IP for bespoke customizations developed for specific clients.
+
+### 5.2. Phased Feature Roadmap Alignment
+
+The project follows a **Phased Feature Roadmap Alignment Pattern** where initial investments cover the MVP (Phase 1) features, with advanced capabilities from Phase 2 and 3 scoped separately:
+
+*   **Phase 1 (MVP):** Core insight generation, operator dashboard, and communication hub.
+*   **Phase 2 (Community Intelligence):** Community Intelligence Module, Dynamic Briefing Dashboard, and logistics/resource management.
+*   **Phase 3 (Advanced Analytics):** Rapid Impact Analysis, Advanced Predictive Analytics, and Public Information Portal.
+
+This pattern ensures clear scoping, stable costing for initial phases, and a natural progression for future enhancements.
+
+## 6. Security Patterns
 
 The system follows a **Defense in Depth** and **Zero Trust** security model. Key patterns include:
 

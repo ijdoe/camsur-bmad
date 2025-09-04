@@ -42,6 +42,10 @@ The primary focus is on achieving **full BMAD methodology compliance**. We have 
     *   **Product Requirements Document:** Added formal "Insight Generation & Management" section with the Phase 1 Insight Catalog.
     *   **UX Specification:** Updated workflows and UI components to focus on "Insight Cards," "Priority Queue," and "Evidence Panel."
     *   **Epic 7.2:** Renamed to "Insight Generation Engine" and updated user stories to focus on building specific insights from the catalog.
+*   **Strategic Partnership with RDG Digital Consulting:** Established RDG Digital Consulting as our exclusive Reseller and Implementation Partner for the LGU sector in the Philippines. This positions RDG as the primary contractor for provincial implementations while Getaka Labs provides the core technology.
+*   **Intellectual Property Model:** Defined a clear IP framework where Getaka Labs retains ownership of the core LINGKOD platform IP, but RDG can own IP for bespoke customizations developed specifically for their clients. This creates a mutually beneficial revenue-sharing model for future deployments.
+*   **Proposal Reframing as B2B Document:** Transformed the provincial rollout proposal from a direct client proposal to a B2B partnership document from Getaka Labs to RDG Digital Consulting, equipping them with the technical details needed for their bid to the provincial government.
+*   **Feature Roadmap Alignment:** Clarified that the initial proposal costing covers Phase 1 (MVP) features, with advanced capabilities from Phase 2 and 3 (Community Intelligence Module, Dynamic Briefing Dashboard, advanced analytics) to be scoped and costed separately in future partnership phases.
 
 ## 3. Next Steps
 

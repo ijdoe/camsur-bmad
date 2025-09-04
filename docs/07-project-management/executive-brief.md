@@ -17,12 +17,13 @@ Project LINGKOD is a strategic initiative to transform provincial disaster manag
 
 ### What You Get: The LINGKOD Emergency Command Platform
 
-This is more than just software; it is a complete command and control solution. The pilot investment delivers a fully functional platform with four key modules:
+This is more than just software; it is a complete command and control solution. The pilot investment delivers a fully functional platform with five key modules:
 
-1.  **Unified Data Ingestion:** A single source of truth that integrates national advisories (PAGASA, PHIVOLCS) with local hazard maps and LGU-supplied data.
-2.  **Threat Analysis Engine:** The "AI brain" that fuses this data to generate predictive, barangay-level insights.
-3.  **Alert Management Dashboard:** An intuitive operator console to review, approve, and manage all alerts with a full audit trail.
-4.  **Last-Mile Communication Hub:** A one-click system to disseminate approved, localized warnings via SMS and radio scripts.
+1.  **Multi-Source Intelligence Fusion:** A single source of truth that integrates national advisories (PAGASA, PHIVOLCS) with local hazard maps and LGU-supplied data.
+2.  **Community Intelligence Module:** A groundbreaking feature that transforms citizens into active partners by ingesting and analyzing their on-the-ground reports.
+3.  **Insight Generation Engine:** The "AI brain" that fuses this data to generate predictive, barangay-level insights.
+4.  **Dynamic Insight Briefing Dashboard:** An intuitive, configurable operator console to review, approve, and manage all insights with a full audit trail.
+5.  **Last-Mile Communication Hub:** A one-click system to disseminate approved, localized warnings via SMS and radio scripts.
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-This document details the end-to-end workflow of the Project LINGKOD system, from data ingestion to alert dissemination. It defines the core logic of the `ThreatAnalysisEngine` and the processes for both standalone and complementary operational modes.
+This document details the end-to-end workflow of the Project LINGKOD system, from data ingestion to insight generation and alert dissemination. It defines the core logic of the `InsightGenerationEngine` and the processes for both standalone and complementary operational modes.
 
 ## 2. Workflow Diagram
 
@@ -14,16 +14,24 @@ graph TD
         C[DMA-BD IoT Sensor Push]
     end
 
-    subgraph "Threat Analysis Engine"
+    subgraph "Insight Generation Engine"
         D[Data Fusion & Correlation]
         E{Rule Evaluation}
-        F[Alert Object Generation]
+        F[Insight Object Generation]
+        G[Priority Queue Ranking]
+        H[Evidence Panel Assembly]
+    end
+
+    subgraph "Operator Review & Approval"
+        I[Insight Cards Display]
+        J{Operator Review}
+        K[Approval/Rejection]
     end
 
     subgraph "Output & Dissemination Layer"
-        G[Standalone Mode: Coram.ai EMS]
-        H[Complementary Mode: API Feed for ArcGIS]
-        I[Last-Mile Communication]
+        L[Standalone Mode: Coram.ai EMS]
+        M[Complementary Mode: API Feed for ArcGIS]
+        N[Alert Dissemination]
     end
 
     A --> D
@@ -35,23 +43,30 @@ graph TD
     E -- Rule Not Met --> D
 
     F --> G
-    F --> H
-
-    G -- Operator Verification --> I
-
-    subgraph "Last-Mile Channels"
-        J[SMS Gateway]
-        K[Radio Broadcast Scripts]
-        L[Barangay Official Alerts]
-    end
+    G --> H
+    H --> I
 
     I --> J
-    I --> K
-    I --> L
+    J -- Approved --> K
+    J -- Rejected --> I
+
+    K --> L
+    K --> M
+    K --> N
+
+    subgraph "Last-Mile Channels"
+        O[SMS Gateway]
+        P[Radio Broadcast Scripts]
+        Q[Barangay Official Alerts]
+    end
+
+    N --> O
+    N --> P
+    N --> Q
 
     style F fill:#9cf,stroke:#333,stroke-width:2px
-    style G fill:#ccf,stroke:#333,stroke-width:2px
-    style H fill:#ccf,stroke:#333,stroke-width:2px
+    style I fill:#ccf,stroke:#333,stroke-width:2px
+    style K fill:#9cf,stroke:#333,stroke-width:2px
 ```
 
 ## 3. Data Ingestion Layer
@@ -76,24 +91,39 @@ This layer is responsible for receiving data from all external sources.
 - **Process:** The system receives data pushed from the sensor network's central server.
 - **Data Points:** Water level (AWLG), rainfall rate (ARG), weather data (AWS).
 
-## 3. Threat Analysis Engine
+## 3. Insight Generation Engine
 
-This is the core processing layer where data is fused and predictive alerts are generated.
+This is the core processing layer where data is fused and predictive insights are generated from the Insight Catalog.
 
 ### 3.1. Data Correlation
 - The engine correlates data streams based on geographic proximity and time.
 - **Example:** An IoT sensor's high rainfall reading is correlated with a nearby CCTV alert for rising water levels.
 
-### 3.2. Rule-Based Alerting
-- The engine applies a set of predefined rules to the correlated data.
-- **Initial Pilot Rules:**
-    1.  **Flash Flood Rule:** `(ARG > 20mm/hr for 1hr)` AND `(AWLG increase > 0.5m in 15min)` -> **Severity 3 Alert**.
-    2.  **Sustained Rainfall Rule:** `(ARG > 10mm/hr for 3hrs)` -> **Severity 2 Alert**.
-- **Future Rules:** [To be developed, e.g., landslide risk based on soil saturation from satellite data and rainfall].
+### 3.2. Insight Catalog Evaluation
+- The engine evaluates correlated data against the predefined Insight Catalog, which includes:
+    1.  **Barangay Flood Watch:** `(ARG > 20mm/hr for 1hr)` AND `(AWLG increase > 0.5m in 15min)` -> **Severity 3 Insight**.
+    2.  **Sustained Rainfall Watch:** `(ARG > 10mm/hr for 3hrs)` -> **Severity 2 Insight**.
+    3.  **Landslide Watch:** `(ARG > 15mm/hr for 2hrs)` AND `(satellite soil saturation > 80%)` -> **Severity 3 Insight**.
+    4.  **Quake Rapid Impact Estimation:** `(seismic sensor data)` -> **Severity varies by magnitude**.
+    5.  **Hotspot Escalation Score:** `(CCTV anomaly detection)` -> **Severity based on pattern analysis**.
+    6.  **Critical Facility Impact:** `(infrastructure proximity analysis)` -> **Severity based on facility criticality**.
+    7.  **Route Vulnerability Advisory:** `(road condition analysis)` -> **Severity based on traffic impact**.
 
-### 3.3. Alert Generation
-- When a rule's conditions are met, a structured alert object is created.
-- **Alert Object Schema:** Contains `alertId`, `timestamp`, `area` (municipality, barangay), `geometry` (GeoJSON), `description`, and `severity`.
+### 3.3. Insight Object Generation
+- When catalog conditions are met, a structured insight object is created with an associated Evidence Panel.
+- **Insight Object Schema:** Contains `insightId`, `timestamp`, `area` (municipality, barangay), `geometry` (GeoJSON), `insightType`, `description`, `severity`, and `evidencePanel`.
+
+### 3.4. Priority Queue Ranking
+- Generated insights are ranked by exposure-weighted risk to prioritize operator attention.
+- **Ranking Factors:** Geographic population density, historical vulnerability, current weather conditions, and insight severity.
+
+### 3.5. Evidence Panel Assembly
+- Each insight includes a comprehensive Evidence Panel showing:
+    - Contributing data sources and their values
+    - Rule traces and threshold comparisons
+    - Confidence scores and uncertainty metrics
+    - Visual evidence (CCTV snapshots, satellite imagery overlays)
+    - Historical context and trend analysis
 
 ## 4. Output & Dissemination Layer
 

@@ -37,6 +37,8 @@ During natural disasters, a significant "last-mile" information gap exists. Comm
 - **FR 5.1.2:** The system shall simulate ingestion of Coram.ai CCTV alerts (e.g., rapid water level rise, landslide detection).
 - **FR 5.1.3:** The system shall simulate ingestion of DMA-BD IoT sensor data (AWLG, ARG, AWS) with time-series capabilities.
 - **FR 5.1.4:** The system shall support configurable mock data generation for various regions (CamSur, Metro Manila) and hazard scenarios (typhoon, flood).
+- **FR 5.1.5:** The system shall provide a mechanism for ingesting community-sourced intelligence via multi-lingual voice and text reports.
+- **FR 5.1.6:** The system shall use Natural Language Processing (NLP) to automatically categorize, analyze sentiment, and extract key entities (locations, hazards, resource needs) from community reports.
 
 ### 5.2. Insight Generation & Management (Threat Analysis Engine)
 
@@ -58,12 +60,13 @@ This section defines the core value proposition of the LINGKOD platform: the gen
 - **FR 5.4.5:** The system shall *simulate* sending of SMS alerts and radio broadcasts for demo purposes.
 
 ### 5.5. Admin/Operator Dashboard
-- **FR 5.5.1:** The dashboard shall display an interactive map (Mapbox GL JS) showing LGU boundaries, sensor locations, and active alert polygons.
-- **FR 5.5.2:** The dashboard shall provide real-time data feeds for latest sensor readings and CCTV events.
-- **FR 5.5.3:** The dashboard shall include filterable and sortable lists/tables of `system_alerts`.
-- **FR 5.5.4:** The dashboard shall support user management (CRUD for Admin role).
-- **FR 5.5.5:** The dashboard shall support LGU management (CRUD for Admin role), including configuration of rule packs and communication settings.
-- **FR 5.5.6:** The dashboard shall display basic historical data and analytics (e.g., sensor trends, alert frequency).
+- **FR 5.5.1:** The dashboard shall display an interactive map (Mapbox GL JS) showing LGU boundaries, sensor locations, and active insight polygons.
+- **FR 5.5.2:** The dashboard shall provide real-time data feeds for latest sensor readings, CCTV events, and community intelligence reports.
+- **FR 5.5.3:** The dashboard shall include a dynamic, widget-based "Insight Briefing" view, with configurable components for `Situational Overview`, `Critical Observations`, `Street-Level Hotspots`, `Predictive Risk Outlook`, and `Strategic Recommendations`.
+- **FR 5.5.4:** The dashboard shall include filterable and sortable lists/tables of `system_insights`.
+- **FR 5.5.5:** The dashboard shall support user management (CRUD for Admin role).
+- **FR 5.5.6:** The dashboard shall support LGU management (CRUD for Admin role), including configuration of rule packs and communication settings.
+- **FR 5.5.7:** The dashboard shall display basic historical data and analytics (e.g., sensor trends, insight frequency).
 
 ### 5.6. External Integration (Complementary Mode)
 - **FR 5.6.1:** The system shall expose a secure REST API endpoint (`/api/v1/alerts`) for external command centers to retrieve active, approved alerts in GeoJSON format.
@@ -106,7 +109,7 @@ This section defines the core value proposition of the LINGKOD platform: the gen
 ## 7. Epics
 
 ### 7.1. Data Ingestion & Simulation
-- **Description:** Establish the foundation for feeding simulated data into the system, enabling realistic demo scenarios.
+- **Description:** Establish the foundation for feeding simulated data into the system, enabling realistic demo scenarios. This now includes the Community Intelligence Module for ingesting and processing citizen reports.
 
 ### 7.2. Threat Analysis Engine
 - **Description:** Develop the core intelligence that processes and correlates data to generate predictive alerts.
@@ -115,7 +118,7 @@ This section defines the core value proposition of the LINGKOD platform: the gen
 - **Description:** Implement the full lifecycle of alerts, from generation to operator approval and audit.
 
 ### 7.4. Admin/Operator Dashboard
-- **Description:** Build the primary user interface for monitoring, managing, and interacting with the system.
+- **Description:** Build the primary user interface for monitoring, managing, and interacting with the system. This now includes the dynamic "Insight Briefing" dashboard.
 
 ### 7.5. Communication & Dissemination
 - **Description:** Develop the capabilities for generating and simulating the delivery of targeted alerts.

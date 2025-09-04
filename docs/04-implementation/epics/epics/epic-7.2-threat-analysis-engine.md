@@ -1,7 +1,7 @@
 # Epic 7.2: Insight Generation Engine
 
 ## Description
-Develop the core intelligence that processes and correlates data to generate predictive, actionable **insights**. This epic focuses on implementing the rule-based logic for the **Phase 1 Insight Catalog**, the data correlation mechanisms, and the generation of insights with full evidence and recommendations.
+Develop the core intelligence that processes and correlates data to generate predictive, actionable **insights**. This epic focuses on implementing the rule-based logic for the **Phase 1 Insight Catalog**, the data correlation mechanisms, and the generation of insights with full evidence and recommendations. This epic was formerly known as the "Threat Analysis Engine."
 
 ## Functional Requirements (from PRD)
 - **FR 5.2.1: Insight Correlation:** The system shall correlate simulated data from national advisories (PAGASA), CCTV, IoT sensors, and static hazard maps based on time and geospatial proximity.

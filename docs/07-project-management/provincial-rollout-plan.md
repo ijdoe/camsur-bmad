@@ -7,7 +7,7 @@
 
 This document outlines the strategic, three-phase implementation plan for the province-wide rollout of the **LINGKOD Emergency Command Platform** in Camarines Sur. This plan provides a clear roadmap for the full-scale deployment of the platform, moving from a validated pilot to a comprehensive, province-wide intelligence and early-warning system.
 
-The objective is to systematically build, validate, and scale the platform's core modules—from the **Threat Analysis Engine** to the **Last-Mile Communication Hub**—to ensure maximum impact and a successful partnership with the Provincial Government.
+The objective is to systematically build, validate, and scale the platform's core modules—from the **Insight Generation Engine** to the **Last-Mile Communication Hub**—to ensure maximum impact and a successful partnership with the Provincial Government.
 
 The timeline and resource estimates are based on a project start date of **January 2026**.
 
@@ -32,7 +32,7 @@ The team structure is designed to scale with the project's phases. The core team
 **Estimated Effort:** 48 Person-Weeks
 
 ### 3.1. Scope & Deliverables
-*   **Core Platform Development:** Full implementation of the LINGKOD Emergency Command Platform, including the Data Ingestion, Threat Analysis Engine, Alert Management Dashboard, and Communication Hub modules.
+*   **Core Platform Development:** Full implementation of the LINGKOD Emergency Command Platform, including the Multi-Source Intelligence Fusion, Community Intelligence Module, Insight Generation Engine, Dynamic Insight Briefing Dashboard, and Communication Hub modules.
 *   **Phase 1 Insight Catalog Implementation:** Configuration and validation of the core predictive insights, including Barangay Flood and Landslide Watch, Quake Rapid Impact Estimation, and the Hotspot Escalation Score.
 *   **Pilot LGU Onboarding:** Configuration and deployment of the platform for 3-4 selected high-risk municipalities, including ingestion of LGU-specific data (critical facilities, etc.).
 *   **Operator Training:** Intensive, hands-on training for PDRRMO and pilot MDRRMOs on the full alert management lifecycle, from insight review to public dissemination.
@@ -43,10 +43,10 @@ The team structure is designed to scale with the project's phases. The core team
 | Task ID | Description | Discipline | Effort (Person-Weeks) |
 | :--- | :--- | :--- | :--- |
 | P1-PL-01 | Finalize selection of pilot municipalities with PDRRMO. | PM | 1 |
-| P1-BE-01 | Develop and deploy core backend services (Data Ingestion, Threat Analysis, Auth, etc.). | Backend | 12 |
+| P1-BE-01 | Develop and deploy core backend services (Multi-Source Intelligence Fusion, Community Intelligence, Insight Generation, Auth, etc.). | Backend | 12 |
 | P1-BE-02 | Implement core database schemas and establish initial data integrations. | Backend | 4 |
-| P1-FE-01 | Develop the full Admin/Operator Dashboard UI. | Frontend | 12 |
-| P1-FE-02 | Develop the Alert Management workflow UI. | Frontend | 4 |
+| P1-FE-01 | Develop the full Admin/Operator Dashboard UI, including the Dynamic Insight Briefing Dashboard. | Frontend | 12 |
+| P1-FE-02 | Develop the Insight Management workflow UI. | Frontend | 4 |
 | P1-QA-01 | Conduct full functional, integration, and security testing of the core platform. | QA | 8 |
 | P1-PM-01 | Conduct initial training sessions and gather user feedback. | PM | 3 |
 

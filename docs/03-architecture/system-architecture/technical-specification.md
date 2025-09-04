@@ -28,11 +28,12 @@ graph TD
 
     subgraph "Backend Services (NestJS/TypeScript)"
         D[Data Ingestion Service]
-        E[Threat Analysis Engine Service]
-        F[Alert Management Service]
+        E[Insight Generation Engine Service]
+        F[Insight Management Service]
         G[User & Auth Service]
         H[Communication Service]
         I[Geospatial Service]
+        CIM[Community Intelligence Service]
     end
 
     subgraph "Data Stores"
@@ -41,6 +42,8 @@ graph TD
         L[Redis Cache]
         M[Elasticsearch]
     end
+
+    CIM --> S
 
     subgraph "Frontend (Next.js/React/Tailwind CSS)"
         N[Admin/Operator Dashboard]
@@ -107,10 +110,10 @@ graph TD
 - **Language:** TypeScript
 - **Framework:** NestJS (Node.js)
 - **Databases:**
-    - **PostgreSQL 15+ with PostGIS:** Primary relational database for core application data (users, alerts, configurations, geospatial data).
+    - **PostgreSQL 15+ with PostGIS:** Primary relational database for core application data (users, insights, configurations, geospatial data).
     - **TimescaleDB:** Extension for PostgreSQL, optimized for time-series data (IoT sensor readings).
     - **Redis 7+:** In-memory data store for caching, real-time data streams, and WebSocket session management.
-    - **Elasticsearch:** For full-text search on alert history, logs, and complex analytical queries.
+    - **Elasticsearch:** For full-text search on insight history, logs, and complex analytical queries.
 - **Message Queue:** Apache Kafka (for high-throughput data ingestion) or BullMQ (for background job processing).
 - **Real-time:** WebSocket server (integrated with NestJS Gateway).
 - **API:** GraphQL (for flexible client queries) and REST APIs (for standard integrations).
@@ -187,13 +190,13 @@ graph TD
     ```
 - **Simulated Data:** Placeholder URLs and basic analysis results for demo purposes.
 
-### 4.4. Generated Alerts (PostgreSQL)
-- **Table:** `system_alerts`
+### 4.4. Generated Insights (PostgreSQL)
+- **Table:** `system_insights`
 - **Schema:**
     ```sql
-    CREATE TABLE system_alerts (
+    CREATE TABLE system_insights (
         id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-        alert_id VARCHAR(255) UNIQUE NOT NULL, -- Internal system ID
+        insight_id VARCHAR(255) UNIQUE NOT NULL, -- Internal system ID
         timestamp TIMESTAMPTZ NOT NULL,
         area_municipality VARCHAR(255) NOT NULL,
         area_barangay VARCHAR(255),
@@ -254,26 +257,26 @@ graph TD
     - `GET /ingest/satellite`: Triggers simulated satellite data pull.
 - **Logic:** Validates incoming data, enriches with geospatial context, publishes to Kafka/BullMQ for processing.
 
-### 5.2. Threat Analysis Engine Service
-- **Purpose:** Core logic for data correlation and rule evaluation.
+### 5.2. Insight Generation Engine Service
+- **Purpose:** Core logic for data correlation and insight generation.
 - **Consumers:** Subscribes to Kafka/BullMQ for raw data.
 - **Logic:**
     - **Data Correlation:** Correlates sensor, CCTV, and satellite data based on time and proximity.
-    - **Rule Evaluation:** Applies predefined and LGU-specific rule packs (YAML/JSON configuration) to correlated data.
-        - **Example Rules (from Pilot Technical Scope):**
-            - `Flash Flood Rule`: `(ARG > 20mm/hr for 1hr)` AND `(AWLG increase > 0.5m in 15min)` -> **Severity 3 Alert**.
-            - `Sustained Rainfall Rule`: `(ARG > 10mm/hr for 3hrs)` -> **Severity 2 Alert**.
-    - **Alert Generation:** Creates `system_alerts` entries when rules are met, including `triggered_rules` and `contributing_signals`.
-    - **Publishing:** Publishes new/updated alerts to Redis/WebSocket for real-time dashboard updates.
+    - **Insight Catalog Evaluation:** Applies predefined and LGU-specific rule packs (YAML/JSON configuration) to correlated data.
+        - **Example Insights (from Insight Catalog):**
+            - `Barangay Flood Watch`: `(ARG > 20mm/hr for 1hr)` AND `(AWLG increase > 0.5m in 15min)` -> **Severity 3 Insight**.
+            - `Sustained Rainfall Watch`: `(ARG > 10mm/hr for 3hrs)` -> **Severity 2 Insight**.
+    - **Insight Generation:** Creates `system_insights` entries when rules are met, including `triggered_rules` and `contributing_signals`.
+    - **Publishing:** Publishes new/updated insights to Redis/WebSocket for real-time dashboard updates.
 
-### 5.3. Alert Management Service
-- **Purpose:** Manages the lifecycle of generated alerts.
+### 5.3. Insight Management Service
+- **Purpose:** Manages the lifecycle of generated insights.
 - **Endpoints:**
-    - `GET /alerts`: Retrieve all alerts (filterable by LGU, status, severity, time).
-    - `GET /alerts/:id`: Retrieve single alert with full details (evidence panel).
-    - `POST /alerts/:id/approve`: Operator action to approve an alert.
-    - `POST /alerts/:id/rescind`: Operator action to rescind an alert.
-    - `PUT /alerts/:id`: Update alert details (e.g., operator notes, geometry adjustments).
+    - `GET /insights`: Retrieve all insights (filterable by LGU, status, severity, time).
+    - `GET /insights/:id`: Retrieve single insight with full details (evidence panel).
+    - `POST /insights/:id/approve`: Operator action to approve an insight.
+    - `POST /insights/:id/rescind`: Operator action to rescind an insight.
+    - `PUT /insights/:id`: Update insight details (e.g., operator notes, geometry adjustments).
 - **Logic:** Handles state transitions (`Draft` -> `Pending Review` -> `Approved` -> `Disseminated` -> `Rescinded`), audit logging, and operator actions.
 
 ### 5.4. User & Authentication Service
@@ -312,13 +315,13 @@ graph TD
         - Base map (satellite/street view)
         - LGU boundaries (provinces, cities, barangays)
         - Sensor locations (IoT, CCTV) with real-time status indicators
-        - Active alert polygons (GeoJSON from `system_alerts`)
+        - Active insight polygons (GeoJSON from `system_insights`)
         - Simulated hazard overlays (e.g., flood extent, storm surge)
         - *Refer to `docs/ux-specification.md` Section 4.2 for detailed map overlay and interactivity requirements.*
-    - **Real-time Data Panels:** Display latest sensor readings, CCTV events, and alert summaries, as specified in `docs/ux-specification.md` Section 4.3.
-    - **Alert List/Table:** Filterable, sortable list of `system_alerts`, consistent with `docs/ux-specification.md` Section 4.4.
-    - **Alert Detail Panel:**
-        - Comprehensive view of a selected alert, including header, overview, evidence panel, communication preview, and operator actions.
+    - **Real-time Data Panels:** Display latest sensor readings, CCTV events, and insight summaries, as specified in `docs/ux-specification.md` Section 4.3.
+    - **Insight List/Table:** Filterable, sortable list of `system_insights`, consistent with `docs/ux-specification.md` Section 4.4.
+    - **Insight Detail Panel:**
+        - Comprehensive view of a selected insight, including header, overview, evidence panel, communication preview, and operator actions.
         - *Refer to `docs/ux-specification.md` Section 4.5 for detailed layout and content of this panel.*
     - **User Management:** CRUD operations for users (Admin role).
     - **LGU Management:** CRUD operations for LGUs (Admin role), including configuration of rule packs and communication settings.
@@ -328,7 +331,7 @@ graph TD
 ### 6.2. Public Information Portal (Next.js/React/Tailwind CSS)
 - **Purpose:** A simplified, read-only view for public consumption (optional for MVP, but good for demo).
 - **Components:**
-    - **Map View:** Displays active public alerts (approved `system_alerts`) and general hazard information.
+    - **Map View:** Displays active public alerts (approved `system_insights`) and general hazard information.
     - **Alert List:** Simplified list of public alerts.
     - **Information Pages:** About Project LINGKOD, safety tips, emergency contacts.
 - **Styling:** Tailwind CSS, mobile-first responsive design.
@@ -358,10 +361,10 @@ graph TD
 - **Data Formats:** Adhere to the schemas defined in `docs/Pilot_Technical_Scope.md` for simulated data.
 
 ### 9.2. External Command Center API (Complementary Mode)
-- **Endpoint:** `GET /api/v1/alerts`
+- **Endpoint:** `GET /api/v1/insights`
 - **Authentication:** Bearer Token (JWT).
-- **Output Format:** GeoJSON FeatureCollection of active, approved alerts.
-- **CAP 1.2:** `GET /api/v1/cap/{alertId}` for Common Alerting Protocol XML.
+- **Output Format:** GeoJSON FeatureCollection of active, approved insights.
+- **CAP 1.2:** `GET /api/v1/cap/{insightId}` for Common Alerting Protocol XML.
 - **Rate Limiting:** Configurable per client.
 
 ## 10. Performance Requirements

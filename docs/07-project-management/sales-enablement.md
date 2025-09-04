@@ -3,12 +3,12 @@
 We don’t replace your disaster managers or PAGASA. We empower them with a reliable intelligence and integration layer that makes expert decisions faster, clearer, and more targeted — with full human oversight and measurable outcomes.
 
 ## 30-Second Answer Script
-“We provide the **LINGKOD Emergency Command Platform**, an AI-powered intelligence engine that makes your disaster managers faster and more effective. It integrates data from PAGASA, local CCTV, and sensors into a single **Threat Analysis Engine** that flags what matters, when it matters. Every alert is reviewed by your operator on the **Alert Management Dashboard** before being sent out via the **Communication Hub**, ensuring full human control. We don’t replace your experts; we empower them with predictive, actionable insights.”
+“We provide the **LINGKOD Emergency Command Platform**, an AI-powered intelligence engine that makes your disaster managers faster and more effective. It integrates data from PAGASA, local CCTV, sensors, and community reports into a single **Insight Generation Engine** that flags what matters, when it matters. Every insight is reviewed by your operator on the **Dynamic Insight Briefing Dashboard** before being sent out via the **Communication Hub**, ensuring full human control. We don’t replace your experts; we empower them with predictive, actionable insights.”
 
 ## 2-Minute Expanded Answer
-- **The Platform:** We deliver the **LINGKOD Emergency Command Platform**, a complete solution with modules for data ingestion, AI-powered threat analysis, a human-in-the-loop operator dashboard, and last-mile communication.
+- **The Platform:** We deliver the **LINGKOD Emergency Command Platform**, a complete solution with modules for multi-source data fusion, community intelligence, an AI-powered insight generation engine, a dynamic operator dashboard, and last-mile communication.
 - **Proven Components:** The platform is built on proven, production-grade components, including DMA-BD’s river network (800+ sites), Coram.ai's AI analytics, and commercial satellite imagery.
-- **Human-in-the-Loop by Default:** All citizen-facing alerts require approval by your operator in the Alert Management Dashboard, with full audit logs and override controls.
+- **Human-in-the-Loop by Default:** All citizen-facing alerts require approval by your operator in the Dynamic Insight Briefing Dashboard, with full audit logs and override controls.
 - Transparent, explainable logic: Versioned rule packs; per-alert evidence panel (signals, thresholds, rule trace, confidence).
 - Standards and interoperability: Outputs in CAP 1.2 and GeoJSON; integrates cleanly with ArcGIS; aligned to ICS/NDRRMC processes.
 - Local capacity and ownership: Government data tenancy, open APIs, training and playbooks; we co-manage initially and hand over.
