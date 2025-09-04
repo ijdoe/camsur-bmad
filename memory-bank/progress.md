@@ -27,8 +27,19 @@
 *   **Login Flow Stability:** Resolved a series of critical bugs that were preventing users from logging in, including port conflicts, database connection errors, and incorrect role display. The login system is now stable and functional.
 *   **BMAD Compliance Achieved:** Successfully executed a comprehensive plan to align the project with the BMAD methodology. All process and project documentation has been created and reorganized into a BMAD-compliant structure.
 *   **Requirements Gate Passed:** All deliverables for the Requirements Gate have been completed and formally reviewed. The project has successfully passed the Requirements Gate with sign-off from all stakeholders.
-*   **Design Gate Passed:** All design deliverables including UX specifications, design system, mockups, and prototypes have been completed and formally reviewed. The project has successfully passed the Design Gate.
+*   **Design Gate Passed:** All design deliverables including UX specifications, design system, mockups, and prototypes have been reviewed and approved. The project has successfully passed the Design Gate.
 *   **Architecture Gate Passed:** All architecture deliverables have been completed and formally reviewed. The project has successfully passed the Architecture Gate.
+*   **Proposal Documents Enhanced:** In response to partner feedback, significantly enhanced the proposal package to focus on platform functionalities and value beyond costing:
+    *   **Added Insight Catalog:** Created a detailed Phase 1 Insight Catalog demonstrating actionable, predictive insights (Flood Watch, Landslide Watch, Quake Impact, etc.) rather than just data aggregation.
+    *   **Created Executive Brief:** Developed a one-page executive brief for the governor, summarizing the vision, key outcomes, and deliverables.
+    *   **Deliverables-to-Investment Map:** Added clear mapping of investment to tangible deliverables for transparency.
+    *   **Aligned All Documents:** Updated rollout plan and sales enablement with consistent messaging and a narrative-driven demo script.
+*   **Phase 1 Implementation Plan Finalized:** Established a no-MoU approach for Phase 1, leveraging public data sources (PAGASA, PHIVOLCS, NAMRIA, MGB, PSA) to deliver a strong MVP with adapters, rules, and UI for insight generation.
+*   **Document Alignment for Insight-Driven Narrative:** Updated all foundational project documents to align with the new insight-driven approach:
+    *   **Project Brief:** Reframed the core goal to emphasize transforming raw data into actionable, predictive insights.
+    *   **Product Requirements Document:** Added formal "Insight Generation & Management" section with the Phase 1 Insight Catalog.
+    *   **UX Specification:** Updated workflows and UI components to focus on "Insight Cards," "Priority Queue," and "Evidence Panel."
+    *   **Epic 7.2:** Renamed to "Insight Generation Engine" and updated user stories to focus on building specific insights from the catalog.
 
 ## 2. What's Left to Build (MVP for Sales Demo)
 

@@ -30,6 +30,18 @@ The primary focus is on achieving **full BMAD methodology compliance**. We have 
     *   **Design Gate Sign-Off:** Created formal sign-off document (`docs/bmad/reviews/design-gate-review.md`) and updated the development readiness checklist to officially mark the Design Gate as PASSED. All design deliverables including UX specifications, design system, mockups, and prototypes have been reviewed and approved.
     *   **Component Specifications Completed:** Created detailed specifications for the three missing components (`table.md`, `alert.md`, `dropdown.md`) to complete the design system. All component specifications are now developer-ready with comprehensive details on variants, states, accessibility, and usage examples.
     *   **Architecture Gate Sign-Off:** Created formal sign-off document (`docs/bmad/reviews/architecture-gate-review.md`) and updated the development readiness checklist to officially mark the Architecture Gate as PASSED. All architecture deliverables have been reviewed and approved.
+*   **Proposal Enhancement Based on Partner Feedback:** In response to partner feedback requesting more detail on platform functionalities and value beyond costing, the proposal documents were significantly enhanced:
+    *   **Added "Insight Catalog":** Introduced a detailed Phase 1 Insight Catalog including Barangay Flood Watch, Landslide Watch, Quake Rapid Impact Estimation, Hotspot Escalation Score, Critical Facility Impact, and Route Vulnerability Advisory. This demonstrates how the platform provides actionable, predictive insights rather than just data aggregation.
+    *   **Created Executive Brief:** Developed a one-page `executive-brief.md` for the governor, summarizing the vision, key outcomes, and deliverables in a concise, high-impact format.
+    *   **Deliverables-to-Investment Map:** Added a clear mapping of investment items to tangible deliverables, ensuring transparency and value articulation.
+    *   **Aligned All Documents:** Updated `provincial-rollout-plan.md` and `sales-enablement.md` to reflect the new messaging, including a narrative-driven demo script focused on "insights, not just data."
+*   **Phase 1 Implementation Plan Finalized:** Decided on a no-MoU approach for Phase 1, leveraging public data sources (PAGASA, PHIVOLCS, NAMRIA, MGB, PSA) to deliver a strong MVP without external dependencies. This includes adapters for data ingestion, rules for insight generation, and UI for operator workflows.
+*   **Incorporated Partner's Insight Emphasis:** Emphasized throughout the documents that the platform provides "meaningful insights" from data fusion, not just aggregation, with explainable evidence panels and human-in-the-loop approval.
+*   **Document Alignment for Insight-Driven Narrative:** Updated all foundational project documents to align with the new insight-driven approach:
+    *   **Project Brief:** Reframed the core goal to emphasize transforming raw data into actionable, predictive insights.
+    *   **Product Requirements Document:** Added formal "Insight Generation & Management" section with the Phase 1 Insight Catalog.
+    *   **UX Specification:** Updated workflows and UI components to focus on "Insight Cards," "Priority Queue," and "Evidence Panel."
+    *   **Epic 7.2:** Renamed to "Insight Generation Engine" and updated user stories to focus on building specific insights from the catalog.
 
 ## 3. Next Steps
 

@@ -2,7 +2,7 @@
 
 ## 1. Project Goal
 
-To develop and propose a single, high-impact, technology-driven solution for Camarines Sur that directly addresses the practical needs of its citizens and leadership. The primary focus is on enhancing provincial disaster resilience and response capabilities.
+To develop and propose a single, high-impact, technology-driven solution for Camarines Sur that transforms raw disaster data into actionable, predictive insights. The primary focus is on empowering provincial leadership and disaster managers with the intelligence needed to anticipate threats and act decisively, enhancing disaster resilience and response capabilities.
 
 ## 2. Core Problem
 
@@ -21,7 +21,7 @@ Following direct feedback from Governor Villafuerte, the project has pivoted fro
 
 ## 5. Scope
 
-The project involves the development and proposal of the "Project LINGKOD" platform, which integrates satellite data, AI-powered CCTV analysis, and on-the-ground IoT sensors to provide a comprehensive situational awareness dashboard. A key component is the "last-mile" communication system that disseminates clear, actionable alerts via SMS, radio, and to barangay officials. The initial phase will be a pilot program in select municipalities.
+The project involves the development and proposal of the "Project LINGKOD" platform, which integrates satellite data, AI-powered CCTV analysis, and on-the-ground IoT sensors to provide a comprehensive situational awareness dashboard. The core innovation is the **Threat Analysis Engine**, which fuses this data into predictive, barangay-level insights rather than just aggregating information. A key component is the "last-mile" communication system that disseminates clear, actionable alerts via SMS, radio, and to barangay officials. The initial phase will be a pilot program in select municipalities, demonstrating the platform's ability to generate meaningful intelligence from public data sources.
 
 ## 6. Intellectual Property and Commercialization Strategy
 

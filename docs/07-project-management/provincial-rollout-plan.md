@@ -5,7 +5,9 @@
 
 ## 1. Introduction
 
-This document outlines the strategic, three-phase implementation plan for the province-wide rollout of Project LINGKOD in Camarines Sur. This plan moves beyond the initial MVP concept to provide a clear roadmap for a full-scale, long-term deployment. The objective is to systematically build, validate, and scale the system to ensure maximum impact and a successful partnership with the Provincial Government.
+This document outlines the strategic, three-phase implementation plan for the province-wide rollout of the **LINGKOD Emergency Command Platform** in Camarines Sur. This plan provides a clear roadmap for the full-scale deployment of the platform, moving from a validated pilot to a comprehensive, province-wide intelligence and early-warning system.
+
+The objective is to systematically build, validate, and scale the platform's core modules—from the **Threat Analysis Engine** to the **Last-Mile Communication Hub**—to ensure maximum impact and a successful partnership with the Provincial Government.
 
 The timeline and resource estimates are based on a project start date of **January 2026**.
 
@@ -30,11 +32,11 @@ The team structure is designed to scale with the project's phases. The core team
 **Estimated Effort:** 48 Person-Weeks
 
 ### 3.1. Scope & Deliverables
-*   Core system development (based on MVP functional requirements).
-*   Onboarding of 3-4 pilot municipalities.
-*   Establishment of initial live data connections (where feasible).
-*   Intensive training for PDRRMO and pilot MDRRMOs.
-*   Validation report on system effectiveness and feedback for province-wide rollout.
+*   **Core Platform Development:** Full implementation of the LINGKOD Emergency Command Platform, including the Data Ingestion, Threat Analysis Engine, Alert Management Dashboard, and Communication Hub modules.
+*   **Phase 1 Insight Catalog Implementation:** Configuration and validation of the core predictive insights, including Barangay Flood and Landslide Watch, Quake Rapid Impact Estimation, and the Hotspot Escalation Score.
+*   **Pilot LGU Onboarding:** Configuration and deployment of the platform for 3-4 selected high-risk municipalities, including ingestion of LGU-specific data (critical facilities, etc.).
+*   **Operator Training:** Intensive, hands-on training for PDRRMO and pilot MDRRMOs on the full alert management lifecycle, from insight review to public dissemination.
+*   **Pilot Validation Report:** A comprehensive report detailing system performance against KPIs, user feedback, and actionable recommendations for the full province-wide expansion.
 
 ### 3.2. Work Breakdown
 

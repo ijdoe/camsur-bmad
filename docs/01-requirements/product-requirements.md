@@ -38,18 +38,17 @@ During natural disasters, a significant "last-mile" information gap exists. Comm
 - **FR 5.1.3:** The system shall simulate ingestion of DMA-BD IoT sensor data (AWLG, ARG, AWS) with time-series capabilities.
 - **FR 5.1.4:** The system shall support configurable mock data generation for various regions (CamSur, Metro Manila) and hazard scenarios (typhoon, flood).
 
-### 5.2. Threat Analysis Engine
-- **FR 5.2.1:** The system shall correlate simulated data from satellite, CCTV, and IoT sensors based on time and geospatial proximity.
-- **FR 5.2.2:** The system shall apply predefined, configurable rule packs (e.g., YAML/JSON) to correlated data to identify potential threats.
-- **FR 5.2.3:** The system shall generate `system_alerts` with severity levels (1-5), descriptions, and contributing signals when rules are met.
-- **FR 5.2.4:** The system shall support versioning of rule packs and display rule traces for explainability.
+### 5.2. Insight Generation & Management (Threat Analysis Engine)
 
-### 5.3. Alert Management
-- **FR 5.3.1:** The system shall display a real-time list of generated `system_alerts` in the Admin/Operator Dashboard.
-- **FR 5.3.2:** The system shall allow operators to view detailed information for each alert, including an "evidence panel" of contributing data.
-- **FR 5.3.3:** The system shall provide an operator workflow for approving, editing, or rescinding alerts.
-- **FR 5.3.4:** The system shall maintain an audit trail of all operator actions on alerts.
-- **FR 5.3.5:** The system shall allow operators to adjust alert geometry (GeoJSON polygon) and add notes.
+This section defines the core value proposition of the LINGKOD platform: the generation of actionable, predictive insights.
+
+- **FR 5.2.1: Insight Correlation:** The system shall correlate simulated data from national advisories (PAGASA), CCTV, IoT sensors, and static hazard maps based on time and geospatial proximity.
+- **FR 5.2.2: Rule-Based Insight Generation:** The system shall apply predefined, configurable rule packs to correlated data to generate insights from the official **Phase 1 Insight Catalog**.
+- **FR 5.2.3: Insight Attributes:** Each generated insight shall have a defined set of attributes, including severity, confidence, a time window (e.g., "in the next 2-6 hours"), a list of affected barangays, and an estimate of the exposed population.
+- **FR 5.2.4: Evidence Panel:** Each insight must be accompanied by an explainable evidence panel that includes contributing data signals, the rule pack version, and the specific thresholds that were met.
+- **FR 5.2.5: Operator Workflow:** The system shall provide a clear workflow for operators to review, approve, or rescind insights before they are classified as official, public-facing alerts. All operator actions must be recorded in an immutable audit trail.
+- **FR 5.2.6: Priority Queue:** The system shall display insights in a priority queue, ranked by a **Hotspot Escalation Score** that factors in severity, confidence, and the size of the exposed population.
+- **FR 5.2.7: Recommendation Engine:** Upon approval, the system shall generate recommended actions and pre-fill communication templates (SMS, radio) based on the insight type and severity.
 
 ### 5.4. Communication & Dissemination
 - **FR 5.4.1:** The system shall generate localized SMS content based on approved alerts and predefined templates.

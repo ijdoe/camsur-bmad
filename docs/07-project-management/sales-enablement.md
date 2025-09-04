@@ -3,14 +3,12 @@
 We don’t replace your disaster managers or PAGASA. We empower them with a reliable intelligence and integration layer that makes expert decisions faster, clearer, and more targeted — with full human oversight and measurable outcomes.
 
 ## 30-Second Answer Script
-“We don’t replace PAGASA or your disaster managers. We integrate their data and your SOPs into one engine that flags what matters, when it matters. The core pieces are already proven at scale — DMA-BD’s 800+ river stations, Coram.ai’s EMS, and commercial satellite imagery. Every public alert is reviewed by your operator, audit-logged, and measured against clear KPIs like lead time and spatial accuracy. Our job is to make your experts faster and more effective — not replace them.”
+“We provide the **LINGKOD Emergency Command Platform**, an AI-powered intelligence engine that makes your disaster managers faster and more effective. It integrates data from PAGASA, local CCTV, and sensors into a single **Threat Analysis Engine** that flags what matters, when it matters. Every alert is reviewed by your operator on the **Alert Management Dashboard** before being sent out via the **Communication Hub**, ensuring full human control. We don’t replace your experts; we empower them with predictive, actionable insights.”
 
 ## 2-Minute Expanded Answer
-- Proven components in production:
-  - DMA-BD’s river network (800+ sites, <1% deviation vs manual),
-  - Coram.ai EMS deployments,
-  - Commercial satellite imagery from established providers.
-- Human-in-the-loop by default: All citizen-facing alerts require operator approval in EMS, with audit logs and override controls.
+- **The Platform:** We deliver the **LINGKOD Emergency Command Platform**, a complete solution with modules for data ingestion, AI-powered threat analysis, a human-in-the-loop operator dashboard, and last-mile communication.
+- **Proven Components:** The platform is built on proven, production-grade components, including DMA-BD’s river network (800+ sites), Coram.ai's AI analytics, and commercial satellite imagery.
+- **Human-in-the-Loop by Default:** All citizen-facing alerts require approval by your operator in the Alert Management Dashboard, with full audit logs and override controls.
 - Transparent, explainable logic: Versioned rule packs; per-alert evidence panel (signals, thresholds, rule trace, confidence).
 - Standards and interoperability: Outputs in CAP 1.2 and GeoJSON; integrates cleanly with ArcGIS; aligned to ICS/NDRRMC processes.
 - Local capacity and ownership: Government data tenancy, open APIs, training and playbooks; we co-manage initially and hand over.
@@ -53,6 +51,28 @@ We don’t replace your disaster managers or PAGASA. We empower them with a reli
 - Aligns with existing SOPs and command systems.
 - Uses proven, robust tech components — not experimental hardware.
 - Builds the province’s capacity while delivering fast, measurable impact.
+
+## Demo Script Beats (Insight-Driven Narrative)
+
+This script outlines a narrative flow for a 5-minute demo, focusing on the "insight, not just data" value proposition.
+
+1.  **The "Before" State (The Problem):**
+    *   Show a generic PAGASA advisory. "This is a typical PAGASA Orange Rainfall Warning. It's critical, but it covers a huge area. The key question for a disaster manager is: 'Where do I focus my limited resources *right now*?'"
+
+2.  **Introducing the LINGKOD Platform (The Solution):**
+    *   Switch to the LINGKOD Dashboard. "This is the LINGKOD Emergency Command Platform. It ingests that same PAGASA warning but fuses it with local data to provide actionable, barangay-level insights."
+
+3.  **Demonstrating the Insight (The "Aha!" Moment):**
+    *   Show a "Barangay Flood Watch" insight card. "Instead of just a warning, the platform generates a specific **Flood Watch** for three barangays. It gives a time window, estimates the exposed population, and, most importantly, provides a clear recommendation."
+    *   Click the insight to show the **Evidence Panel**. "And it's fully explainable. Here you can see the exact signals that triggered this insight: the PAGASA warning, the MGB flood hazard map, and the river network data. This builds trust and allows for confident decision-making."
+
+4.  **From Insight to Action (The Workflow):**
+    *   Show the **Hotspot Priority List**. "The platform automatically ranks the most critical hotspots, so your team knows exactly where to focus."
+    *   Demonstrate the **Approval Workflow**. "The operator reviews the insight and the evidence. With one click, they approve it."
+    *   Show the **Communication Hub**. "The system then automatically generates pre-filled, localized SMS and radio scripts. The operator gives the final approval, and the warning is sent to the right people, in the right language, at the right time."
+
+5.  **The "After" State (The Outcome):**
+    *   "So, in less than two minutes, we've gone from a broad regional warning to a specific, actionable, and fully audited local alert. That's the power of the LINGKOD platform: it gives your team the confidence to make faster, smarter decisions when every second counts."
 
 ## Summary
 Trust is earned through transparency, control, and results. LINGKOD bakes these into the pilot: operator approval gates, explainable alerts, independent governance, and hard KPIs — powered by components already proven at national scale.
