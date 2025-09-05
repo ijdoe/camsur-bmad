@@ -109,7 +109,7 @@ const DataCard = React.forwardRef<HTMLDivElement, DataCardProps>(
         {...props}
       >
         {/* Header */}
-        <div className="flex items-start justify-between mb-4">
+        <div className="flex flex-wrap items-start justify-between gap-2 mb-4">
           <div className="flex items-center space-x-3">
             {icon && (
               <div className="flex-shrink-0">

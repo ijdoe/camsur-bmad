@@ -7,3 +7,6 @@ export * from './SearchBar';
 export * from './FilterDropdown';
 export * from './StatusIndicator';
 export * from './DataCard';
+export * from './Alert';
+export * from './Table';
+export * from './Dropdown';

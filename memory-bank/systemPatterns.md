@@ -124,3 +124,14 @@ The system follows a **Defense in Depth** and **Zero Trust** security model. Key
 
 **For full details, see:**
 - `docs/03-architecture/security/security-architecture.md`
+
+## 7. Frontend Patterns
+
+### 7.1. Dark Mode Theme
+
+The application supports a dark mode theme to enhance user experience in low-light environments. The implementation follows these patterns:
+
+- **Class-Based Theming:** Dark mode is enabled by adding a `dark` class to the `<html>` element.
+- **Theme Provider:** The `next-themes` library is used to manage theme switching and persistence.
+- **CSS Variables:** A set of CSS variables for colors is defined in `src/app/globals.css` for both light and dark modes.
+- **Component Styling:** All components use Tailwind's `dark:` variants to apply specific styles for dark mode.

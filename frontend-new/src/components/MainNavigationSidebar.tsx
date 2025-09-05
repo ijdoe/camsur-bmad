@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { Button } from './ui/Button';
 import { Icon, type IconName } from './ui/Icon';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from './ui/Dropdown';
 import { cn } from '@/lib/utils';
 
 interface NavigationItem {
@@ -85,24 +91,33 @@ const MainNavigationSidebar: React.FC<MainNavigationSidebarProps> = ({
         </Button>
       </div>
 
-      {/* LGU Selector */}
+      {/* Municipality Selector */}
       {!isCollapsed && (
         <div className="p-4 border-b border-gray-200">
-          <label htmlFor="lgu-select" className="block text-xs font-medium text-gray-700 mb-2">
-            LGU
+          <label className="block text-xs font-medium text-gray-700 mb-2">
+            Municipality
           </label>
-          <select
-            id="lgu-select"
-            value={lgu.id}
-            onChange={(e) => onLGUChange(e.target.value)}
-            className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          >
-            {lguOptions.map((option) => (
-              <option key={option.id} value={option.id}>
-                {option.name}
-              </option>
-            ))}
-          </select>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                className="w-full justify-between"
+              >
+                <span>{lgu.name}</span>
+                <Icon name="ChevronDownIcon" size="sm" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56">
+              {lguOptions.map((option) => (
+                <DropdownMenuItem
+                  key={option.id}
+                  onSelect={() => onLGUChange(option.id)}
+                >
+                  {option.name}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       )}
 

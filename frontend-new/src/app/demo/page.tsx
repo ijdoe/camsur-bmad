@@ -26,9 +26,12 @@ const mockUser: User = {
 };
 
 const mockLgus: LGU[] = [
-  { id: 'camsur', name: 'Camarines Sur' },
-  { id: 'albay', name: 'Albay' },
-  { id: 'sorsogon', name: 'Sorsogon' },
+  { id: 'all', name: 'All of CamSur' },
+  { id: 'bato', name: 'Bato' },
+  { id: 'lagonoy', name: 'Lagonoy' },
+  { id: 'sagnay', name: 'Sagñay' },
+  { id: 'naga', name: 'Naga' },
+  { id: 'iriga', name: 'Iriga' },
 ];
 
 const mockInsights: Insight[] = [
@@ -41,7 +44,8 @@ const mockInsights: Insight[] = [
     timestamp: new Date('2025-09-05T08:15:00'),
     status: 'Pending Review',
     hotspotScore: 9.8,
-    lgu: 'camsur',
+    lgu: 'bato',
+    municipality: 'Bato',
     description: 'Intense rainfall from a localized thunderstorm is causing the Bato River to swell rapidly. Models predict that water levels will exceed the critical threshold within the next 2-4 hours, potentially flooding low-lying areas in Brgy. San Roque.',
     evidence: [
       { id: 'EV-001', type: 'sensor', source: 'Bato River Sensor (AWLG-BT-01)', description: 'Water level at 3.5m (Critical: 4.0m)', confidence: 98, timestamp: new Date('2025-09-05T08:10:00') },
@@ -63,7 +67,8 @@ const mockInsights: Insight[] = [
     timestamp: new Date('2025-09-05T07:15:00'),
     status: 'Approved',
     hotspotScore: 8.2,
-    lgu: 'camsur',
+    lgu: 'lagonoy',
+    municipality: 'Lagonoy',
   },
   {
     id: 'INS-003',
@@ -74,7 +79,8 @@ const mockInsights: Insight[] = [
     timestamp: new Date('2025-09-05T06:15:00'),
     status: 'Disseminated',
     hotspotScore: 9.9,
-    lgu: 'camsur',
+    lgu: 'sagnay',
+    municipality: 'Sagñay',
   },
 ];
 
@@ -112,6 +118,11 @@ const mockSensorData: SensorData[] = mockSensorReadings.map(s => ({
 export default function DemoPage() {
   const [currentLgu, setCurrentLgu] = useState<LGU>(mockLgus[0]);
   const [selectedInsight, setSelectedInsight] = useState<Insight | null>(mockInsights[0]);
+
+  const filteredInsights =
+    currentLgu.id === 'all'
+      ? mockInsights
+      : mockInsights.filter((insight) => insight.lgu === currentLgu.id);
 
   const handleInsightClick = (insightId: string) => {
     const insight = mockInsights.find(i => i.id === insightId);
@@ -161,7 +172,7 @@ export default function DemoPage() {
             />
           ) : (
             <InsightPriorityQueue
-              insights={mockInsights}
+              insights={filteredInsights}
               onInsightClick={handleInsightClick}
               onInsightAction={(id, action) => console.log(`Action: ${action} on ${id}`)}
             />

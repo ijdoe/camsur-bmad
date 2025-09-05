@@ -17,6 +17,7 @@ interface Insight {
   geometry?: any;
   hotspotScore?: number;
   lgu?: string;
+  municipality?: string;
   description?: string;
   evidence?: any[];
   recommendations?: any[];

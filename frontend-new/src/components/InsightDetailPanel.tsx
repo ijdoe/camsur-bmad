@@ -16,6 +16,7 @@ interface Insight {
   geometry?: any;
   hotspotScore?: number;
   lgu?: string;
+  municipality?: string;
   description?: string;
   evidence?: EvidenceItem[];
   recommendations?: Recommendation[];
@@ -218,18 +219,19 @@ const InsightDetailPanel: React.FC<InsightDetailPanelProps> = ({
             )}
 
             {/* Action Buttons */}
-            <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-              <div className="flex space-x-2">
+            <div className="flex flex-nowrap items-center justify-between gap-2 pt-4 border-t border-gray-200">
+              <div className="flex flex-nowrap gap-2">
                 {insight.status === 'Pending Review' && (
                   <>
                     <Button
                       onClick={() => onApprove(insight.id)}
+                      variant="default"
                     >
                       <Icon name="CheckCircleIcon" size="sm" className="mr-2" />
                       Approve
                     </Button>
                     <Button
-                      variant="outline"
+                      variant="destructive"
                       onClick={() => onRescind(insight.id)}
                     >
                       <Icon name="XCircleIcon" size="sm" className="mr-2" />

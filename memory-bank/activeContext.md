@@ -72,22 +72,31 @@ The primary focus is on achieving **full BMAD methodology compliance**. We have 
 
 ## 4. Next Steps
 
-### Immediate Task: Stabilize New Frontend Project (`frontend-new`)
+### Immediate Task: Implement Dark Mode
 
-We are currently focused on creating a stable, client-facing demo for the Project LINGKOD dashboard. This involves migrating from the old `frontend` project to a new, clean Next.js project (`frontend-new`) to resolve persistent configuration and dependency issues.
+The next major task is to implement a dark mode theme for the application. This will enhance the user experience and give the platform a more mature, sophisticated feel.
 
-1.  **Install Missing Dependencies**: Compare `frontend/package.json` with `frontend-new/package.json` and install all missing packages.
-2.  **Fix Import Paths**: Correct all import statements in the migrated components to use the proper path alias or relative paths.
-3.  **Verify Demo**: Restart the development server and ensure the demo page at `http://localhost:3000/demo` renders correctly.
-4.  **Cleanup**: Once the new project is confirmed to be working, the old `frontend` directory will be removed.
+#### Dark Mode Implementation Plan
 
-### Post-Migration Next Steps
+1.  **Enable Dark Mode in Tailwind CSS:**
+    *   Update `tailwind.config.js` to enable the `class` strategy for dark mode.
 
-1.  **Phase 4: Templates** - Create page layouts combining organism components into complete dashboard views.
-2.  **Integration Testing** - End-to-end testing of component interactions and data flow.
-3.  **Performance Optimization** - Bundle analysis, lazy loading, and rendering optimizations.
-4.  **Demo Preparation** - Configure components for sales demonstrations with sample data.
-5.  **Documentation Enhancement** - API documentation and developer guides for the component library.
+2.  **Implement a Theme Provider:**
+    *   Install and use the `next-themes` library to manage theme switching.
+    *   Wrap the root layout in `src/app/layout.tsx` with the `ThemeProvider`.
+
+3.  **Create a Theme Toggle UI:**
+    *   Add a theme switcher button to the user profile section in `MainNavigationSidebar.tsx`.
+    *   The toggle will provide "Light", "Dark", and "System" options.
+
+4.  **Define Dark Mode Color Palette:**
+    *   Update `src/app/globals.css` with dark mode CSS variables.
+
+5.  **Update Component Styles:**
+    *   Add `dark:` variants to all UI components to ensure they adapt correctly.
+
+6.  **Update the Interactive Map:**
+    *   Modify `InteractiveMapContainer.tsx` to switch the Mapbox base map style to a dark version when the dark theme is active.
 
 ## 4. Important Patterns & Preferences
 
