@@ -92,7 +92,7 @@ const FilterDropdown = React.forwardRef<HTMLDivElement, FilterDropdownProps>(
           disabled={disabled}
           className={cn(
             'w-full justify-between text-left font-normal',
-            selectedValues.length > 0 && 'border-blue-500 bg-blue-50',
+            selectedValues.length > 0 && 'border-blue-500 bg-blue-50 dark:bg-blue-900/50 dark:border-blue-700',
             disabled && 'cursor-not-allowed opacity-50'
           )}
           aria-expanded={isOpen}
@@ -103,7 +103,7 @@ const FilterDropdown = React.forwardRef<HTMLDivElement, FilterDropdownProps>(
           </span>
           <div className="flex items-center space-x-1">
             {selectedValues.length > 0 && (
-              <span className="text-xs bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full">
+              <span className="text-xs bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-1.5 py-0.5 rounded-full">
                 {getSelectedCount()}
               </span>
             )}
@@ -118,21 +118,21 @@ const FilterDropdown = React.forwardRef<HTMLDivElement, FilterDropdownProps>(
         {/* Dropdown Menu */}
         {isOpen && (
           <div
-            className="absolute z-50 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg"
+            className="absolute z-50 w-full mt-1 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-md shadow-lg"
             role="listbox"
             aria-multiselectable={multiple}
           >
             {/* Header with Clear Button */}
             {selectedValues.length > 0 && (
-              <div className="flex items-center justify-between p-2 border-b border-gray-100">
-                <span className="text-sm text-gray-600">
+              <div className="flex items-center justify-between p-2 border-b border-gray-100 dark:border-slate-700">
+                <span className="text-sm text-gray-600 dark:text-slate-400">
                   {getSelectedCount()} selected
                 </span>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={handleClearAll}
-                  className="h-6 px-2 text-xs text-gray-500 hover:text-gray-700"
+                  className="h-6 px-2 text-xs text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200"
                 >
                   Clear all
                 </Button>
@@ -151,9 +151,9 @@ const FilterDropdown = React.forwardRef<HTMLDivElement, FilterDropdownProps>(
                     key={option.value}
                     onClick={() => handleOptionClick(option.value)}
                     className={cn(
-                      'w-full px-3 py-2 text-left hover:bg-gray-50 focus:bg-gray-50 focus:outline-none',
+                      'w-full px-3 py-2 text-left hover:bg-gray-50 dark:hover:bg-slate-700 focus:bg-gray-50 dark:focus:bg-slate-700 focus:outline-none',
                       'flex items-center justify-between',
-                      isSelected && 'bg-blue-50 text-blue-700'
+                      isSelected && 'bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300'
                     )}
                     role="option"
                     aria-selected={isSelected}
@@ -161,7 +161,7 @@ const FilterDropdown = React.forwardRef<HTMLDivElement, FilterDropdownProps>(
                     <span className="text-sm">{option.label}</span>
                     <div className="flex items-center space-x-2">
                       {option.count !== undefined && (
-                        <span className="text-xs text-gray-400">
+                        <span className="text-xs text-gray-400 dark:text-slate-500">
                           ({option.count})
                         </span>
                       )}
@@ -180,7 +180,7 @@ const FilterDropdown = React.forwardRef<HTMLDivElement, FilterDropdownProps>(
 
             {/* Footer with Apply Button (for multiple selection) */}
             {multiple && (
-              <div className="p-2 border-t border-gray-100">
+              <div className="p-2 border-t border-gray-100 dark:border-slate-700">
                 <Button
                   variant="default"
                   size="sm"

@@ -134,13 +134,13 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
   const recentCommunityReports = communityReports.slice(0, 5);
 
   return (
-    <div className={cn('bg-white rounded-lg border border-gray-200 overflow-hidden', className)}>
+    <div className={cn('bg-white dark:bg-slate-900 rounded-lg border border-gray-200 dark:border-slate-700 overflow-hidden', className)}>
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200">
-        <h2 className="text-lg font-semibold text-gray-900">Real-time Data</h2>
+      <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-slate-700">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-slate-100">Real-time Data</h2>
         <div className="flex items-center space-x-2">
           {lastRefresh && (
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-gray-500 dark:text-slate-400">
               Last updated: {lastRefresh.toLocaleTimeString()}
             </span>
           )}
@@ -156,7 +156,7 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-gray-200">
+      <div className="flex border-b border-gray-200 dark:border-slate-700">
         {[
           { id: 'sensors', label: 'Sensors', count: sensorReadings.length, icon: 'CogIcon' },
           { id: 'cctv', label: 'CCTV Events', count: cctvEvents.length, icon: 'EyeIcon' },
@@ -166,13 +166,16 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
             key={tab.id}
             variant={activeTab === tab.id ? 'secondary' : 'ghost'}
             size="sm"
-            className="flex-1 rounded-none border-b-2 border-transparent relative"
+            className={cn(
+              "flex-1 rounded-none border-b-2 relative",
+              activeTab === tab.id ? "border-blue-500" : "border-transparent"
+            )}
             onClick={() => setActiveTab(tab.id as any)}
           >
             <Icon name={tab.icon as any} size="sm" className="mr-2" />
             {tab.label}
             {tab.count > 0 && (
-              <span className="ml-2 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+              <span className="ml-2 bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 text-xs px-2 py-1 rounded-full">
                 {tab.count}
               </span>
             )}
@@ -187,20 +190,20 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
             {/* Sensor Statistics */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
               <div className="text-center">
-                <div className="text-2xl font-bold text-gray-900">{sensorStats.total}</div>
-                <div className="text-sm text-gray-600">Total Sensors</div>
+                <div className="text-2xl font-bold text-gray-900 dark:text-slate-100">{sensorStats.total}</div>
+                <div className="text-sm text-gray-600 dark:text-slate-400">Total Sensors</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-red-600">{sensorStats.critical}</div>
-                <div className="text-sm text-gray-600">Critical</div>
+                <div className="text-2xl font-bold text-red-600 dark:text-red-400">{sensorStats.critical}</div>
+                <div className="text-sm text-gray-600 dark:text-slate-400">Critical</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-yellow-600">{sensorStats.warning}</div>
-                <div className="text-sm text-gray-600">Warning</div>
+                <div className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">{sensorStats.warning}</div>
+                <div className="text-sm text-gray-600 dark:text-slate-400">Warning</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-green-600">{sensorStats.normal}</div>
-                <div className="text-sm text-gray-600">Normal</div>
+                <div className="text-2xl font-bold text-green-600 dark:text-green-400">{sensorStats.normal}</div>
+                <div className="text-sm text-gray-600 dark:text-slate-400">Normal</div>
               </div>
             </div>
 
@@ -209,25 +212,25 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
               {sensorReadings.slice(0, 6).map((sensor) => (
                 <div
                   key={sensor.id}
-                  className="bg-gray-50 rounded-lg p-4 cursor-pointer hover:bg-gray-100 transition-colors"
+                  className="bg-gray-50 dark:bg-slate-800 rounded-lg p-4 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
                   onClick={() => onSensorClick?.(sensor)}
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center space-x-2">
                       <Icon name="CogIcon" size="sm" />
-                      <span className="font-medium text-gray-900">{sensor.name}</span>
+                      <span className="font-medium text-gray-900 dark:text-slate-100">{sensor.name}</span>
                       <StatusIndicator status={getSensorStatusColor(sensor.status)} />
                     </div>
                     <div className="text-right">
-                      <div className="text-lg font-semibold text-gray-900">
+                      <div className="text-lg font-semibold text-gray-900 dark:text-slate-100">
                         {sensor.value} {sensor.unit}
                       </div>
                       {sensor.trend && (
                         <div className={cn(
                           'text-sm flex items-center',
-                          sensor.trend === 'up' && 'text-red-600',
-                          sensor.trend === 'down' && 'text-green-600',
-                          sensor.trend === 'stable' && 'text-gray-600'
+                          sensor.trend === 'up' && 'text-red-600 dark:text-red-400',
+                          sensor.trend === 'down' && 'text-green-600 dark:text-green-400',
+                          sensor.trend === 'stable' && 'text-gray-600 dark:text-slate-400'
                         )}>
                           <Icon
                             name={sensor.trend === 'up' ? 'ChevronUpIcon' : sensor.trend === 'down' ? 'ChevronDownIcon' : 'MinusIcon'}
@@ -239,7 +242,7 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
                       )}
                     </div>
                   </div>
-                  <div className="text-xs text-gray-600">
+                  <div className="text-xs text-gray-600 dark:text-slate-400">
                     {sensor.location} • Updated {sensor.lastUpdate.toLocaleTimeString()}
                   </div>
                 </div>
@@ -254,7 +257,7 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
               recentCCTVEvents.map((event) => (
                 <div
                   key={event.id}
-                  className="bg-gray-50 rounded-lg p-4 cursor-pointer hover:bg-gray-100 transition-colors"
+                  className="bg-gray-50 dark:bg-slate-800 rounded-lg p-4 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
                   onClick={() => onCCTVEventClick?.(event)}
                 >
                   <div className="flex items-start space-x-3">
@@ -267,15 +270,15 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
                     )}
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-1">
-                        <span className="font-medium text-gray-900">{event.cameraName}</span>
+                        <span className="font-medium text-gray-900 dark:text-slate-100">{event.cameraName}</span>
                         <StatusIndicator status={getEventTypeColor(event.eventType)} />
                       </div>
-                      <p className="text-sm text-gray-700 mb-2">{event.description}</p>
-                      <div className="flex items-center justify-between text-xs text-gray-600">
+                      <p className="text-sm text-gray-700 dark:text-slate-300 mb-2">{event.description}</p>
+                      <div className="flex items-center justify-between text-xs text-gray-600 dark:text-slate-400">
                         <span>{event.location}</span>
                         <span>{event.timestamp.toLocaleString()}</span>
                       </div>
-                      <div className="text-xs text-gray-500 mt-1">
+                      <div className="text-xs text-gray-500 dark:text-slate-500 mt-1">
                         Confidence: {event.confidence}%
                       </div>
                     </div>
@@ -283,7 +286,7 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
                 </div>
               ))
             ) : (
-              <div className="text-center py-8 text-gray-500">
+              <div className="text-center py-8 text-gray-500 dark:text-slate-400">
                 <Icon name="EyeIcon" size="lg" className="mb-2" />
                 <p>No recent CCTV events</p>
               </div>
@@ -297,7 +300,7 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
               recentCommunityReports.map((report) => (
                 <div
                   key={report.id}
-                  className="bg-gray-50 rounded-lg p-4 cursor-pointer hover:bg-gray-100 transition-colors"
+                  className="bg-gray-50 dark:bg-slate-800 rounded-lg p-4 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
                   onClick={() => onCommunityReportClick?.(report)}
                 >
                   <div className="flex items-start space-x-3">
@@ -305,15 +308,15 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
                       <div className="flex items-center justify-between mb-1">
                         <div className="flex items-center space-x-2">
                           <Icon name="UserIcon" size="sm" />
-                          <span className="font-medium text-gray-900">{report.author}</span>
+                          <span className="font-medium text-gray-900 dark:text-slate-100">{report.author}</span>
                           {report.verified && (
-                            <Icon name="CheckCircleIcon" size="sm" className="text-green-600" />
+                            <Icon name="CheckCircleIcon" size="sm" className="text-green-600 dark:text-green-400" />
                           )}
                         </div>
                         <StatusIndicator status={getUrgencyColor(report.urgency)} />
                       </div>
-                      <p className="text-sm text-gray-700 mb-2">{report.description}</p>
-                      <div className="flex items-center justify-between text-xs text-gray-600 mb-2">
+                      <p className="text-sm text-gray-700 dark:text-slate-300 mb-2">{report.description}</p>
+                      <div className="flex items-center justify-between text-xs text-gray-600 dark:text-slate-400 mb-2">
                         <span>{report.location}</span>
                         <span>{report.timestamp.toLocaleString()}</span>
                       </div>
@@ -321,7 +324,7 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
                         {report.tags.map((tag, index) => (
                           <span
                             key={index}
-                            className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
+                            className="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 text-xs px-2 py-1 rounded-full"
                           >
                             {tag}
                           </span>
@@ -332,7 +335,7 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
                 </div>
               ))
             ) : (
-              <div className="text-center py-8 text-gray-500">
+              <div className="text-center py-8 text-gray-500 dark:text-slate-400">
                 <Icon name="UserIcon" size="lg" className="mb-2" />
                 <p>No recent community reports</p>
               </div>

@@ -133,5 +133,6 @@ The application supports a dark mode theme to enhance user experience in low-lig
 
 - **Class-Based Theming:** Dark mode is enabled by adding a `dark` class to the `<html>` element.
 - **Theme Provider:** The `next-themes` library is used to manage theme switching and persistence.
-- **CSS Variables:** A set of CSS variables for colors is defined in `src/app/globals.css` for both light and dark modes.
-- **Component Styling:** All components use Tailwind's `dark:` variants to apply specific styles for dark mode.
+- **CSS Variables:** A comprehensive set of CSS variables for colors is defined in `src/app/globals.css` for both light and dark modes. This ensures a consistent and easily maintainable color scheme.
+- **Component Styling:** All components use Tailwind's `dark:` variants to apply specific styles for dark mode. The color palette is managed through CSS variables, which are then referenced in the `tailwind.config.js` file. This allows for a single source of truth for all theme-related colors.
+- **Theming Strategy:** The application uses a centralized theming strategy where all color definitions are stored in `globals.css` as CSS variables. The `tailwind.config.js` file is configured to use these variables, which allows for dynamic theme switching without requiring a rebuild of the CSS. This approach ensures that all components, including buttons, dropdowns, and other UI elements, correctly adapt their styling when the theme changes.

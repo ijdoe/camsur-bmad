@@ -110,7 +110,7 @@ const InteractiveMapContainer: React.FC<InteractiveMapContainerProps> = ({
   };
 
   return (
-    <div className={cn('relative bg-white rounded-lg border border-gray-200 overflow-hidden', className)}>
+    <div className={cn('relative bg-white dark:bg-slate-900 rounded-lg border border-gray-200 dark:border-slate-700 overflow-hidden', className)}>
       {/* Map Container */}
       <div style={{ height }} className="relative">
         <MapComponent />
@@ -129,10 +129,10 @@ const InteractiveMapContainer: React.FC<InteractiveMapContainerProps> = ({
 
       {/* Side Panel */}
       {showControls && (
-        <div className="absolute top-4 left-4 z-10 bg-white rounded-lg shadow-lg border border-gray-200 p-4 min-w-64">
+        <div className="absolute top-4 left-4 z-10 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-gray-200 dark:border-slate-700 p-4 min-w-64">
           {/* Layer Controls */}
           <div className="mb-4">
-            <h3 className="text-sm font-medium text-gray-900 mb-3">Map Layers</h3>
+            <h3 className="text-sm font-medium text-gray-900 dark:text-slate-100 mb-3">Map Layers</h3>
             <div className="space-y-2">
               {layers.map((layer) => (
                 <label key={layer.id} className="flex items-center space-x-2 cursor-pointer">
@@ -140,9 +140,9 @@ const InteractiveMapContainer: React.FC<InteractiveMapContainerProps> = ({
                     type="checkbox"
                     checked={layer.visible}
                     onChange={() => toggleLayer(layer.id)}
-                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="rounded border-gray-300 dark:border-slate-600 text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-400"
                   />
-                  <span className="text-sm text-gray-700">{layer.name}</span>
+                  <span className="text-sm text-gray-700 dark:text-slate-300">{layer.name}</span>
                   <div className={cn(
                     'w-3 h-3 rounded-full',
                     layer.type === 'boundary' && 'bg-blue-500',
@@ -157,30 +157,30 @@ const InteractiveMapContainer: React.FC<InteractiveMapContainerProps> = ({
 
           {/* Sensor Statistics */}
           <div className="mb-4">
-            <h3 className="text-sm font-medium text-gray-900 mb-3">Sensor Status</h3>
+            <h3 className="text-sm font-medium text-gray-900 dark:text-slate-100 mb-3">Sensor Status</h3>
             <div className="grid grid-cols-2 gap-2">
               <div className="text-center">
-                <div className="text-lg font-semibold text-gray-900">{sensorStats.total}</div>
-                <div className="text-xs text-gray-600">Total</div>
+                <div className="text-lg font-semibold text-gray-900 dark:text-slate-100">{sensorStats.total}</div>
+                <div className="text-xs text-gray-600 dark:text-slate-400">Total</div>
               </div>
               <div className="text-center">
-                <div className="text-lg font-semibold text-red-600">{sensorStats.critical}</div>
-                <div className="text-xs text-gray-600">Critical</div>
+                <div className="text-lg font-semibold text-red-600 dark:text-red-400">{sensorStats.critical}</div>
+                <div className="text-xs text-gray-600 dark:text-slate-400">Critical</div>
               </div>
               <div className="text-center">
-                <div className="text-lg font-semibold text-yellow-600">{sensorStats.warning}</div>
-                <div className="text-xs text-gray-600">Warning</div>
+                <div className="text-lg font-semibold text-yellow-600 dark:text-yellow-400">{sensorStats.warning}</div>
+                <div className="text-xs text-gray-600 dark:text-slate-400">Warning</div>
               </div>
               <div className="text-center">
-                <div className="text-lg font-semibold text-green-600">{sensorStats.normal}</div>
-                <div className="text-xs text-gray-600">Normal</div>
+                <div className="text-lg font-semibold text-green-600 dark:text-green-400">{sensorStats.normal}</div>
+                <div className="text-xs text-gray-600 dark:text-slate-400">Normal</div>
               </div>
             </div>
           </div>
 
           {/* Quick Actions */}
           <div>
-            <h3 className="text-sm font-medium text-gray-900 mb-3">Quick Actions</h3>
+            <h3 className="text-sm font-medium text-gray-900 dark:text-slate-100 mb-3">Quick Actions</h3>
             <div className="space-y-2">
               <Button variant="outline" size="sm" className="w-full justify-start">
                 <Icon name="EyeIcon" size="sm" className="mr-2" />
@@ -201,20 +201,20 @@ const InteractiveMapContainer: React.FC<InteractiveMapContainerProps> = ({
 
       {/* Selected Item Details */}
       {(selectedSensor || selectedInsight) && (
-        <div className="absolute bottom-4 left-4 right-4 z-10 bg-white rounded-lg shadow-lg border border-gray-200 p-4 max-w-md">
+        <div className="absolute bottom-4 left-4 right-4 z-10 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-gray-200 dark:border-slate-700 p-4 max-w-md">
           {selectedSensor && (
             <div>
               <div className="flex items-center justify-between mb-2">
-                <h4 className="text-sm font-medium text-gray-900">{selectedSensor.name}</h4>
+                <h4 className="text-sm font-medium text-gray-900 dark:text-slate-100">{selectedSensor.name}</h4>
                 <StatusIndicator status={getSensorStatusColor(selectedSensor.status)} />
               </div>
-              <div className="text-xs text-gray-600 space-y-1">
+              <div className="text-xs text-gray-600 dark:text-slate-400 space-y-1">
                 <div>ID: {selectedSensor.id}</div>
                 <div>Type: {selectedSensor.type}</div>
                 {selectedSensor.lastReading && (
                   <div>
                     Last Reading: {selectedSensor.lastReading.value} {selectedSensor.lastReading.unit}
-                    <span className="text-gray-400 ml-1">
+                    <span className="text-gray-400 dark:text-slate-500 ml-1">
                       ({selectedSensor.lastReading.timestamp.toLocaleTimeString()})
                     </span>
                   </div>
@@ -226,10 +226,10 @@ const InteractiveMapContainer: React.FC<InteractiveMapContainerProps> = ({
           {selectedInsight && (
             <div>
               <div className="flex items-center justify-between mb-2">
-                <h4 className="text-sm font-medium text-gray-900">Insight #{selectedInsight.id}</h4>
+                <h4 className="text-sm font-medium text-gray-900 dark:text-slate-100">Insight #{selectedInsight.id}</h4>
                 <StatusIndicator status={selectedInsight.status.toLowerCase() as any} />
               </div>
-              <div className="text-xs text-gray-600 space-y-1">
+              <div className="text-xs text-gray-600 dark:text-slate-400 space-y-1">
                 <div>Severity: Level {selectedInsight.severity}</div>
                 <div>Description: {selectedInsight.description}</div>
               </div>

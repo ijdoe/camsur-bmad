@@ -1,4 +1,4 @@
 #!/bin/bash
-cd frontend
+cd frontend-new
 npm install
 npx next dev

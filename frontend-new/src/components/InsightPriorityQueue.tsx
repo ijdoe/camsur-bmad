@@ -140,12 +140,12 @@ const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
   };
 
   return (
-    <div className={cn('flex flex-col h-full bg-white', className)}>
+    <div className={cn('flex flex-col h-full bg-white dark:bg-slate-900', className)}>
       {/* Header */}
-      <div className="p-4 border-b border-gray-200">
+      <div className="p-4 border-b border-gray-200 dark:border-slate-700">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-gray-900">Insight Priority Queue</h2>
-          <div className="flex items-center space-x-1 bg-gray-100 rounded-lg p-1">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-slate-100">Insight Priority Queue</h2>
+          <div className="flex items-center space-x-1 bg-gray-100 dark:bg-slate-800 rounded-lg p-1">
             <Button
               variant={viewMode === 'list' ? 'secondary' : 'ghost'}
               size="sm"
@@ -230,7 +230,7 @@ const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
               />
             </Button>
           </div>
-          <span className="text-sm text-gray-600">
+          <span className="text-sm text-gray-600 dark:text-slate-400">
             {filteredAndSortedInsights.length} of {insights.length} insights
           </span>
         </div>
@@ -240,10 +240,10 @@ const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
       <div className="flex-1 overflow-auto">
         {loading ? (
           <div className="flex items-center justify-center h-64">
-            <div className="text-gray-500">Loading insights...</div>
+            <div className="text-gray-500 dark:text-slate-400">Loading insights...</div>
           </div>
         ) : filteredAndSortedInsights.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-64 text-gray-500">
+          <div className="flex flex-col items-center justify-center h-64 text-gray-500 dark:text-slate-400">
             <Icon name="InformationCircleIcon" size="lg" className="mb-2" />
             <p>No insights match your filters</p>
             <Button variant="ghost" size="sm" onClick={clearAllFilters} className="mt-2">
