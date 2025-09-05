@@ -21,6 +21,7 @@ interface InsightCardProps extends React.HTMLAttributes<HTMLButtonElement> {
   isSelected: boolean;
   onAction: (insightId: string, action: string) => void;
   className?: string;
+  viewMode?: 'list' | 'grid';
 }
 
 const insightCardVariants = cva(
@@ -39,7 +40,7 @@ const insightCardVariants = cva(
 );
 
 const InsightCard = React.forwardRef<HTMLButtonElement, InsightCardProps>(
-  ({ insight, isSelected, onClick, onAction, className, ...props }, ref) => {
+  ({ insight, isSelected, onClick, onAction, className, viewMode = 'list', ...props }, ref) => {
     const formatTimestamp = (date: Date) => {
       const now = new Date();
       const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
@@ -63,16 +64,16 @@ const InsightCard = React.forwardRef<HTMLButtonElement, InsightCardProps>(
         {/* Grip Handle */}
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-gray-300 dark:bg-slate-600 rounded-l-lg" />
 
-        <div className="pl-2">
+        <div className="pl-2 flex flex-col min-w-0">
           {/* Header */}
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="text-base font-semibold text-gray-900 dark:text-slate-100 truncate">
-              {insight.insightType}
+          <div className="flex items-start justify-between mb-2 gap-2">
+            <h3 className={cn("font-semibold text-gray-900 dark:text-slate-100 flex-1 min-w-0", viewMode === 'list' ? 'text-base' : 'text-sm')}>
+              <span className="block truncate">{insight.insightType}</span>
             </h3>
             <Button
               variant="tertiary"
               size="sm"
-              className="h-7 w-7 p-1"
+              className="h-7 w-7 p-1 flex-shrink-0"
               onClick={(e) => {
                 e.stopPropagation();
                 onAction(insight.id, 'menu');
@@ -85,13 +86,13 @@ const InsightCard = React.forwardRef<HTMLButtonElement, InsightCardProps>(
 
           {/* Content Body */}
           <div className="mb-3">
-            <p className="text-sm text-gray-600 dark:text-slate-300 truncate">
-              {insight.affectedArea}
+            <p className={cn("text-gray-600 dark:text-slate-300", viewMode === 'list' ? 'text-sm' : 'text-xs')}>
+              <span className="block truncate">{insight.affectedArea}</span>
             </p>
-            <div className="flex items-center space-x-3 text-xs text-gray-500 dark:text-slate-400 mt-2">
+            <div className={cn("flex items-center space-x-3 text-xs text-gray-500 dark:text-slate-400 mt-2", viewMode === 'grid' && 'flex-wrap gap-x-2')}>
               <div className="flex items-center">
                 <Icon name="ExclamationTriangleIcon" size="sm" className="mr-1" />
-                <span>Severity {insight.severity}</span>
+                <span>S{insight.severity}</span>
               </div>
               <div className="flex items-center">
                 <Icon name="ChartBarIcon" size="sm" className="mr-1" />

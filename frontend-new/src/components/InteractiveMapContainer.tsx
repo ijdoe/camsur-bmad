@@ -79,7 +79,7 @@ const InteractiveMapContainer: React.FC<InteractiveMapContainerProps> = ({
     onSensorClick?.(sensor);
   }, [onSensorClick]);
 
-  const handleInsightClick = useCallback((insight: InsightOverlay) => {
+  const handleInsightClick = useCallback((insight: InsightData) => {
     setSelectedInsight(insight);
     setSelectedSensor(null);
     onInsightClick?.(insight);
@@ -113,7 +113,13 @@ const InteractiveMapContainer: React.FC<InteractiveMapContainerProps> = ({
     <div className={cn('relative bg-white dark:bg-slate-900 rounded-lg border border-gray-200 dark:border-slate-700 overflow-hidden', className)}>
       {/* Map Container */}
       <div style={{ height }} className="relative">
-        <MapComponent />
+        <MapComponent
+          sensors={sensors}
+          insights={insights}
+          lguBoundaries={lguBoundaries}
+          onSensorClick={handleSensorClick}
+          onInsightClick={handleInsightClick}
+        />
 
         {/* Controls Toggle */}
         <Button
@@ -129,7 +135,7 @@ const InteractiveMapContainer: React.FC<InteractiveMapContainerProps> = ({
 
       {/* Side Panel */}
       {showControls && (
-        <div className="absolute top-4 left-4 z-10 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-gray-200 dark:border-slate-700 p-4 min-w-64">
+        <div className="absolute top-4 left-4 z-10 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-gray-200 dark:border-slate-700 p-4 min-w-64 overflow-y-auto" style={{ maxHeight: 'calc(100% - 2rem)' }}>
           {/* Layer Controls */}
           <div className="mb-4">
             <h3 className="text-sm font-medium text-gray-900 dark:text-slate-100 mb-3">Map Layers</h3>

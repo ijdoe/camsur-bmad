@@ -101,9 +101,19 @@ The core UI component library has been implemented based on a thorough UX audit 
 
 With the foundational component library in place, the next phase of work will involve:
 
-1.  **Design QA in Storybook:** A thorough review of the implemented components in Storybook to ensure they perfectly match the UX specifications.
-2.  **Resume Feature Development:** Continue with the implementation of the remaining application features, leveraging the new, robust component library to ensure a high-quality and consistent user experience.
+1.  **Design QA in Storybook:** A thorough review of the implemented components in Storybook to ensure they perfectly match the UX specifications. **(Completed)**
+    *   Storybook has been installed, configured, and populated with stories for all core UI components. The environment is now ready for a full design review.
+2.  **Resume Feature Development:** Continue with the implementation of the remaining application features, leveraging the new, robust component library to ensure a high-quality and consistent user experience. **(In Progress)**
+    *   Implemented the core dashboard layout and integrated all major UI components.
+    *   Created a data fetching layer with `react-query` to populate the dashboard with real-time data.
+    *   Established mock API endpoints to provide data during development.
 - **Dropdown Component Fix:** Fixed a bug where the dropdown component had a transparent background, making it difficult to read. The issue was resolved by applying a standard Tailwind CSS background color directly to the component, which ensures it displays correctly in both light and dark modes.
+- **InsightCard Text Overflow Fix:** Resolved a UI bug in the `InsightCard` component where text would overflow its container when displayed in a grid view. The fix involved adjusting the flexbox properties of the card's internal layout to ensure proper text truncation.
+- **UI Polish Pass:** Conducted a UI polish pass to prepare for client demos. This included resizing icons in the main navigation for consistency and adding visual separators in the main dashboard for better layout clarity.
+- **Interactive Map Integration:** Completed the integration of the interactive map component. This involved refactoring the `MapComponent` to use dynamic data, unifying data types across all map-related components (`DashboardContainer`, `InteractiveMapContainer`, `MapComponent`) to ensure type safety, and wiring up the click handlers for interactive info panels.
+- **Insight Detail Panel Fixes:** Resolved two UI issues in the `InsightDetailPanel`. First, corrected a dark mode visibility bug where the insight title was unreadable by applying the correct text color. Second, restored the missing sample evidence data by updating the mock API endpoint, ensuring the component displays data correctly for demos.
+- **Mock Recommendations Added:** Added mock recommendation data to the insights API endpoint to populate the "Recommendations" tab in the Insight Detail Panel, ensuring all tabs have sample data for demos.
+- **Restored Mock Evidence for Insight #2:** Added mock evidence data for Insight #2 to the insights API endpoint, ensuring that all insights have complete sample data for demos.
 
 ## 4. Important Patterns & Preferences
 

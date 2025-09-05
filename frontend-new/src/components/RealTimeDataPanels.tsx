@@ -184,7 +184,7 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
       </div>
 
       {/* Content */}
-      <div className="p-4">
+      <div className="p-4 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 450px)' }}>
         {activeTab === 'sensors' && (
           <div className="space-y-4">
             {/* Sensor Statistics */}

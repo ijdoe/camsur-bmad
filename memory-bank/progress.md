@@ -42,11 +42,15 @@
     *   **Epic 7.2:** Renamed to "Insight Generation Engine" and updated user stories to focus on building specific insights from the catalog.
 *   **Semantic Button Hierarchy Implemented:** Based on user feedback, a clear visual hierarchy for buttons was established. This involved creating a new semantic color palette, refactoring the `Button` component with `primary`, `secondary`, `tertiary`, and `destructive-outline` variants, and applying these variants to ensure actions are intuitive and clearly distinguishable in both light and dark modes.
 *   **UI Component Library Implemented:** The core UI component library has been implemented based on a thorough UX audit and detailed specifications. This provides a solid, consistent, and accessible foundation for all future frontend development.
+*   **UI Polish Pass for Demo:** Completed a UI polish pass to enhance the visual quality of the dashboard for client demonstrations. This included fixing icon sizing inconsistencies and improving layout clarity.
+*   **Interactive Map Integrated:** The interactive map is now fully integrated and functional, displaying dynamic data for sensors and insights with interactive pop-up panels.
 
 ## 2. What's Left to Build (MVP for Sales Demo)
 
-*   **Design QA in Storybook:** Conduct a thorough review of the implemented components in Storybook to ensure they perfectly match the UX specifications.
-*   **Resume Feature Development:** Continue with the remaining epics in a BMAD-compliant manner.
+*   **Design QA in Storybook:** Conduct a thorough review of the implemented components in Storybook to ensure they perfectly match the UX specifications. **(Environment Ready)**
+*   **Resume Feature Development:** Continue with the remaining epics in a BMAD-compliant manner. **(In Progress)**
+    *   Implemented the core dashboard page, integrating all major UI components.
+    *   Established a data fetching layer using `react-query` and created mock API endpoints to populate the dashboard with real-time data.
 
 ## 3. Current Status
 

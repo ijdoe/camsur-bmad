@@ -266,6 +266,7 @@ const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
                 isSelected={insight.id === selectedInsightId}
                 onClick={() => onInsightClick(insight.id)}
                 onAction={onInsightAction}
+                viewMode={viewMode}
                 className={viewMode === 'grid' ? 'h-auto' : ''}
               />
             ))}

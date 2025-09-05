@@ -144,7 +144,7 @@ const InsightDetailPanel: React.FC<InsightDetailPanelProps> = ({
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-gray-200">
         <div>
-          <h2 className="text-lg font-semibold text-gray-900">Insight #{insight.id}</h2>
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-slate-100">Insight #{insight.id}</h2>
           <div className="flex items-center space-x-2 mt-1">
             <StatusIndicator status={insight.status as any} />
             <span className="text-sm text-gray-600">

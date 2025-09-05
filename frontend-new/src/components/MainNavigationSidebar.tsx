@@ -212,7 +212,7 @@ const MainNavigationSidebar: React.FC<MainNavigationSidebarProps> = ({
               onClick={toggleTheme}
               aria-label={`Switch to ${theme === 'light' ? 'dark' : theme === 'dark' ? 'system' : 'light'} theme`}
             >
-              <Icon name={getThemeIcon()} size="sm" />
+              <Icon name={getThemeIcon()} size="md" />
             </Button>
             <Button
               variant="tertiary"
@@ -220,7 +220,7 @@ const MainNavigationSidebar: React.FC<MainNavigationSidebarProps> = ({
               onClick={onLogout}
               aria-label="Logout"
             >
-              <Icon name="ArrowPathIcon" size="sm" />
+              <Icon name="ArrowPathIcon" size="md" />
             </Button>
           </div>
         )}
