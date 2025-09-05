@@ -23,6 +23,20 @@
   --input: #e2e8f0;
   --ring: #2563eb;
   --radius: 0.5rem;
+
+  /* Action Colors */
+  --primary-action: hsl(221 83% 53%);
+  --primary-action-hover: hsl(221 83% 48%);
+  --primary-action-foreground: hsl(0 0% 100%);
+
+  --secondary-action: hsl(210 40% 96.1%);
+  --secondary-action-hover: hsl(210 40% 93.1%);
+  --secondary-action-foreground: hsl(215 28% 17%);
+
+  --tertiary-action: transparent;
+  --tertiary-action-hover: hsl(210 40% 98%);
+  --tertiary-action-foreground: hsl(215 20% 65%);
+  --tertiary-action-hover-foreground: hsl(215 28% 17%);
 }
 
 .dark {
@@ -45,6 +59,20 @@
   --border: #334155;
   --input: #334155;
   --ring: #3b82f6;
+
+  /* Action Colors */
+  --primary-action: hsl(217 91% 60%);
+  --primary-action-hover: hsl(217 91% 55%);
+  --primary-action-foreground: hsl(0 0% 100%);
+
+  --secondary-action: hsl(215 28% 27%);
+  --secondary-action-hover: hsl(215 28% 32%);
+  --secondary-action-foreground: hsl(210 40% 98%);
+
+  --tertiary-action: transparent;
+  --tertiary-action-hover: hsl(215 28% 22%);
+  --tertiary-action-foreground: hsl(215 20% 65%);
+  --tertiary-action-hover-foreground: hsl(210 40% 98%);
 }
 
 @theme inline {

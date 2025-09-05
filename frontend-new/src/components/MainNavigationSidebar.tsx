@@ -99,8 +99,8 @@ const MainNavigationSidebar: React.FC<MainNavigationSidebarProps> = ({
           </div>
         )}
         <Button
-          variant="ghost"
-          size="icon"
+          variant="tertiary"
+          size="sm"
           onClick={() => setIsCollapsed(!isCollapsed)}
           className="ml-auto"
           aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
@@ -118,7 +118,7 @@ const MainNavigationSidebar: React.FC<MainNavigationSidebarProps> = ({
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
-                variant="outline"
+                variant="secondary"
                 className="w-full justify-between"
               >
                 <span>{lgu.name}</span>
@@ -146,7 +146,7 @@ const MainNavigationSidebar: React.FC<MainNavigationSidebarProps> = ({
           return (
             <Button
               key={item.id}
-              variant={isActive ? 'secondary' : 'ghost'}
+              variant={isActive ? 'secondary' : 'tertiary'}
               className={cn(
                 'w-full justify-start',
                 isCollapsed ? 'px-2' : 'px-3',
@@ -187,16 +187,16 @@ const MainNavigationSidebar: React.FC<MainNavigationSidebarProps> = ({
             </div>
             <div className="flex space-x-1">
               <Button
-                variant="ghost"
-                size="icon"
+                variant="tertiary"
+                size="sm"
                 onClick={toggleTheme}
                 aria-label={`Switch to ${theme === 'light' ? 'dark' : theme === 'dark' ? 'system' : 'light'} theme`}
               >
                 <Icon name={getThemeIcon()} size="sm" />
               </Button>
               <Button
-                variant="ghost"
-                size="icon"
+                variant="tertiary"
+                size="sm"
                 onClick={onLogout}
                 aria-label="Logout"
               >
@@ -207,16 +207,16 @@ const MainNavigationSidebar: React.FC<MainNavigationSidebarProps> = ({
         ) : (
           <div className="flex flex-col space-y-2">
             <Button
-              variant="ghost"
-              size="icon"
+              variant="tertiary"
+              size="sm"
               onClick={toggleTheme}
               aria-label={`Switch to ${theme === 'light' ? 'dark' : theme === 'dark' ? 'system' : 'light'} theme`}
             >
               <Icon name={getThemeIcon()} size="sm" />
             </Button>
             <Button
-              variant="ghost"
-              size="icon"
+              variant="tertiary"
+              size="sm"
               onClick={onLogout}
               aria-label="Logout"
             >

@@ -145,7 +145,7 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
             </span>
           )}
           <Button
-            variant="ghost"
+            variant="tertiary"
             size="sm"
             onClick={handleRefresh}
             disabled={!onRefresh}
@@ -164,7 +164,7 @@ const RealTimeDataPanels: React.FC<RealTimeDataPanelsProps> = ({
         ].map((tab) => (
           <Button
             key={tab.id}
-            variant={activeTab === tab.id ? 'secondary' : 'ghost'}
+            variant={activeTab === tab.id ? 'secondary' : 'tertiary'}
             size="sm"
             className={cn(
               "flex-1 rounded-none border-b-2 relative",

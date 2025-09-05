@@ -3,68 +3,43 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 import { Button } from './Button';
 import { Icon } from './Icon';
+import { StatusIndicator } from './StatusIndicator';
 
 interface InsightCardData {
   id: string;
   insightType: string;
   affectedArea: string;
-  severity: number; // 1-5 scale
-  confidence: number; // 0-100 percentage
+  severity: number;
+  confidence: number;
   timestamp: Date;
   status: 'Draft' | 'Pending Review' | 'Approved' | 'Disseminated' | 'Rescinded';
-  geometry?: any; // GeoJSON.Polygon
+  hotspotScore?: number;
 }
 
-interface InsightCardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface InsightCardProps extends React.HTMLAttributes<HTMLButtonElement> {
   insight: InsightCardData;
-  onClick?: () => void;
+  isSelected: boolean;
+  onAction: (insightId: string, action: string) => void;
   className?: string;
 }
 
 const insightCardVariants = cva(
-  'relative cursor-pointer transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-lg border bg-white shadow-sm hover:shadow-md',
+  'relative w-full text-left p-4 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded-lg border bg-white dark:bg-slate-800 shadow-sm hover:shadow-md hover:bg-slate-50 dark:hover:bg-slate-700/50',
   {
     variants: {
-      severity: {
-        1: 'border-l-4 border-l-green-500', // Low severity
-        2: 'border-l-4 border-l-green-500',
-        3: 'border-l-4 border-l-yellow-500', // Medium severity
-        4: 'border-l-4 border-l-red-500', // High severity
-        5: 'border-l-4 border-l-red-500',
-      },
-      status: {
-        'Draft': 'bg-gray-50',
-        'Pending Review': '',
-        'Approved': 'bg-green-50 border-green-200',
-        'Disseminated': 'bg-blue-50 border-blue-200',
-        'Rescinded': 'bg-gray-50 border-gray-200',
+      isSelected: {
+        true: 'border-blue-500 bg-blue-50/50 dark:bg-blue-900/20 shadow-md',
+        false: 'border-gray-200 dark:border-slate-700',
       },
     },
     defaultVariants: {
-      severity: 1,
-      status: 'Pending Review',
+      isSelected: false,
     },
   }
 );
 
-const statusIconMap = {
-  'Draft': 'InformationCircleIcon',
-  'Pending Review': 'BellIcon',
-  'Approved': 'CheckCircleIcon',
-  'Disseminated': 'PlayIcon',
-  'Rescinded': 'XCircleIcon',
-} as const;
-
-const statusColorMap = {
-  'Draft': 'text-gray-500',
-  'Pending Review': 'text-blue-500',
-  'Approved': 'text-green-500',
-  'Disseminated': 'text-blue-500',
-  'Rescinded': 'text-gray-500',
-} as const;
-
-const InsightCard = React.forwardRef<HTMLDivElement, InsightCardProps>(
-  ({ insight, onClick, className, ...props }, ref) => {
+const InsightCard = React.forwardRef<HTMLButtonElement, InsightCardProps>(
+  ({ insight, isSelected, onClick, onAction, className, ...props }, ref) => {
     const formatTimestamp = (date: Date) => {
       const now = new Date();
       const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
@@ -75,105 +50,71 @@ const InsightCard = React.forwardRef<HTMLDivElement, InsightCardProps>(
       return date.toLocaleDateString();
     };
 
-    const getSeverityLabel = (severity: number) => {
-      if (severity <= 2) return 'Low';
-      if (severity <= 3) return 'Medium';
-      return 'High';
-    };
-
-    const getSeverityColor = (severity: number) => {
-      if (severity <= 2) return 'text-green-600';
-      if (severity <= 3) return 'text-yellow-600';
-      return 'text-red-600';
-    };
+    const fullAriaLabel = `Insight: ${insight.insightType} for ${insight.affectedArea}. Severity Level ${insight.severity}. Confidence ${insight.confidence}%. Status: ${insight.status}. Press to view details.`;
 
     return (
-      <div
+      <button
         ref={ref}
-        className={cn(
-          insightCardVariants({
-            severity: insight.severity as any,
-            status: insight.status,
-            className
-          })
-        )}
+        className={cn(insightCardVariants({ isSelected, className }))}
         onClick={onClick}
-        role="button"
-        tabIndex={0}
-        aria-label={`Review insight: ${insight.insightType} for ${insight.affectedArea}`}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            onClick?.();
-          }
-        }}
+        aria-label={fullAriaLabel}
         {...props}
       >
-        {/* Status Icon */}
-        <div className="absolute top-3 right-3">
-          <Icon
-            name={statusIconMap[insight.status]}
-            className={cn('h-5 w-5', statusColorMap[insight.status])}
-          />
-        </div>
+        {/* Grip Handle */}
+        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gray-300 dark:bg-slate-600 rounded-l-lg" />
 
-        {/* Status Badge */}
-        {insight.status !== 'Pending Review' && (
-          <div className="absolute top-3 left-3">
-            <span className={cn(
-              'inline-flex items-center px-2 py-1 rounded-full text-xs font-medium',
-              insight.status === 'Approved' && 'bg-green-100 text-green-800',
-              insight.status === 'Disseminated' && 'bg-blue-100 text-blue-800',
-              insight.status === 'Rescinded' && 'bg-gray-100 text-gray-800',
-              insight.status === 'Draft' && 'bg-gray-100 text-gray-800'
-            )}>
-              {insight.status}
-            </span>
-          </div>
-        )}
-
-        <div className="p-4 pt-12">
-          {/* Insight Type */}
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
-            {insight.insightType}
-          </h3>
-
-          {/* Affected Area */}
-          <p className="text-sm text-gray-600 mb-3">
-            {insight.affectedArea}
-          </p>
-
-          {/* Severity and Confidence */}
-          <div className="flex items-center justify-between text-xs mb-4">
-            <span className={cn('font-medium', getSeverityColor(insight.severity))}>
-              {getSeverityLabel(insight.severity)} Severity
-            </span>
-            <span className="text-gray-500">
-              {insight.confidence}% confidence
-            </span>
-          </div>
-
-          {/* Timestamp */}
-          <div className="flex items-center justify-between">
-            <span className="text-xs text-gray-500">
-              {formatTimestamp(insight.timestamp)}
-            </span>
-
-            {/* Quick Action Button */}
+        <div className="pl-2">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-base font-semibold text-gray-900 dark:text-slate-100 truncate">
+              {insight.insightType}
+            </h3>
             <Button
-              variant="ghost"
+              variant="tertiary"
               size="sm"
-              className="h-8 px-2 text-xs"
+              className="h-7 w-7 p-1"
               onClick={(e) => {
                 e.stopPropagation();
-                onClick?.();
+                onAction(insight.id, 'menu');
               }}
+              aria-label={`Actions for insight ${insight.id}`}
             >
-              Review
+              <Icon name="EllipsisVerticalIcon" size="sm" />
             </Button>
           </div>
+
+          {/* Content Body */}
+          <div className="mb-3">
+            <p className="text-sm text-gray-600 dark:text-slate-300 truncate">
+              {insight.affectedArea}
+            </p>
+            <div className="flex items-center space-x-3 text-xs text-gray-500 dark:text-slate-400 mt-2">
+              <div className="flex items-center">
+                <Icon name="ExclamationTriangleIcon" size="sm" className="mr-1" />
+                <span>Severity {insight.severity}</span>
+              </div>
+              <div className="flex items-center">
+                <Icon name="ChartBarIcon" size="sm" className="mr-1" />
+                <span>{insight.confidence}%</span>
+              </div>
+              {insight.hotspotScore && (
+                <div className="flex items-center">
+                  <Icon name="FireIcon" size="sm" className="mr-1" />
+                  <span>{insight.hotspotScore}</span>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="flex items-center justify-between">
+            <StatusIndicator status={insight.status as any} />
+            <span className="text-xs text-gray-500 dark:text-slate-400">
+              {formatTimestamp(insight.timestamp)}
+            </span>
+          </div>
         </div>
-      </div>
+      </button>
     );
   }
 );

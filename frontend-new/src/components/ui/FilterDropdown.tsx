@@ -87,7 +87,7 @@ const FilterDropdown = React.forwardRef<HTMLDivElement, FilterDropdownProps>(
       <div ref={ref || dropdownRef} className={cn('relative', className)} {...props}>
         {/* Trigger Button */}
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={handleToggle}
           disabled={disabled}
           className={cn(
@@ -129,7 +129,7 @@ const FilterDropdown = React.forwardRef<HTMLDivElement, FilterDropdownProps>(
                   {getSelectedCount()} selected
                 </span>
                 <Button
-                  variant="ghost"
+                  variant="tertiary"
                   size="sm"
                   onClick={handleClearAll}
                   className="h-6 px-2 text-xs text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200"
@@ -182,7 +182,7 @@ const FilterDropdown = React.forwardRef<HTMLDivElement, FilterDropdownProps>(
             {multiple && (
               <div className="p-2 border-t border-gray-100 dark:border-slate-700">
                 <Button
-                  variant="default"
+                  variant="primary"
                   size="sm"
                   onClick={() => setIsOpen(false)}
                   className="w-full"

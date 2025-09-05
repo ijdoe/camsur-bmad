@@ -136,3 +136,36 @@ The application supports a dark mode theme to enhance user experience in low-lig
 - **CSS Variables:** A comprehensive set of CSS variables for colors is defined in `src/app/globals.css` for both light and dark modes. This ensures a consistent and easily maintainable color scheme.
 - **Component Styling:** All components use Tailwind's `dark:` variants to apply specific styles for dark mode. The color palette is managed through CSS variables, which are then referenced in the `tailwind.config.js` file. This allows for a single source of truth for all theme-related colors.
 - **Theming Strategy:** The application uses a centralized theming strategy where all color definitions are stored in `globals.css` as CSS variables. The `tailwind.config.js` file is configured to use these variables, which allows for dynamic theme switching without requiring a rebuild of the CSS. This approach ensures that all components, including buttons, dropdowns, and other UI elements, correctly adapt their styling when the theme changes.
+
+### 7.2. Semantic Button Hierarchy
+
+To ensure a clear and intuitive user experience, the application employs a semantic button hierarchy. This system is designed to visually distinguish between primary, secondary, and tertiary actions, guiding the user and reducing the risk of incorrect actions in a high-stakes environment.
+
+- **Semantic Variants:** The `Button` component uses a set of semantic variants to define the visual importance of an action:
+  - `primary`: For the most critical, affirmative action on a view (e.g., "Approve").
+  - `secondary`: For less critical actions that are still important (e.g., "Edit Geometry").
+  - `tertiary`: For actions that should be de-emphasized (e.g., "Cancel").
+  - `destructive`: For actions that result in the deletion of data and have significant consequences.
+  - `destructive-outline`: For destructive actions that are secondary in nature, providing a clear warning without being as prominent as the primary destructive style (e.g., "Rescind").
+
+- **CSS Variable-Driven:** The styles for these variants are defined using a dedicated set of CSS variables in `globals.css` for both light and dark modes. This ensures a consistent and easily maintainable implementation.
+
+- **Usage Guidelines:** Developers should select the button variant that best matches the semantic meaning of the action, rather than its appearance. This ensures a consistent and predictable user interface across the entire application.
+
+### 7.3. Atomic Component Library
+
+The frontend is built using a custom-designed component library that follows the principles of Atomic Design. This ensures a high degree of consistency, reusability, and maintainability. All core components have been implemented in `frontend-new/src/components/ui/` and are accompanied by detailed UX specifications.
+
+**Core Components:**
+
+*   **`InsightCard`**: The primary summary view for an insight.
+*   **`Button`**: The core interactive element with a full semantic hierarchy.
+*   **`Icon`**: The standardized SVG icon rendering component.
+*   **`StatusIndicator`**: The visual indicator for an insight's lifecycle state.
+*   **`Tag`**: The component for labeling and categorization.
+*   **`SearchBar`**: A dedicated input field for searching.
+*   **`FilterDropdown`**: A dropdown with checkboxes for multi-select filtering.
+*   **`TabNavigation`**: The tab system used to switch between different views.
+*   **`DataCard`**: A small card for displaying a single data point.
+*   **`TextArea`**: A multi-line text input for adding notes.
+*   **`Badge`**: A generic component for displaying statuses and other labels.

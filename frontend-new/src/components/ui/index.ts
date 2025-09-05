@@ -10,3 +10,5 @@ export * from './DataCard';
 export * from './Alert';
 export * from './Table';
 export * from './Dropdown';
+export * from './Badge';
+export * from './TextArea';

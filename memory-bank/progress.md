@@ -40,16 +40,18 @@
     *   **Product Requirements Document:** Added formal "Insight Generation & Management" section with the Phase 1 Insight Catalog.
     *   **UX Specification:** Updated workflows and UI components to focus on "Insight Cards," "Priority Queue," and "Evidence Panel."
     *   **Epic 7.2:** Renamed to "Insight Generation Engine" and updated user stories to focus on building specific insights from the catalog.
+*   **Semantic Button Hierarchy Implemented:** Based on user feedback, a clear visual hierarchy for buttons was established. This involved creating a new semantic color palette, refactoring the `Button` component with `primary`, `secondary`, `tertiary`, and `destructive-outline` variants, and applying these variants to ensure actions are intuitive and clearly distinguishable in both light and dark modes.
+*   **UI Component Library Implemented:** The core UI component library has been implemented based on a thorough UX audit and detailed specifications. This provides a solid, consistent, and accessible foundation for all future frontend development.
 
 ## 2. What's Left to Build (MVP for Sales Demo)
 
-*   **UI Component Library Implementation:** Build the foundational UI components in Storybook.
+*   **Design QA in Storybook:** Conduct a thorough review of the implemented components in Storybook to ensure they perfectly match the UX specifications.
 *   **Resume Feature Development:** Continue with the remaining epics in a BMAD-compliant manner.
 
 ## 3. Current Status
 
 *   **Phase:** Implementation.
-*   **Next Milestone:** Complete the UI Component Library.
+*   **Next Milestone:** Resume Feature Development.
 *   **Known Issues:** TimescaleDB incompatibility with PostgreSQL 14 remains an open issue to be addressed in the implementation phase.
 
 ## 4. Evolution of Project Decisions

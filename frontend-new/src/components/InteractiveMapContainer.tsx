@@ -182,15 +182,15 @@ const InteractiveMapContainer: React.FC<InteractiveMapContainerProps> = ({
           <div>
             <h3 className="text-sm font-medium text-gray-900 dark:text-slate-100 mb-3">Quick Actions</h3>
             <div className="space-y-2">
-              <Button variant="outline" size="sm" className="w-full justify-start">
+              <Button variant="secondary" size="sm" className="w-full justify-start">
                 <Icon name="EyeIcon" size="sm" className="mr-2" />
                 Zoom to Alerts
               </Button>
-              <Button variant="outline" size="sm" className="w-full justify-start">
+              <Button variant="secondary" size="sm" className="w-full justify-start">
                 <Icon name="MapIcon" size="sm" className="mr-2" />
                 Reset View
               </Button>
-              <Button variant="outline" size="sm" className="w-full justify-start">
+              <Button variant="secondary" size="sm" className="w-full justify-start">
                 <Icon name="ArrowPathIcon" size="sm" className="mr-2" />
                 Refresh Data
               </Button>
@@ -237,7 +237,7 @@ const InteractiveMapContainer: React.FC<InteractiveMapContainerProps> = ({
           )}
 
           <Button
-            variant="ghost"
+            variant="tertiary"
             size="sm"
             className="mt-3 w-full"
             onClick={() => {

@@ -71,7 +71,7 @@ const InsightDetailPanel: React.FC<InsightDetailPanelProps> = ({
       <div className={cn('flex flex-col h-full bg-white dark:bg-slate-900 border-l border-gray-200 dark:border-slate-700', className)}>
         <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-slate-700">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-slate-100">Insight Details</h2>
-          <Button variant="ghost" size="sm" onClick={onClose}>
+          <Button variant="tertiary" size="sm" onClick={onClose}>
             <Icon name="XMarkIcon" size="sm" />
           </Button>
         </div>
@@ -152,7 +152,7 @@ const InsightDetailPanel: React.FC<InsightDetailPanelProps> = ({
             </span>
           </div>
         </div>
-        <Button variant="ghost" size="sm" onClick={onClose}>
+        <Button variant="tertiary" size="sm" onClick={onClose}>
           <Icon name="XMarkIcon" size="sm" />
         </Button>
       </div>
@@ -167,7 +167,7 @@ const InsightDetailPanel: React.FC<InsightDetailPanelProps> = ({
         ].map((tab) => (
           <Button
             key={tab.id}
-            variant={activeTab === tab.id ? 'secondary' : 'ghost'}
+            variant={activeTab === tab.id ? 'secondary' : 'tertiary'}
             size="sm"
             className={cn(
               "flex-1 rounded-none border-b-2",
@@ -225,13 +225,13 @@ const InsightDetailPanel: React.FC<InsightDetailPanelProps> = ({
                   <>
                     <Button
                       onClick={() => onApprove(insight.id)}
-                      variant="default"
+                      variant="primary"
                     >
                       <Icon name="CheckCircleIcon" size="sm" className="mr-2" />
                       Approve
                     </Button>
                     <Button
-                      variant="destructive"
+                      variant="destructive-outline"
                       onClick={() => onRescind(insight.id)}
                     >
                       <Icon name="XCircleIcon" size="sm" className="mr-2" />
@@ -241,7 +241,7 @@ const InsightDetailPanel: React.FC<InsightDetailPanelProps> = ({
                 )}
               </div>
               <Button
-                variant="outline"
+                variant="secondary"
                 onClick={() => onEditGeometry(insight.id)}
               >
                 <Icon name="MapIcon" size="sm" className="mr-2" />

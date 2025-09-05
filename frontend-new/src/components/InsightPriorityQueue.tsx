@@ -26,6 +26,7 @@ interface Insight {
 
 interface InsightPriorityQueueProps {
   insights: Insight[];
+  selectedInsightId: string | null;
   onInsightClick: (insightId: string) => void;
   onInsightAction: (insightId: string, action: string) => void;
   className?: string;
@@ -37,6 +38,7 @@ type SortDirection = 'asc' | 'desc';
 
 const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
   insights,
+  selectedInsightId,
   onInsightClick,
   onInsightAction,
   className,
@@ -147,7 +149,7 @@ const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
           <h2 className="text-lg font-semibold text-gray-900 dark:text-slate-100">Insight Priority Queue</h2>
           <div className="flex items-center space-x-1 bg-gray-100 dark:bg-slate-800 rounded-lg p-1">
             <Button
-              variant={viewMode === 'list' ? 'secondary' : 'ghost'}
+              variant={viewMode === 'list' ? 'secondary' : 'tertiary'}
               size="sm"
               onClick={() => setViewMode('list')}
               className="flex-1 justify-center"
@@ -155,7 +157,7 @@ const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
               <Icon name="QueueListIcon" size="sm" />
             </Button>
             <Button
-              variant={viewMode === 'grid' ? 'secondary' : 'ghost'}
+              variant={viewMode === 'grid' ? 'secondary' : 'tertiary'}
               size="sm"
               onClick={() => setViewMode('grid')}
               className="flex-1 justify-center"
@@ -197,7 +199,7 @@ const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
               placeholder="All Levels"
             />
             {(selectedLGUs.length > 0 || selectedStatuses.length > 0 || selectedSeverities.length > 0 || searchQuery) && (
-              <Button variant="ghost" size="sm" onClick={clearAllFilters}>
+              <Button variant="tertiary" size="sm" onClick={clearAllFilters}>
                 Clear All
               </Button>
             )}
@@ -220,7 +222,7 @@ const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
               placeholder="Sort by"
             />
             <Button
-              variant="ghost"
+              variant="tertiary"
               size="sm"
               onClick={() => setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')}
             >
@@ -246,7 +248,7 @@ const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
           <div className="flex flex-col items-center justify-center h-64 text-gray-500 dark:text-slate-400">
             <Icon name="InformationCircleIcon" size="lg" className="mb-2" />
             <p>No insights match your filters</p>
-            <Button variant="ghost" size="sm" onClick={clearAllFilters} className="mt-2">
+            <Button variant="tertiary" size="sm" onClick={clearAllFilters} className="mt-2">
               Clear filters
             </Button>
           </div>
@@ -261,7 +263,9 @@ const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
               <InsightCard
                 key={insight.id}
                 insight={insight}
+                isSelected={insight.id === selectedInsightId}
                 onClick={() => onInsightClick(insight.id)}
+                onAction={onInsightAction}
                 className={viewMode === 'grid' ? 'h-auto' : ''}
               />
             ))}

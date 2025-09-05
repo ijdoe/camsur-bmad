@@ -72,31 +72,37 @@ The primary focus is on achieving **full BMAD methodology compliance**. We have 
 
 ## 4. Next Steps
 
-### Immediate Task: Dark Mode Implemented
+### Immediate Task: UI Component Library Complete
 
-The dark mode theme for the application has been implemented. This enhances the user experience and gives the platform a more mature, sophisticated feel.
+The core UI component library has been implemented based on a thorough UX audit and detailed specifications. This provides a solid, consistent, and accessible foundation for all future frontend development.
 
-#### Dark Mode Implementation Details
+#### UI Component Implementation Details
 
-1.  **Enabled Dark Mode in Tailwind CSS:**
-    *   Updated `tailwind.config.js` to enable the `class` strategy for dark mode.
+1.  **Component Audit & Prioritization:** A full audit of the application's UI was conducted to identify all necessary atomic and molecular components. These were then prioritized based on their importance to the core user workflow.
 
-2.  **Implemented a Theme Provider:**
-    *   Installed and used the `next-themes` library to manage theme switching.
-    *   Wrapped the root layout in `src/app/layout.tsx` with the `ThemeProvider`.
+2.  **Detailed UX Specifications:** Comprehensive UX specifications were created for ten key components, covering their anatomy, visual states, interaction design, accessibility, and usage guidelines.
 
-3.  **Created a Theme Toggle UI:**
-    *   Added a theme switcher button to the user profile section in `MainNavigationSidebar.tsx`.
-    *   The toggle provides "Light", "Dark", and "System" options.
+3.  **Implementation:** All ten components were implemented in `frontend-new/src/components/ui/`, either by creating new files or refactoring existing ones to align with the new specifications. This included:
+    *   `InsightCard`
+    *   `Button`
+    *   `Icon`
+    *   `StatusIndicator`
+    *   `Tag`
+    *   `SearchBar`
+    *   `FilterDropdown`
+    *   `TabNavigation`
+    *   `DataCard`
+    *   `TextArea`
+    *   `Badge`
 
-4.  **Defined Dark Mode Color Palette:**
-    *   Updated `src/app/globals.css` with dark mode CSS variables.
+4.  **TypeScript Error Resolution:** All TypeScript errors that arose from the component refactoring have been resolved, ensuring a stable codebase.
 
-5.  **Updated Component Styles:**
-    *   Added `dark:` variants to all UI components to ensure they adapt correctly.
+### Next Phase: Design QA & Feature Development
 
-6.  **Updated the Interactive Map:**
-    *   Modified `InteractiveMapContainer.tsx` to switch the Mapbox base map style to a dark version when the dark theme is active.
+With the foundational component library in place, the next phase of work will involve:
+
+1.  **Design QA in Storybook:** A thorough review of the implemented components in Storybook to ensure they perfectly match the UX specifications.
+2.  **Resume Feature Development:** Continue with the implementation of the remaining application features, leveraging the new, robust component library to ensure a high-quality and consistent user experience.
 
 ## 4. Important Patterns & Preferences
 
