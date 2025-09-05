@@ -103,6 +103,7 @@ With the foundational component library in place, the next phase of work will in
 
 1.  **Design QA in Storybook:** A thorough review of the implemented components in Storybook to ensure they perfectly match the UX specifications.
 2.  **Resume Feature Development:** Continue with the implementation of the remaining application features, leveraging the new, robust component library to ensure a high-quality and consistent user experience.
+- **Dropdown Component Fix:** Fixed a bug where the dropdown component had a transparent background, making it difficult to read. The issue was resolved by applying a standard Tailwind CSS background color directly to the component, which ensures it displays correctly in both light and dark modes.
 
 ## 4. Important Patterns & Preferences
 

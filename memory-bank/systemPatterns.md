@@ -169,3 +169,4 @@ The frontend is built using a custom-designed component library that follows the
 *   **`DataCard`**: A small card for displaying a single data point.
 *   **`TextArea`**: A multi-line text input for adding notes.
 *   **`Badge`**: A generic component for displaying statuses and other labels.
+*   **`Dropdown`**: A dropdown component that was recently fixed to address a transparency issue. The fix involved applying a standard Tailwind CSS background color directly to the component to ensure it displays correctly in both light and dark modes.
