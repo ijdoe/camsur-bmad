@@ -4,6 +4,7 @@ import { Button } from './ui/Button';
 import { Icon } from './ui/Icon';
 import { StatusIndicator } from './ui/StatusIndicator';
 import { cn } from '@/lib/utils';
+import { SensorData } from '@/lib/types';
 
 interface MapLayer {
   id: string;
@@ -12,25 +13,12 @@ interface MapLayer {
   type: 'boundary' | 'sensor' | 'alert' | 'overlay';
 }
 
-interface SensorData {
-  id: string;
-  name: string;
-  coordinates: [number, number];
-  status: 'critical' | 'warning' | 'normal' | 'offline';
-  type: 'AWLG' | 'ARG' | 'AWS' | 'CCTV';
-  lastReading?: {
-    value: number;
-    unit: string;
-    timestamp: Date;
-  };
-}
-
 interface InsightOverlay {
   id: string;
   geometry: any; // GeoJSON
   severity: number;
   status: 'Draft' | 'Pending Review' | 'Approved' | 'Disseminated' | 'Rescinded';
-  description: string;
+  description?: string;
 }
 
 interface InteractiveMapContainerProps {
@@ -79,7 +67,7 @@ const InteractiveMapContainer: React.FC<InteractiveMapContainerProps> = ({
     onSensorClick?.(sensor);
   }, [onSensorClick]);
 
-  const handleInsightClick = useCallback((insight: InsightData) => {
+  const handleInsightClick = useCallback((insight: InsightOverlay) => {
     setSelectedInsight(insight);
     setSelectedSensor(null);
     onInsightClick?.(insight);

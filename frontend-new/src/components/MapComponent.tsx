@@ -27,12 +27,20 @@ const ICON_MAPPING = {
   marker: { x: 0, y: 0, width: 128, height: 128, mask: true, anchorY: 128 },
 };
 
+interface InsightOverlay {
+  id: string;
+  geometry: any; // GeoJSON
+  severity: number;
+  status: 'Draft' | 'Pending Review' | 'Approved' | 'Disseminated' | 'Rescinded';
+  description?: string;
+}
+
 interface MapComponentProps {
   sensors: SensorData[];
-  insights: InsightData[];
+  insights: InsightOverlay[];
   lguBoundaries?: GeoJSON.FeatureCollection;
   onSensorClick: (sensor: SensorData) => void;
-  onInsightClick: (insight: InsightData) => void;
+  onInsightClick: (insight: InsightOverlay) => void;
 }
 
 export default function MapComponent({
@@ -79,14 +87,14 @@ export default function MapComponent({
     }),
     new GeoJsonLayer({
       id: 'active-alerts',
-      data: insights.map((i: InsightData) => ({ type: 'Feature', geometry: i.geometry, properties: i.properties })),
+      data: insights.map((i: InsightOverlay) => ({ type: 'Feature', geometry: i.geometry, properties: i })),
       stroked: true,
       filled: true,
       lineWidthMinPixels: 2,
       getFillColor: [255, 0, 0, 50],
       getLineColor: [255, 0, 0, 200],
       getLineWidth: 100,
-      onClick: (info) => info.object && onInsightClick(info.object as unknown as InsightData),
+      onClick: (info) => info.object && onInsightClick(info.object.properties as InsightOverlay),
     }),
   ].filter(Boolean);
 

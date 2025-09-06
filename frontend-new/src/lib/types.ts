@@ -5,7 +5,7 @@ export interface SensorData {
   name: string;
   coordinates: [number, number];
   status: 'critical' | 'warning' | 'normal' | 'offline';
-  type: string;
+  type: 'AWLG' | 'ARG' | 'AWS' | 'CCTV';
   lastReading?: {
     value: number;
     unit: string;

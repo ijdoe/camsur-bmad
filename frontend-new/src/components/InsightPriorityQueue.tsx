@@ -1,10 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import { InsightCard } from './ui/InsightCard';
-import { SearchBar } from './ui/SearchBar';
 import { FilterDropdown } from './ui/FilterDropdown';
 import { Button } from './ui/Button';
 import { Icon } from './ui/Icon';
 import { cn } from '@/lib/utils';
+import { useFilters } from '@/lib/FilterContext';
 
 interface Insight {
   id: string;
@@ -44,18 +44,25 @@ const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
   className,
   loading = false,
 }) => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedLGUs, setSelectedLGUs] = useState<string[]>([]);
-  const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
-  const [selectedSeverities, setSelectedSeverities] = useState<string[]>([]);
-  const [sortBy, setSortBy] = useState<SortOption>('priority');
-  const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
+  const { filters, updateFilters, resetFilters } = useFilters();
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
 
+  // Use global filter state directly
+  const searchQuery = filters.searchQuery;
+  const selectedStatuses = filters.selectedStatuses;
+  const selectedSeverities = filters.selectedSeverities;
+  const sortBy = filters.sortBy;
+  const sortDirection = filters.sortDirection;
+  const selectedMunicipalities = filters.selectedMunicipality ? [filters.selectedMunicipality] : [];
+
   // Extract unique values for filters
-  const lguOptions = useMemo(() => {
-    const uniqueLGUs = [...new Set(insights.map(insight => insight.lgu).filter(Boolean))];
-    return uniqueLGUs.map(lgu => ({ value: lgu!, label: lgu!, count: insights.filter(i => i.lgu === lgu).length }));
+  const municipalityOptions = useMemo(() => {
+    const uniqueMunicipalities = [...new Set(insights.map(insight => insight.municipality).filter(Boolean))];
+    return uniqueMunicipalities.map(municipality => ({
+      value: municipality!,
+      label: municipality!,
+      count: insights.filter(i => i.municipality === municipality).length
+    }));
   }, [insights]);
 
   const statusOptions = useMemo(() => {
@@ -83,11 +90,11 @@ const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
         insight.insightType.toLowerCase().includes(searchQuery.toLowerCase()) ||
         insight.affectedArea.toLowerCase().includes(searchQuery.toLowerCase());
 
-      const matchesLGU = selectedLGUs.length === 0 || selectedLGUs.includes(insight.lgu || '');
+      const matchesMunicipality = selectedMunicipalities.length === 0 || selectedMunicipalities.includes(insight.municipality || '');
       const matchesStatus = selectedStatuses.length === 0 || selectedStatuses.includes(insight.status);
       const matchesSeverity = selectedSeverities.length === 0 || selectedSeverities.includes(insight.severity.toString());
 
-      return matchesSearch && matchesLGU && matchesStatus && matchesSeverity;
+      return matchesSearch && matchesMunicipality && matchesStatus && matchesSeverity;
     });
 
     // Sort insights
@@ -123,22 +130,18 @@ const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
     });
 
     return filtered;
-  }, [insights, searchQuery, selectedLGUs, selectedStatuses, selectedSeverities, sortBy, sortDirection]);
+  }, [insights, searchQuery, selectedMunicipalities, selectedStatuses, selectedSeverities, sortBy, sortDirection]);
 
   const handleSortChange = (newSortBy: SortOption) => {
     if (sortBy === newSortBy) {
-      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+      updateFilters({ sortDirection: sortDirection === 'asc' ? 'desc' : 'asc' });
     } else {
-      setSortBy(newSortBy);
-      setSortDirection('desc');
+      updateFilters({ sortBy: newSortBy, sortDirection: 'desc' });
     }
   };
 
   const clearAllFilters = () => {
-    setSearchQuery('');
-    setSelectedLGUs([]);
-    setSelectedStatuses([]);
-    setSelectedSeverities([]);
+    resetFilters();
   };
 
   return (
@@ -167,43 +170,14 @@ const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
           </div>
         </div>
 
-        {/* Search and Filters */}
-        <div className="space-y-3">
-          <SearchBar
-            placeholder="Search insights, areas, or types..."
-            value={searchQuery}
-            onChange={setSearchQuery}
-            onClear={() => setSearchQuery('')}
-          />
-
-          <div className="flex flex-wrap gap-2">
-            <FilterDropdown
-              label="LGU"
-              options={lguOptions}
-              selectedValues={selectedLGUs}
-              onSelectionChange={setSelectedLGUs}
-              placeholder="All LGUs"
-            />
-            <FilterDropdown
-              label="Status"
-              options={statusOptions}
-              selectedValues={selectedStatuses}
-              onSelectionChange={setSelectedStatuses}
-              placeholder="All Statuses"
-            />
-            <FilterDropdown
-              label="Severity"
-              options={severityOptions}
-              selectedValues={selectedSeverities}
-              onSelectionChange={setSelectedSeverities}
-              placeholder="All Levels"
-            />
-            {(selectedLGUs.length > 0 || selectedStatuses.length > 0 || selectedSeverities.length > 0 || searchQuery) && (
-              <Button variant="tertiary" size="sm" onClick={clearAllFilters}>
-                Clear All
-              </Button>
-            )}
-          </div>
+        {/* Compact Filter Summary */}
+        <div className="text-sm text-gray-600 dark:text-slate-400">
+          {filteredAndSortedInsights.length} of {insights.length} insights
+          {(selectedMunicipalities.length > 0 || selectedStatuses.length > 0 || selectedSeverities.length > 0 || searchQuery) && (
+            <span className="ml-2 text-blue-600 dark:text-blue-400">
+              • Filtered
+            </span>
+          )}
         </div>
 
         {/* Sort Controls */}
@@ -224,7 +198,7 @@ const InsightPriorityQueue: React.FC<InsightPriorityQueueProps> = ({
             <Button
               variant="tertiary"
               size="sm"
-              onClick={() => setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')}
+              onClick={() => updateFilters({ sortDirection: sortDirection === 'asc' ? 'desc' : 'asc' })}
             >
               <Icon
                 name={sortDirection === 'asc' ? 'ChevronUpIcon' : 'ChevronDownIcon'}

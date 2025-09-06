@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { Button } from './ui/Button';
 import { Icon, type IconName } from './ui/Icon';
@@ -9,6 +9,8 @@ import {
   DropdownMenuTrigger,
 } from './ui/Dropdown';
 import { cn } from '@/lib/utils';
+import { useFilters } from '@/lib/FilterContext';
+import { useAuth } from '@/hooks/useAuth';
 
 interface NavigationItem {
   id: string;
@@ -63,6 +65,8 @@ const MainNavigationSidebar: React.FC<MainNavigationSidebarProps> = ({
 }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { filters, updateFilters } = useFilters();
+  const { role } = useAuth();
 
   const toggleTheme = () => {
     if (theme === 'light') {
@@ -78,6 +82,16 @@ const MainNavigationSidebar: React.FC<MainNavigationSidebarProps> = ({
     if (theme === 'light') return 'SunIcon';
     if (theme === 'dark') return 'MoonIcon';
     return 'ComputerDesktopIcon';
+  };
+
+  const handleMunicipalityChange = (lguId: string) => {
+    const selectedOption = lguOptions.find(option => option.id === lguId);
+    if (selectedOption) {
+      // Update global filter state
+      updateFilters({ selectedMunicipality: selectedOption.name });
+      // Call the original handler
+      onLGUChange(lguId);
+    }
   };
 
   return (
@@ -129,7 +143,7 @@ const MainNavigationSidebar: React.FC<MainNavigationSidebarProps> = ({
               {lguOptions.map((option) => (
                 <DropdownMenuItem
                   key={option.id}
-                  onSelect={() => onLGUChange(option.id)}
+                  onSelect={() => handleMunicipalityChange(option.id)}
                 >
                   {option.name}
                 </DropdownMenuItem>
@@ -168,6 +182,23 @@ const MainNavigationSidebar: React.FC<MainNavigationSidebarProps> = ({
             </Button>
           );
         })}
+        {/* Admin Navigation Item - Only show for Admin users */}
+        {role === 'Admin' && (
+          <Button
+            variant={currentPath === '/admin' ? 'secondary' : 'tertiary'}
+            className={cn(
+              'w-full justify-start',
+              isCollapsed ? 'px-2' : 'px-3',
+              currentPath === '/admin' && 'bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800'
+            )}
+            onClick={() => onNavigate('/admin')}
+          >
+            <Icon name="ShieldCheckIcon" size="sm" className="mr-3" />
+            {!isCollapsed && (
+              <span className="flex-1 text-left">Admin</span>
+            )}
+          </Button>
+        )}
       </nav>
 
       {/* User Profile Section */}

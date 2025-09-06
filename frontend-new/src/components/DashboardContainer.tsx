@@ -7,7 +7,9 @@ import { InsightPriorityQueue } from './InsightPriorityQueue';
 import { InteractiveMapContainer } from './InteractiveMapContainer';
 import { InsightDetailPanel } from './InsightDetailPanel';
 import { RealTimeDataContainer } from './RealTimeDataContainer';
+import { AdvancedFilterPanel } from './AdvancedFilterPanel';
 import { Icon } from './ui/Icon';
+import { SensorData } from '@/lib/types';
 
 const fetchInsights = async () => {
   // Replace with your actual API endpoint
@@ -16,7 +18,7 @@ const fetchInsights = async () => {
     throw new Error('Network response was not ok');
   }
   const insights = await res.json();
-  return insights.map((insight) => ({
+  return insights.map((insight: any) => ({
     ...insight,
     timestamp: new Date(insight.timestamp),
   }));
@@ -29,9 +31,12 @@ const fetchSensors = async (): Promise<SensorData[]> => {
       throw new Error('Network response was not ok');
     }
     const sensors = await res.json();
-    return sensors.map((sensor: SensorData) => ({
+    return sensors.map((sensor: any) => ({
         ...sensor,
-        lastUpdate: new Date(sensor.lastUpdate),
+        lastReading: sensor.lastReading ? {
+          ...sensor.lastReading,
+          timestamp: new Date(sensor.lastReading.timestamp)
+        } : undefined,
     }));
   };
 
@@ -73,6 +78,11 @@ const DashboardContainer: React.FC = () => {
         onLogout={() => {}}
       />
       <main className="flex flex-1 flex-col">
+        {/* Advanced Filter Panel */}
+        <div className="flex-shrink-0 border-b border-gray-200 dark:border-slate-700">
+          <AdvancedFilterPanel />
+        </div>
+
         <div className="flex flex-1 overflow-hidden">
           <div className="w-[400px] flex-shrink-0 overflow-y-auto border-r border-gray-200 dark:border-slate-700">
             <InsightPriorityQueue

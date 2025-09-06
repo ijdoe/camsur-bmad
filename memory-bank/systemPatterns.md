@@ -121,6 +121,7 @@ The system follows a **Defense in Depth** and **Zero Trust** security model. Key
 - **Role-Based Access Control (RBAC)** for authorization.
 - **Data Encryption** in transit (TLS) and at rest.
 - **Strict Network Segmentation** using a VPC and security groups.
+- **Environment Variable Management:** A dedicated `.env` file is used in the backend to store sensitive information like the `JWT_SECRET`. The application is configured to load this file at startup, ensuring that secrets are not hardcoded in the source code.
 
 **For full details, see:**
 - `docs/03-architecture/security/security-architecture.md`
@@ -170,3 +171,11 @@ The frontend is built using a custom-designed component library that follows the
 *   **`TextArea`**: A multi-line text input for adding notes.
 *   **`Badge`**: A generic component for displaying statuses and other labels.
 *   **`Dropdown`**: A dropdown component that was recently fixed to address a transparency issue. The fix involved applying a standard Tailwind CSS background color directly to the component to ensure it displays correctly in both light and dark modes.
+
+### 7.4. Authentication and Authorization
+
+The application uses a robust authentication and authorization system to protect sensitive data and ensure that users only have access to the features and information they are permitted to see.
+
+- **Authentication Flow:** The login process is handled by a dedicated `useAuth` hook that manages the user's authentication state. When a user successfully logs in, a JWT token is stored in the browser's local storage, and the user is redirected to the admin dashboard.
+- **Authorization:** The application uses a `RoleGuard` component to protect routes and components based on the user's role. This ensures that only authorized users can access sensitive areas of the application.
+- **Token Management:** The `useAuth` hook is responsible for managing the JWT token, including decoding it to get the user's information and removing it from local storage when the user logs out.

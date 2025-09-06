@@ -2,6 +2,9 @@
 
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ThemeProvider } from 'next-themes';
+import { FilterProvider } from '@/lib/FilterContext';
+import { AuthProvider } from '@/hooks/useAuth';
+import { AppLayout } from '@/components/AppLayout';
 import React from 'react';
 
 const queryClient = new QueryClient();
@@ -15,7 +18,11 @@ export function Providers({ children }: { children: React.ReactNode }) {
         enableSystem
         disableTransitionOnChange
       >
-        {children}
+        <AuthProvider>
+          <FilterProvider>
+            <AppLayout>{children}</AppLayout>
+          </FilterProvider>
+        </AuthProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );

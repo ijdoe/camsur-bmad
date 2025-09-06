@@ -16,7 +16,7 @@ interface InsightCardData {
   hotspotScore?: number;
 }
 
-interface InsightCardProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface InsightCardProps extends React.HTMLAttributes<HTMLDivElement> {
   insight: InsightCardData;
   isSelected: boolean;
   onAction: (insightId: string, action: string) => void;
@@ -39,7 +39,7 @@ const insightCardVariants = cva(
   }
 );
 
-const InsightCard = React.forwardRef<HTMLButtonElement, InsightCardProps>(
+const InsightCard = React.memo(React.forwardRef<HTMLDivElement, InsightCardProps>(
   ({ insight, isSelected, onClick, onAction, className, viewMode = 'list', ...props }, ref) => {
     const formatTimestamp = (date: Date) => {
       const now = new Date();
@@ -54,11 +54,19 @@ const InsightCard = React.forwardRef<HTMLButtonElement, InsightCardProps>(
     const fullAriaLabel = `Insight: ${insight.insightType} for ${insight.affectedArea}. Severity Level ${insight.severity}. Confidence ${insight.confidence}%. Status: ${insight.status}. Press to view details.`;
 
     return (
-      <button
+      <div
         ref={ref}
-        className={cn(insightCardVariants({ isSelected, className }))}
+        className={cn(insightCardVariants({ isSelected, className }), 'cursor-pointer')}
         onClick={onClick}
         aria-label={fullAriaLabel}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onClick?.(e as any);
+          }
+        }}
         {...props}
       >
         {/* Grip Handle */}
@@ -115,10 +123,10 @@ const InsightCard = React.forwardRef<HTMLButtonElement, InsightCardProps>(
             </span>
           </div>
         </div>
-      </button>
+      </div>
     );
   }
-);
+));
 
 InsightCard.displayName = 'InsightCard';
 
